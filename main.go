@@ -33,6 +33,7 @@ func main() {
 	pathToBibleOSISData := "./bibles/"
 	var bibles models.Bibles
 	WriteBiblesJSON(&bibles, pathToBibleOSISData, config.BiblesJSONPath)
+	WriteBiblesToDB(&bibles, DB)
 }
 
 // {
@@ -93,4 +94,13 @@ func WriteBiblesJSON(bibles *models.Bibles, pathToBibleOSISData string, outputFi
 		log.Fatal(err)
 	}
 	fmt.Println("Done")
+}
+
+func WriteBiblesToDB(bibles *models.Bibles, db *gorm.DB) {
+	for _, bible := range bibles.Bibles {
+		err := db.Create(&bible).Error
+		if err != nil {
+			log.Printf("failed to insert bible for lang %s: %v", bible.Lang, err)
+		}
+	}
 }
