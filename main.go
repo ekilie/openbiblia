@@ -1,9 +1,11 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/fs"
 	"log"
+	"os"
 	"path/filepath"
 )
 
@@ -36,9 +38,21 @@ type Bibles struct {
 
 func main() {
 	pathToBibleOSISData := "./bibles/"
-	
+	biblesJsonFile, err := os.Create("data/bibles.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer biblesJsonFile.Close()
+
 	var bibles Bibles
-	err := filepath.WalkDir(pathToBibleOSISData, func(path string, d fs.DirEntry, err error) error {
+	// err = json.NewDecoder(biblesJsonFile).Decode(&bibles)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+
+	fmt.Printf("%+v\n", bibles)
+
+	err = filepath.WalkDir(pathToBibleOSISData, func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}
@@ -50,12 +64,19 @@ func main() {
 			Lang: d.Name(),
 		}
 		bibles.Bibles = append(bibles.Bibles, translation)
-		println(d.Name(),translation.Lang)
+		println(d.Name(), translation.Lang)
 		return nil
 	})
 
-	fmt.Printf("%+v\n", bibles)
 	if err != nil {
 		log.Fatal(err)
 	}
+	encoder := json.NewEncoder(biblesJsonFile)
+	encoder.SetIndent("", "  ")
+	err = encoder.Encode(&bibles)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Done")
+
 }

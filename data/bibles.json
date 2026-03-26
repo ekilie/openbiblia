@@ -1,0 +1,109 @@
+{
+  "bibles": [
+    {
+      "lang": "af"
+    },
+    {
+      "lang": "ar"
+    },
+    {
+      "lang": "bg"
+    },
+    {
+      "lang": "ch"
+    },
+    {
+      "lang": "cs"
+    },
+    {
+      "lang": "da"
+    },
+    {
+      "lang": "de"
+    },
+    {
+      "lang": "en"
+    },
+    {
+      "lang": "es"
+    },
+    {
+      "lang": "eu"
+    },
+    {
+      "lang": "fi"
+    },
+    {
+      "lang": "fr"
+    },
+    {
+      "lang": "gd"
+    },
+    {
+      "lang": "he"
+    },
+    {
+      "lang": "hr"
+    },
+    {
+      "lang": "ht"
+    },
+    {
+      "lang": "hu"
+    },
+    {
+      "lang": "it"
+    },
+    {
+      "lang": "ko"
+    },
+    {
+      "lang": "la"
+    },
+    {
+      "lang": "lv"
+    },
+    {
+      "lang": "mi"
+    },
+    {
+      "lang": "no"
+    },
+    {
+      "lang": "pl"
+    },
+    {
+      "lang": "pt"
+    },
+    {
+      "lang": "ro"
+    },
+    {
+      "lang": "ru"
+    },
+    {
+      "lang": "sq"
+    },
+    {
+      "lang": "sv"
+    },
+    {
+      "lang": "sw"
+    },
+    {
+      "lang": "th"
+    },
+    {
+      "lang": "tl"
+    },
+    {
+      "lang": "tr"
+    },
+    {
+      "lang": "vi"
+    },
+    {
+      "lang": "zh"
+    }
+  ]
+}
