@@ -45,18 +45,12 @@ func main() {
 	defer biblesJsonFile.Close()
 
 	var bibles Bibles
-	// err = json.NewDecoder(biblesJsonFile).Decode(&bibles)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	fmt.Printf("%+v\n", bibles)
 
 	err = filepath.WalkDir(pathToBibleOSISData, func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}
-
+	
 		if !d.IsDir() || path == pathToBibleOSISData {
 			return nil
 		}
