@@ -6,6 +6,8 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+
+	"github.com/ekilie/openbiblia/config"
 )
 
 type BibleTranslation struct {
@@ -25,7 +27,7 @@ type Bibles struct {
 func main() {
 	pathToBibleOSISData := "./bibles/"
 	var bibles Bibles
-	EncodeToBiblesListJson(&bibles, pathToBibleOSISData, "./data/bibles.json")
+	WriteBiblesJSON(&bibles, pathToBibleOSISData, config.BiblesJSONPath)
 }
 
 // {
@@ -41,8 +43,8 @@ func main() {
 // 	]
 // }
 
-// EncodeToBiblesListJson reads the directory structure of the provided path to Bible OSIS data and encodes it into a JSON file with the structure defined by the Bibles, BibleTranslation, and Translation structs. Each language directory is expected to contain translation files, and the resulting JSON will list all available translations for each language.
-func EncodeToBiblesListJson(bibles *Bibles, pathToBibleOSISData string, outputFilePath string) {
+// WriteBiblesJSON reads the directory structure of the provided path to Bible OSIS data and encodes it into a JSON file with the structure defined by the Bibles, BibleTranslation, and Translation structs. Each language directory is expected to contain translation files, and the resulting JSON will list all available translations for each language.
+func WriteBiblesJSON(bibles *Bibles, pathToBibleOSISData string, outputFilePath string) {
 	biblesJsonFile, err := os.Create(outputFilePath)
 	if err != nil {
 		log.Fatal(err)
@@ -60,7 +62,7 @@ func EncodeToBiblesListJson(bibles *Bibles, pathToBibleOSISData string, outputFi
 		lang := entry.Name()
 		files, err := os.ReadDir(filepath.Join(pathToBibleOSISData, lang))
 		if err != nil {
-			log.Fatal(err)
+			log.Fatalf("failed to read dir %s: %v", lang, err)
 		}
 		var translations []Translation
 		for _, f := range files {
@@ -77,9 +79,11 @@ func EncodeToBiblesListJson(bibles *Bibles, pathToBibleOSISData string, outputFi
 			Translations: translations,
 		})
 	}
-	encoder := json.NewEncoder(biblesJsonFile)
-	encoder.SetIndent("", "  ")
-	err = encoder.Encode(&bibles)
+	data, err := json.MarshalIndent(bibles, "", "  ")
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = os.WriteFile(outputFilePath, data, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
