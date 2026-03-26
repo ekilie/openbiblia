@@ -10,22 +10,16 @@ import (
 func main() {
 	pathToBibleOSISData := "./bibles/"
 	err := filepath.WalkDir(pathToBibleOSISData, func(path string, d fs.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
 		if !d.IsDir() {
-			return filepath.SkipDir
+			println("--------",d.Name())
+		}else{
+			println("---",d.Name())
 		}
 
-		println("===========", d.Name())
-		errr := filepath.WalkDir(d.Name(), func(path string, b fs.DirEntry, err error) error {
-			if b.IsDir() {
-				return filepath.SkipDir
-			}
-
-			println("	", b.Name())
-
-			return nil
-		})
-
-		return errr
+		return nil
 	})
 	if err != nil {
 		log.Fatal(err)
