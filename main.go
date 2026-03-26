@@ -60,8 +60,27 @@ func main() {
 		if !d.IsDir() || path == pathToBibleOSISData {
 			return nil
 		}
+		var Translations []Translation
+		err = filepath.WalkDir(path, func(path string, d fs.DirEntry, err error) error {
+			if err != nil {
+				return err
+			}
+			if d.IsDir() || path == pathToBibleOSISData {
+				return nil
+			}
+			translation := Translation{
+				Name: d.Name(),
+				Path: path,
+			}
+			Translations = append(Translations, translation)
+			return nil
+		})
+		if err != nil {
+			return err
+		}
 		translation := BibleTranslation{
 			Lang: d.Name(),
+			Translations: Translations,
 		}
 		bibles.Bibles = append(bibles.Bibles, translation)
 		println(d.Name(), translation.Lang)

@@ -1,109 +1,747 @@
 {
   "bibles": [
     {
-      "lang": "af"
+      "lang": "af",
+      "translations": [
+        {
+          "name": "afr3353.xml",
+          "path": "bibles/af/afr3353.xml"
+        }
+      ]
     },
     {
-      "lang": "ar"
+      "lang": "ar",
+      "translations": [
+        {
+          "name": "arasvd.xml",
+          "path": "bibles/ar/arasvd.xml"
+        }
+      ]
     },
     {
-      "lang": "bg"
+      "lang": "bg",
+      "translations": [
+        {
+          "name": "bulcarigradnt.xml",
+          "path": "bibles/bg/bulcarigradnt.xml"
+        },
+        {
+          "name": "bulveren.xml",
+          "path": "bibles/bg/bulveren.xml"
+        }
+      ]
     },
     {
-      "lang": "ch"
+      "lang": "ch",
+      "translations": [
+        {
+          "name": "chamorro.xml",
+          "path": "bibles/ch/chamorro.xml"
+        }
+      ]
     },
     {
-      "lang": "cs"
+      "lang": "cs",
+      "translations": [
+        {
+          "name": "czbkr.xml",
+          "path": "bibles/cs/czbkr.xml"
+        },
+        {
+          "name": "czecep.xml",
+          "path": "bibles/cs/czecep.xml"
+        }
+      ]
     },
     {
-      "lang": "da"
+      "lang": "da",
+      "translations": [
+        {
+          "name": "dan.xml",
+          "path": "bibles/da/dan.xml"
+        }
+      ]
     },
     {
-      "lang": "de"
+      "lang": "de",
+      "translations": [
+        {
+          "name": "albrecht1926.xml",
+          "path": "bibles/de/albrecht1926.xml"
+        },
+        {
+          "name": "almnt.xml",
+          "path": "bibles/de/almnt.xml"
+        },
+        {
+          "name": "amnt.xml",
+          "path": "bibles/de/amnt.xml"
+        },
+        {
+          "name": "elb1871.xml",
+          "path": "bibles/de/elb1871.xml"
+        },
+        {
+          "name": "elb1871nt.xml",
+          "path": "bibles/de/elb1871nt.xml"
+        },
+        {
+          "name": "elb1905.xml",
+          "path": "bibles/de/elb1905.xml"
+        },
+        {
+          "name": "fb2004.xml",
+          "path": "bibles/de/fb2004.xml"
+        },
+        {
+          "name": "gerben.xml",
+          "path": "bibles/de/gerben.xml"
+        },
+        {
+          "name": "gerneue.xml",
+          "path": "bibles/de/gerneue.xml"
+        },
+        {
+          "name": "greb.xml",
+          "path": "bibles/de/greb.xml"
+        },
+        {
+          "name": "ilgrde.xml",
+          "path": "bibles/de/ilgrde.xml"
+        },
+        {
+          "name": "knt.xml",
+          "path": "bibles/de/knt.xml"
+        },
+        {
+          "name": "lut.1545.lh.xml",
+          "path": "bibles/de/lut.1545.lh.xml"
+        },
+        {
+          "name": "luth1545.xml",
+          "path": "bibles/de/luth1545.xml"
+        },
+        {
+          "name": "luth1912.xml",
+          "path": "bibles/de/luth1912.xml"
+        },
+        {
+          "name": "luth1912ap.xml",
+          "path": "bibles/de/luth1912ap.xml"
+        },
+        {
+          "name": "meng39.xml",
+          "path": "bibles/de/meng39.xml"
+        },
+        {
+          "name": "pat80.xml",
+          "path": "bibles/de/pat80.xml"
+        },
+        {
+          "name": "rei10ev.xml",
+          "path": "bibles/de/rei10ev.xml"
+        },
+        {
+          "name": "sch1951.xml",
+          "path": "bibles/de/sch1951.xml"
+        },
+        {
+          "name": "taf.xml",
+          "path": "bibles/de/taf.xml"
+        },
+        {
+          "name": "tb.xml",
+          "path": "bibles/de/tb.xml"
+        },
+        {
+          "name": "textbibelat.xml",
+          "path": "bibles/de/textbibelat.xml"
+        },
+        {
+          "name": "vaness.xml",
+          "path": "bibles/de/vaness.xml"
+        },
+        {
+          "name": "vlx3.xml",
+          "path": "bibles/de/vlx3.xml"
+        },
+        {
+          "name": "zürcher.xml",
+          "path": "bibles/de/zürcher.xml"
+        }
+      ]
     },
     {
-      "lang": "en"
+      "lang": "en",
+      "translations": [
+        {
+          "name": "acv.xml",
+          "path": "bibles/en/acv.xml"
+        },
+        {
+          "name": "asv.xml",
+          "path": "bibles/en/asv.xml"
+        },
+        {
+          "name": "bbe.xml",
+          "path": "bibles/en/bbe.xml"
+        },
+        {
+          "name": "bible.akjv.xml",
+          "path": "bibles/en/bible.akjv.xml"
+        },
+        {
+          "name": "bible.en.leb.2010.xml",
+          "path": "bibles/en/bible.en.leb.2010.xml"
+        },
+        {
+          "name": "bom.xml",
+          "path": "bibles/en/bom.xml"
+        },
+        {
+          "name": "bwe.xml",
+          "path": "bibles/en/bwe.xml"
+        },
+        {
+          "name": "darby.xml",
+          "path": "bibles/en/darby.xml"
+        },
+        {
+          "name": "diaglot.xml",
+          "path": "bibles/en/diaglot.xml"
+        },
+        {
+          "name": "dour.xml",
+          "path": "bibles/en/dour.xml"
+        },
+        {
+          "name": "emtv.xml",
+          "path": "bibles/en/emtv.xml"
+        },
+        {
+          "name": "etheridge.xml",
+          "path": "bibles/en/etheridge.xml"
+        },
+        {
+          "name": "gb.xml",
+          "path": "bibles/en/gb.xml"
+        },
+        {
+          "name": "isv.xml",
+          "path": "bibles/en/isv.xml"
+        },
+        {
+          "name": "jps.xml",
+          "path": "bibles/en/jps.xml"
+        },
+        {
+          "name": "jubl2000.xml",
+          "path": "bibles/en/jubl2000.xml"
+        },
+        {
+          "name": "kj2000.xml",
+          "path": "bibles/en/kj2000.xml"
+        },
+        {
+          "name": "kjv.xml",
+          "path": "bibles/en/kjv.xml"
+        },
+        {
+          "name": "leb.xml",
+          "path": "bibles/en/leb.xml"
+        },
+        {
+          "name": "leeser.xml",
+          "path": "bibles/en/leeser.xml"
+        },
+        {
+          "name": "lont.xml",
+          "path": "bibles/en/lont.xml"
+        },
+        {
+          "name": "mkjv1962.xml",
+          "path": "bibles/en/mkjv1962.xml"
+        },
+        {
+          "name": "mont.xml",
+          "path": "bibles/en/mont.xml"
+        },
+        {
+          "name": "nheb.xml",
+          "path": "bibles/en/nheb.xml"
+        },
+        {
+          "name": "nsb.xml",
+          "path": "bibles/en/nsb.xml"
+        },
+        {
+          "name": "rnt.xml",
+          "path": "bibles/en/rnt.xml"
+        },
+        {
+          "name": "roth.xml",
+          "path": "bibles/en/roth.xml"
+        },
+        {
+          "name": "rsv.xml",
+          "path": "bibles/en/rsv.xml"
+        },
+        {
+          "name": "rwebster.xml",
+          "path": "bibles/en/rwebster.xml"
+        },
+        {
+          "name": "rylt.xml",
+          "path": "bibles/en/rylt.xml"
+        },
+        {
+          "name": "tce.xml",
+          "path": "bibles/en/tce.xml"
+        },
+        {
+          "name": "tyndale.xml",
+          "path": "bibles/en/tyndale.xml"
+        },
+        {
+          "name": "ukjv.xml",
+          "path": "bibles/en/ukjv.xml"
+        },
+        {
+          "name": "updv.xml",
+          "path": "bibles/en/updv.xml"
+        },
+        {
+          "name": "wbs.xml",
+          "path": "bibles/en/wbs.xml"
+        },
+        {
+          "name": "web.xml",
+          "path": "bibles/en/web.xml"
+        },
+        {
+          "name": "wesley.xml",
+          "path": "bibles/en/wesley.xml"
+        },
+        {
+          "name": "wmth.xml",
+          "path": "bibles/en/wmth.xml"
+        },
+        {
+          "name": "wycliffe.xml",
+          "path": "bibles/en/wycliffe.xml"
+        },
+        {
+          "name": "xxx.xml",
+          "path": "bibles/en/xxx.xml"
+        },
+        {
+          "name": "ylt.xml",
+          "path": "bibles/en/ylt.xml"
+        }
+      ]
     },
     {
-      "lang": "es"
+      "lang": "es",
+      "translations": [
+        {
+          "name": "rva.xml",
+          "path": "bibles/es/rva.xml"
+        },
+        {
+          "name": "sev.xml",
+          "path": "bibles/es/sev.xml"
+        },
+        {
+          "name": "sparv.xml",
+          "path": "bibles/es/sparv.xml"
+        }
+      ]
     },
     {
-      "lang": "eu"
+      "lang": "eu",
+      "translations": [
+        {
+          "name": "basq1571.xml",
+          "path": "bibles/eu/basq1571.xml"
+        }
+      ]
     },
     {
-      "lang": "fi"
+      "lang": "fi",
+      "translations": [
+        {
+          "name": "fin.xml",
+          "path": "bibles/fi/fin.xml"
+        }
+      ]
     },
     {
-      "lang": "fr"
+      "lang": "fr",
+      "translations": [
+        {
+          "name": "bdc.xml",
+          "path": "bibles/fr/bdc.xml"
+        },
+        {
+          "name": "bdp.xml",
+          "path": "bibles/fr/bdp.xml"
+        },
+        {
+          "name": "bgnt1669.xml",
+          "path": "bibles/fr/bgnt1669.xml"
+        },
+        {
+          "name": "bm1844.xml",
+          "path": "bibles/fr/bm1844.xml"
+        },
+        {
+          "name": "bo1877.xml",
+          "path": "bibles/fr/bo1877.xml"
+        },
+        {
+          "name": "bzkh.xml",
+          "path": "bibles/fr/bzkh.xml"
+        },
+        {
+          "name": "cramp23.xml",
+          "path": "bibles/fr/cramp23.xml"
+        },
+        {
+          "name": "dejer.xml",
+          "path": "bibles/fr/dejer.xml"
+        },
+        {
+          "name": "fill.xml",
+          "path": "bibles/fr/fill.xml"
+        },
+        {
+          "name": "frdarb.xml",
+          "path": "bibles/fr/frdarb.xml"
+        },
+        {
+          "name": "frebbb.xml",
+          "path": "bibles/fr/frebbb.xml"
+        },
+        {
+          "name": "fren.xml",
+          "path": "bibles/fr/fren.xml"
+        },
+        {
+          "name": "frepgr.xml",
+          "path": "bibles/fr/frepgr.xml"
+        },
+        {
+          "name": "jnd.xml",
+          "path": "bibles/fr/jnd.xml"
+        },
+        {
+          "name": "kjf.xml",
+          "path": "bibles/fr/kjf.xml"
+        },
+        {
+          "name": "mach2012.xml",
+          "path": "bibles/fr/mach2012.xml"
+        },
+        {
+          "name": "ostv1996.xml",
+          "path": "bibles/fr/ostv1996.xml"
+        },
+        {
+          "name": "sacc.xml",
+          "path": "bibles/fr/sacc.xml"
+        },
+        {
+          "name": "vigouroux.xml",
+          "path": "bibles/fr/vigouroux.xml"
+        }
+      ]
     },
     {
-      "lang": "gd"
+      "lang": "gd",
+      "translations": [
+        {
+          "name": "gla2.xml",
+          "path": "bibles/gd/gla2.xml"
+        }
+      ]
     },
     {
-      "lang": "he"
+      "lang": "he",
+      "translations": [
+        {
+          "name": "alep.xml",
+          "path": "bibles/he/alep.xml"
+        },
+        {
+          "name": "bhs.xml",
+          "path": "bibles/he/bhs.xml"
+        },
+        {
+          "name": "hebm.xml",
+          "path": "bibles/he/hebm.xml"
+        },
+        {
+          "name": "osmhb.xml",
+          "path": "bibles/he/osmhb.xml"
+        },
+        {
+          "name": "wcl.xml",
+          "path": "bibles/he/wcl.xml"
+        }
+      ]
     },
     {
-      "lang": "hr"
+      "lang": "hr",
+      "translations": [
+        {
+          "name": "croat.xml",
+          "path": "bibles/hr/croat.xml"
+        }
+      ]
     },
     {
-      "lang": "ht"
+      "lang": "ht",
+      "translations": [
+        {
+          "name": "hat.xml",
+          "path": "bibles/ht/hat.xml"
+        }
+      ]
     },
     {
-      "lang": "hu"
+      "lang": "hu",
+      "translations": [
+        {
+          "name": "hun.xml",
+          "path": "bibles/hu/hun.xml"
+        },
+        {
+          "name": "hunuj.xml",
+          "path": "bibles/hu/hunuj.xml"
+        }
+      ]
     },
     {
-      "lang": "it"
+      "lang": "it",
+      "translations": [
+        {
+          "name": "cei74.xml",
+          "path": "bibles/it/cei74.xml"
+        },
+        {
+          "name": "irv_1990.xml",
+          "path": "bibles/it/irv_1990.xml"
+        },
+        {
+          "name": "itadio.xml",
+          "path": "bibles/it/itadio.xml"
+        },
+        {
+          "name": "italian1.xml",
+          "path": "bibles/it/italian1.xml"
+        },
+        {
+          "name": "lnd_1991.xml",
+          "path": "bibles/it/lnd_1991.xml"
+        }
+      ]
     },
     {
-      "lang": "ko"
+      "lang": "ko",
+      "translations": [
+        {
+          "name": "kor.xml",
+          "path": "bibles/ko/kor.xml"
+        }
+      ]
     },
     {
-      "lang": "la"
+      "lang": "la",
+      "translations": [
+        {
+          "name": "clvul.xml",
+          "path": "bibles/la/clvul.xml"
+        },
+        {
+          "name": "nvla.xml",
+          "path": "bibles/la/nvla.xml"
+        },
+        {
+          "name": "vulgata.xml",
+          "path": "bibles/la/vulgata.xml"
+        }
+      ]
     },
     {
-      "lang": "lv"
+      "lang": "lv",
+      "translations": [
+        {
+          "name": "latv.xml",
+          "path": "bibles/lv/latv.xml"
+        }
+      ]
     },
     {
-      "lang": "mi"
+      "lang": "mi",
+      "translations": [
+        {
+          "name": "mao.xml",
+          "path": "bibles/mi/mao.xml"
+        }
+      ]
     },
     {
-      "lang": "no"
+      "lang": "no",
+      "translations": [
+        {
+          "name": "nor.xml",
+          "path": "bibles/no/nor.xml"
+        },
+        {
+          "name": "norsmb.xml",
+          "path": "bibles/no/norsmb.xml"
+        }
+      ]
     },
     {
-      "lang": "pl"
+      "lang": "pl",
+      "translations": [
+        {
+          "name": "poland.xml",
+          "path": "bibles/pl/poland.xml"
+        }
+      ]
     },
     {
-      "lang": "pt"
+      "lang": "pt",
+      "translations": [
+        {
+          "name": "acf.xml",
+          "path": "bibles/pt/acf.xml"
+        },
+        {
+          "name": "port.xml",
+          "path": "bibles/pt/port.xml"
+        }
+      ]
     },
     {
-      "lang": "ro"
+      "lang": "ro",
+      "translations": [
+        {
+          "name": "ru.xml",
+          "path": "bibles/ro/ru.xml"
+        }
+      ]
     },
     {
-      "lang": "ru"
+      "lang": "ru",
+      "translations": [
+        {
+          "name": "rst.xml",
+          "path": "bibles/ru/rst.xml"
+        },
+        {
+          "name": "russub.xml",
+          "path": "bibles/ru/russub.xml"
+        },
+        {
+          "name": "rusvzh.xml",
+          "path": "bibles/ru/rusvzh.xml"
+        },
+        {
+          "name": "ukrub.xml",
+          "path": "bibles/ru/ukrub.xml"
+        }
+      ]
     },
     {
-      "lang": "sq"
+      "lang": "sq",
+      "translations": [
+        {
+          "name": "alb1.xml",
+          "path": "bibles/sq/alb1.xml"
+        }
+      ]
     },
     {
-      "lang": "sv"
+      "lang": "sv",
+      "translations": [
+        {
+          "name": "svd.xml",
+          "path": "bibles/sv/svd.xml"
+        },
+        {
+          "name": "swefolk1998.xml",
+          "path": "bibles/sv/swefolk1998.xml"
+        }
+      ]
     },
     {
-      "lang": "sw"
+      "lang": "sw",
+      "translations": [
+        {
+          "name": "swa.xml",
+          "path": "bibles/sw/swa.xml"
+        }
+      ]
     },
     {
-      "lang": "th"
+      "lang": "th",
+      "translations": [
+        {
+          "name": "kjvthai.xml",
+          "path": "bibles/th/kjvthai.xml"
+        }
+      ]
     },
     {
-      "lang": "tl"
+      "lang": "tl",
+      "translations": [
+        {
+          "name": "tlgangbiblia.xml",
+          "path": "bibles/tl/tlgangbiblia.xml"
+        }
+      ]
     },
     {
-      "lang": "tr"
+      "lang": "tr",
+      "translations": [
+        {
+          "name": "bb31.xml",
+          "path": "bibles/tr/bb31.xml"
+        }
+      ]
     },
     {
-      "lang": "vi"
+      "lang": "vi",
+      "translations": [
+        {
+          "name": "vie.xml",
+          "path": "bibles/vi/vie.xml"
+        },
+        {
+          "name": "vietnvb.xml",
+          "path": "bibles/vi/vietnvb.xml"
+        }
+      ]
     },
     {
-      "lang": "zh"
+      "lang": "zh",
+      "translations": [
+        {
+          "name": "chi.xml",
+          "path": "bibles/zh/chi.xml"
+        },
+        {
+          "name": "chius.xml",
+          "path": "bibles/zh/chius.xml"
+        },
+        {
+          "name": "cvs.xml",
+          "path": "bibles/zh/cvs.xml"
+        }
+      ]
     }
   ]
 }
