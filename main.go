@@ -3,12 +3,10 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/fs"
 	"log"
 	"os"
 	"path/filepath"
 )
-
 
 type BibleTranslation struct {
 	Lang         string        `json:"lang"`
@@ -27,9 +25,8 @@ type Bibles struct {
 func main() {
 	pathToBibleOSISData := "./bibles/"
 	var bibles Bibles
-	EncodeToBiblesListJson(&bibles,pathToBibleOSISData,"./data/bibles.json")
+	EncodeToBiblesListJson(&bibles, pathToBibleOSISData, "./data/bibles.json")
 }
-
 
 // {
 // 	bibles: [
@@ -52,44 +49,33 @@ func EncodeToBiblesListJson(bibles *Bibles, pathToBibleOSISData string, outputFi
 	}
 	defer biblesJsonFile.Close()
 
-
-	err = filepath.WalkDir(pathToBibleOSISData, func(path string, d fs.DirEntry, err error) error {
-		if err != nil {
-			return err
-		}
-
-		if !d.IsDir() || path == pathToBibleOSISData {
-			return nil
-		}
-		var Translations []Translation
-		err = filepath.WalkDir(path, func(path string, d fs.DirEntry, err error) error {
-			if err != nil {
-				return err
-			}
-			if d.IsDir() || path == pathToBibleOSISData {
-				return nil
-			}
-			translation := Translation{
-				Name: d.Name(),
-				Path: path,
-			}
-			Translations = append(Translations, translation)
-			return nil
-		})
-		if err != nil {
-			return err
-		}
-		translation := BibleTranslation{
-			Lang:         d.Name(),
-			Translations: Translations,
-		}
-		bibles.Bibles = append(bibles.Bibles, translation)
-		println(d.Name(), translation.Lang)
-		return nil
-	})
-
+	entries, err := os.ReadDir(pathToBibleOSISData)
 	if err != nil {
 		log.Fatal(err)
+	}
+	for _, entry := range entries {
+		if !entry.IsDir() {
+			continue
+		}
+		lang := entry.Name()
+		files, err := os.ReadDir(filepath.Join(pathToBibleOSISData, lang))
+		if err != nil {
+			log.Fatal(err)
+		}
+		var translations []Translation
+		for _, f := range files {
+			if f.IsDir() {
+				continue
+			}
+			translations = append(translations, Translation{
+				Name: f.Name(),
+				Path: filepath.Join(pathToBibleOSISData, lang, f.Name()),
+			})
+		}
+		bibles.Bibles = append(bibles.Bibles, BibleTranslation{
+			Lang:         lang,
+			Translations: translations,
+		})
 	}
 	encoder := json.NewEncoder(biblesJsonFile)
 	encoder.SetIndent("", "  ")
