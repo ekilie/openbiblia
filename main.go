@@ -9,18 +9,7 @@ import (
 	"path/filepath"
 )
 
-// {
-// 	bibles: [
-// 		{"lang": "en", "translations": [
-// 			{"name": "KJV", "path": "kjv.xml"},
-// 			{"name": "NIV", "path": "niv.xml"}
-// 		]},
-// 		{"lang": "sw", "translations": [
-// 			{"name": "KJV", "path": "kjv.xml"},
-// 			{"name": "NIV", "path": "niv.xml"}
-// 		]}
-// 	]
-// }
+
 
 type BibleTranslation struct {
 	Lang         string        `json:"lang"`
@@ -38,19 +27,38 @@ type Bibles struct {
 
 func main() {
 	pathToBibleOSISData := "./bibles/"
-	biblesJsonFile, err := os.Create("data/bibles.json")
+	var bibles Bibles
+	EncodeToBiblesListJson(bibles,pathToBibleOSISData,"./data/bibles.json")
+}
+
+
+// {
+// 	bibles: [
+// 		{"lang": "en", "translations": [
+// 			{"name": "KJV", "path": "kjv.xml"},
+// 			{"name": "NIV", "path": "niv.xml"}
+// 		]},
+// 		{"lang": "sw", "translations": [
+// 			{"name": "KJV", "path": "kjv.xml"},
+// 			{"name": "NIV", "path": "niv.xml"}
+// 		]}
+// 	]
+// }
+
+// EncodeToBiblesListJson reads the directory structure of the provided path to Bible OSIS data and encodes it into a JSON file with the structure defined by the Bibles, BibleTranslation, and Translation structs. Each language directory is expected to contain translation files, and the resulting JSON will list all available translations for each language.
+func EncodeToBiblesListJson(bibles Bibles, pathToBibleOSISData string, outputFilePath string) {
+	biblesJsonFile, err := os.Create(outputFilePath)
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer biblesJsonFile.Close()
 
-	var bibles Bibles
 
 	err = filepath.WalkDir(pathToBibleOSISData, func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}
-	
+
 		if !d.IsDir() || path == pathToBibleOSISData {
 			return nil
 		}
@@ -73,7 +81,7 @@ func main() {
 			return err
 		}
 		translation := BibleTranslation{
-			Lang: d.Name(),
+			Lang:         d.Name(),
 			Translations: Translations,
 		}
 		bibles.Bibles = append(bibles.Bibles, translation)
@@ -91,5 +99,4 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Println("Done")
-
 }
