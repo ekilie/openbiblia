@@ -23,6 +23,10 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	err = db.Migrate(DB)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func main() {
