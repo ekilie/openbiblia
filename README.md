@@ -23,4 +23,3 @@ go run .
 
 - XML source files are read from [bibles](bibles).
 - DB and JSON paths are configured in [config/config.go](config/config.go).
-
