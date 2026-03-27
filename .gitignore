@@ -1,0 +1,4 @@
+data/openbiblia.db
+data/openbiblia.db-journal
+data/openbiblia.db-wal
+data/openbiblia.db-shm
