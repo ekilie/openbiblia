@@ -14,5 +14,5 @@ func Open() (*gorm.DB, error) {
 }
 
 func Migrate(db *gorm.DB) error {
-	return db.AutoMigrate(&models.BibleTranslation{}, &models.Translation{})
+	return db.AutoMigrate(&models.BibleTranslation{}, &models.Translation{}, &models.Verse{})
 }

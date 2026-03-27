@@ -15,6 +15,17 @@ type Translation struct {
 	BibleTranslationID uint   `json:"-" gorm:"index"` // foreign key
 }
 
+// Verse represents one parsed verse from a translation file.
+type Verse struct {
+	ID            uint   `gorm:"primaryKey" json:"-"`
+	TranslationID uint   `gorm:"index;not null"`
+	Book          string `gorm:"index;not null"`
+	Chapter       int    `gorm:"index;not null"`
+	Verse         int    `gorm:"index;not null"`
+	OsisID        string `gorm:"index"`
+	Text          string `gorm:"type:text;not null"`
+}
+
 type Bibles struct {
 	Bibles []BibleTranslation `json:"bibles"`
 }
