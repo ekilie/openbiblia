@@ -140,7 +140,8 @@ func ParseAndSaveBibleData(db *gorm.DB) {
 				if end > len(verses) {
 					end = len(verses)
 				}
-				if err := tx.Create(&verses[start:end]).Error; err != nil {
+				batch := verses[start:end]
+				if err := tx.Create(&batch).Error; err != nil {
 					return err
 				}
 			}
