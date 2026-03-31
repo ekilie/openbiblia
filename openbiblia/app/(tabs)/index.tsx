@@ -12,15 +12,21 @@ export default function LanguagesScreen() {
   const router = useRouter();
   const languages = getLanguages();
   const insets = useSafeAreaInsets();
-  const cardBg = useThemeColor({light: '#f5f5f5', dark: '#1c1c1e'}, 'background');
-  const accent = useThemeColor({light: '#0a7ea4', dark: '#5ac8fa'}, 'tint');
+  const cardBg = useThemeColor(
+    { light: "#f5f5f5", dark: "#1c1c1e" },
+    "background",
+  );
+  const accent = useThemeColor({ light: "#0a7ea4", dark: "#5ac8fa" }, "tint");
 
   return (
     <ThemedView style={styles.container}>
       <FlatList
         data={languages}
         keyExtractor={(item) => item.lang}
-        contentContainerStyle={[styles.list, { paddingBottom: insets.bottom + 16 }]}
+        contentContainerStyle={[
+          styles.list,
+          { paddingBottom: insets.bottom + 16 },
+        ]}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
           <Pressable
@@ -40,10 +46,13 @@ export default function LanguagesScreen() {
                 {getLanguageName(item.lang)}
               </ThemedText>
               <ThemedText style={styles.count}>
-                {item.translations.length} translation{item.translations.length !== 1 ? "s" : ""}
+                {item.translations.length} translation
+                {item.translations.length !== 1 ? "s" : ""}
               </ThemedText>
             </View>
-            <ThemedText style={[styles.chevron, { color: accent }]}>›</ThemedText>
+            <ThemedText style={[styles.chevron, { color: accent }]}>
+              ›
+            </ThemedText>
           </Pressable>
         )}
       />

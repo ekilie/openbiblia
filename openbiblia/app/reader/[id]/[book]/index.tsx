@@ -22,7 +22,10 @@ export default function ChaptersScreen() {
   const [loading, setLoading] = useState(true);
   const { width } = useWindowDimensions();
   const numColumns = Math.floor((width - 32) / 72);
-  const cellBg = useThemeColor({ light: "#f0f0f0", dark: "#2c2c2e" }, "background");
+  const cellBg = useThemeColor(
+    { light: "#f0f0f0", dark: "#2c2c2e" },
+    "background",
+  );
   const accent = useThemeColor({ light: "#0a7ea4", dark: "#5ac8fa" }, "tint");
 
   useEffect(() => {
@@ -49,7 +52,10 @@ export default function ChaptersScreen() {
         keyExtractor={(item) => item.toString()}
         numColumns={numColumns}
         key={numColumns}
-        contentContainerStyle={[styles.grid, { paddingBottom: insets.bottom + 16 }]}
+        contentContainerStyle={[
+          styles.grid,
+          { paddingBottom: insets.bottom + 16 },
+        ]}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
           <Pressable
@@ -63,10 +69,7 @@ export default function ChaptersScreen() {
           >
             {({ pressed }) => (
               <ThemedText
-                style={[
-                  styles.chapterNum,
-                  pressed && { color: "#fff" },
-                ]}
+                style={[styles.chapterNum, pressed && { color: "#fff" }]}
               >
                 {item}
               </ThemedText>

@@ -16,31 +16,114 @@ import { getTranslation } from "@/services/manifest";
 import { useThemeColor } from "@/hooks/use-theme-color";
 
 const BOOK_NAMES: Record<string, string> = {
-  Gen: "Genesis", Exod: "Exodus", Lev: "Leviticus", Num: "Numbers",
-  Deut: "Deuteronomy", Josh: "Joshua", Judg: "Judges", Ruth: "Ruth",
-  "1Sam": "1 Samuel", "2Sam": "2 Samuel", "1Kgs": "1 Kings", "2Kgs": "2 Kings",
-  "1Chr": "1 Chronicles", "2Chr": "2 Chronicles", Ezra: "Ezra", Neh: "Nehemiah",
-  Esth: "Esther", Job: "Job", Ps: "Psalms", Prov: "Proverbs",
-  Eccl: "Ecclesiastes", Song: "Song of Solomon", Isa: "Isaiah", Jer: "Jeremiah",
-  Lam: "Lamentations", Ezek: "Ezekiel", Dan: "Daniel", Hos: "Hosea",
-  Joel: "Joel", Amos: "Amos", Obad: "Obadiah", Jonah: "Jonah",
-  Mic: "Micah", Nah: "Nahum", Hab: "Habakkuk", Zeph: "Zephaniah",
-  Hag: "Haggai", Zech: "Zechariah", Mal: "Malachi",
-  Matt: "Matthew", Mark: "Mark", Luke: "Luke", John: "John", Acts: "Acts",
-  Rom: "Romans", "1Cor": "1 Corinthians", "2Cor": "2 Corinthians",
-  Gal: "Galatians", Eph: "Ephesians", Phil: "Philippians", Col: "Colossians",
-  "1Thess": "1 Thessalonians", "2Thess": "2 Thessalonians",
-  "1Tim": "1 Timothy", "2Tim": "2 Timothy", Titus: "Titus", Phlm: "Philemon",
-  Heb: "Hebrews", Jas: "James", "1Pet": "1 Peter", "2Pet": "2 Peter",
-  "1John": "1 John", "2John": "2 John", "3John": "3 John",
-  Jude: "Jude", Rev: "Revelation",
+  Gen: "Genesis",
+  Exod: "Exodus",
+  Lev: "Leviticus",
+  Num: "Numbers",
+  Deut: "Deuteronomy",
+  Josh: "Joshua",
+  Judg: "Judges",
+  Ruth: "Ruth",
+  "1Sam": "1 Samuel",
+  "2Sam": "2 Samuel",
+  "1Kgs": "1 Kings",
+  "2Kgs": "2 Kings",
+  "1Chr": "1 Chronicles",
+  "2Chr": "2 Chronicles",
+  Ezra: "Ezra",
+  Neh: "Nehemiah",
+  Esth: "Esther",
+  Job: "Job",
+  Ps: "Psalms",
+  Prov: "Proverbs",
+  Eccl: "Ecclesiastes",
+  Song: "Song of Solomon",
+  Isa: "Isaiah",
+  Jer: "Jeremiah",
+  Lam: "Lamentations",
+  Ezek: "Ezekiel",
+  Dan: "Daniel",
+  Hos: "Hosea",
+  Joel: "Joel",
+  Amos: "Amos",
+  Obad: "Obadiah",
+  Jonah: "Jonah",
+  Mic: "Micah",
+  Nah: "Nahum",
+  Hab: "Habakkuk",
+  Zeph: "Zephaniah",
+  Hag: "Haggai",
+  Zech: "Zechariah",
+  Mal: "Malachi",
+  Matt: "Matthew",
+  Mark: "Mark",
+  Luke: "Luke",
+  John: "John",
+  Acts: "Acts",
+  Rom: "Romans",
+  "1Cor": "1 Corinthians",
+  "2Cor": "2 Corinthians",
+  Gal: "Galatians",
+  Eph: "Ephesians",
+  Phil: "Philippians",
+  Col: "Colossians",
+  "1Thess": "1 Thessalonians",
+  "2Thess": "2 Thessalonians",
+  "1Tim": "1 Timothy",
+  "2Tim": "2 Timothy",
+  Titus: "Titus",
+  Phlm: "Philemon",
+  Heb: "Hebrews",
+  Jas: "James",
+  "1Pet": "1 Peter",
+  "2Pet": "2 Peter",
+  "1John": "1 John",
+  "2John": "2 John",
+  "3John": "3 John",
+  Jude: "Jude",
+  Rev: "Revelation",
 };
 
 const OT_BOOKS = new Set([
-  "Gen","Exod","Lev","Num","Deut","Josh","Judg","Ruth","1Sam","2Sam",
-  "1Kgs","2Kgs","1Chr","2Chr","Ezra","Neh","Esth","Job","Ps","Prov",
-  "Eccl","Song","Isa","Jer","Lam","Ezek","Dan","Hos","Joel","Amos",
-  "Obad","Jonah","Mic","Nah","Hab","Zeph","Hag","Zech","Mal",
+  "Gen",
+  "Exod",
+  "Lev",
+  "Num",
+  "Deut",
+  "Josh",
+  "Judg",
+  "Ruth",
+  "1Sam",
+  "2Sam",
+  "1Kgs",
+  "2Kgs",
+  "1Chr",
+  "2Chr",
+  "Ezra",
+  "Neh",
+  "Esth",
+  "Job",
+  "Ps",
+  "Prov",
+  "Eccl",
+  "Song",
+  "Isa",
+  "Jer",
+  "Lam",
+  "Ezek",
+  "Dan",
+  "Hos",
+  "Joel",
+  "Amos",
+  "Obad",
+  "Jonah",
+  "Mic",
+  "Nah",
+  "Hab",
+  "Zeph",
+  "Hag",
+  "Zech",
+  "Mal",
 ]);
 
 function bookDisplayName(osisId: string): string {
@@ -53,7 +136,10 @@ export default function BooksScreen() {
   const insets = useSafeAreaInsets();
   const [books, setBooks] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
-  const cardBg = useThemeColor({ light: "#f5f5f5", dark: "#1c1c1e" }, "background");
+  const cardBg = useThemeColor(
+    { light: "#f5f5f5", dark: "#1c1c1e" },
+    "background",
+  );
   const accent = useThemeColor({ light: "#0a7ea4", dark: "#5ac8fa" }, "tint");
 
   const info = getTranslation(id);
@@ -68,7 +154,9 @@ export default function BooksScreen() {
   if (loading) {
     return (
       <ThemedView style={styles.center}>
-        <Stack.Screen options={{ title: info?.translation.name.toUpperCase() ?? id }} />
+        <Stack.Screen
+          options={{ title: info?.translation.name.toUpperCase() ?? id }}
+        />
         <ActivityIndicator size="large" />
       </ThemedView>
     );
@@ -83,11 +171,16 @@ export default function BooksScreen() {
 
   return (
     <ThemedView style={styles.container}>
-      <Stack.Screen options={{ title: info?.translation.name.toUpperCase() ?? id }} />
+      <Stack.Screen
+        options={{ title: info?.translation.name.toUpperCase() ?? id }}
+      />
       <SectionList
         sections={sections}
         keyExtractor={(item) => item}
-        contentContainerStyle={[styles.list, { paddingBottom: insets.bottom + 16 }]}
+        contentContainerStyle={[
+          styles.list,
+          { paddingBottom: insets.bottom + 16 },
+        ]}
         showsVerticalScrollIndicator={false}
         stickySectionHeadersEnabled={false}
         renderSectionHeader={({ section }) => (
@@ -109,7 +202,9 @@ export default function BooksScreen() {
             <ThemedText style={styles.bookName}>
               {bookDisplayName(item)}
             </ThemedText>
-            <ThemedText style={[styles.chevron, { color: accent }]}>›</ThemedText>
+            <ThemedText style={[styles.chevron, { color: accent }]}>
+              ›
+            </ThemedText>
           </Pressable>
         )}
       />

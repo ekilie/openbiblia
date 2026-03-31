@@ -28,11 +28,16 @@ export default function TranslationsScreen() {
   const router = useRouter();
   const translations = getTranslations(lang);
   const insets = useSafeAreaInsets();
-  const cardBg = useThemeColor({ light: "#f5f5f5", dark: "#1c1c1e" }, "background");
+  const cardBg = useThemeColor(
+    { light: "#f5f5f5", dark: "#1c1c1e" },
+    "background",
+  );
   const green = "#34C759";
   const accent = useThemeColor({ light: "#0a7ea4", dark: "#5ac8fa" }, "tint");
 
-  const [downloadedMap, setDownloadedMap] = useState<Record<string, boolean>>({});
+  const [downloadedMap, setDownloadedMap] = useState<Record<string, boolean>>(
+    {},
+  );
   const [downloading, setDownloading] = useState<string | null>(null);
 
   const checkDownloaded = useCallback(() => {
@@ -85,7 +90,10 @@ export default function TranslationsScreen() {
       <FlatList
         data={translations}
         keyExtractor={(item) => item.id}
-        contentContainerStyle={[styles.list, { paddingBottom: insets.bottom + 16 }]}
+        contentContainerStyle={[
+          styles.list,
+          { paddingBottom: insets.bottom + 16 },
+        ]}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => {
           const isLocal = downloadedMap[item.id];
@@ -125,7 +133,9 @@ export default function TranslationsScreen() {
                 </ThemedText>
               </View>
               {isLocal && (
-                <ThemedText style={[styles.chevron, { color: accent }]}>›</ThemedText>
+                <ThemedText style={[styles.chevron, { color: accent }]}>
+                  ›
+                </ThemedText>
               )}
             </Pressable>
           );

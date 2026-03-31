@@ -19,7 +19,10 @@ export default function ReaderScreen() {
   const [verses, setVerses] = useState<Verse[]>([]);
   const [loading, setLoading] = useState(true);
   const accent = useThemeColor({ light: "#0a7ea4", dark: "#5ac8fa" }, "tint");
-  const divider = useThemeColor({ light: "#e0e0e0", dark: "#333" }, "background");
+  const divider = useThemeColor(
+    { light: "#e0e0e0", dark: "#333" },
+    "background",
+  );
 
   const chapterNum = parseInt(chapter, 10);
 
