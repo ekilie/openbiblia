@@ -1,0 +1,42 @@
+/** Maps ISO 639-1 codes to readable language names */
+export const LANGUAGE_NAMES: Record<string, string> = {
+  af: 'Afrikaans',
+  ar: 'العربية (Arabic)',
+  bg: 'Български (Bulgarian)',
+  ch: 'Chamorro',
+  cs: 'Čeština (Czech)',
+  da: 'Dansk (Danish)',
+  de: 'Deutsch (German)',
+  en: 'English',
+  es: 'Español (Spanish)',
+  eu: 'Euskara (Basque)',
+  fi: 'Suomi (Finnish)',
+  fr: 'Français (French)',
+  gd: 'Gàidhlig (Scottish Gaelic)',
+  he: 'עברית (Hebrew)',
+  hr: 'Hrvatski (Croatian)',
+  ht: 'Kreyòl (Haitian Creole)',
+  hu: 'Magyar (Hungarian)',
+  it: 'Italiano (Italian)',
+  ko: '한국어 (Korean)',
+  la: 'Latina (Latin)',
+  lv: 'Latviešu (Latvian)',
+  mi: 'Māori',
+  no: 'Norsk (Norwegian)',
+  pl: 'Polski (Polish)',
+  pt: 'Português (Portuguese)',
+  ro: 'Română (Romanian)',
+  ru: 'Русский (Russian)',
+  sq: 'Shqip (Albanian)',
+  sv: 'Svenska (Swedish)',
+  sw: 'Kiswahili (Swahili)',
+  th: 'ไทย (Thai)',
+  tl: 'Tagalog',
+  tr: 'Türkçe (Turkish)',
+  vi: 'Tiếng Việt (Vietnamese)',
+  zh: '中文 (Chinese)',
+};
+
+export function getLanguageName(code: string): string {
+  return LANGUAGE_NAMES[code] ?? code.toUpperCase();
+}

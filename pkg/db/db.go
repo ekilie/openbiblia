@@ -13,7 +13,7 @@ import (
 )
 
 // OpenTranslation opens (or creates) a per-translation SQLite database.
-// The DB file lives at data/dbs/{lang}/{translationName}.db
+// The DB file lives at data/dbs/{lang}/{translationID}.db
 func OpenTranslation(lang, translationName string) (*gorm.DB, error) {
 	dbPath := TranslationDBPath(lang, translationName)
 
@@ -31,11 +31,27 @@ func OpenTranslation(lang, translationName string) (*gorm.DB, error) {
 
 // MigrateTranslation runs auto-migration for a per-translation database.
 func MigrateTranslation(db *gorm.DB) error {
-	return db.AutoMigrate(&models.Verse{})
+	return db.AutoMigrate(&models.Verse{}, &models.Meta{})
+}
+
+// WriteMeta inserts metadata key-value pairs into the meta table.
+func WriteMeta(db *gorm.DB, pairs map[string]string) error {
+	for k, v := range pairs {
+		m := models.Meta{Key: k, Value: v}
+		if err := db.Save(&m).Error; err != nil {
+			return fmt.Errorf("write meta %s: %w", k, err)
+		}
+	}
+	return nil
 }
 
 // TranslationDBPath returns the file path for a translation's database.
 func TranslationDBPath(lang, translationName string) string {
 	name := strings.TrimSuffix(translationName, filepath.Ext(translationName))
 	return filepath.Join(config.DBDir, lang, name+".db")
+}
+
+// TranslationID derives a stable ID from the XML filename (without extension).
+func TranslationID(xmlName string) string {
+	return strings.TrimSuffix(xmlName, filepath.Ext(xmlName))
 }
