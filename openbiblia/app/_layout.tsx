@@ -5,14 +5,21 @@ import {
 } from "@react-navigation/native";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { useEffect } from "react";
 import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { Colors } from "@/constants/theme";
+import { useAppStore } from "@/services/store";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const colors = Colors[colorScheme];
+  const refreshDownloaded = useAppStore((s) => s.refreshDownloaded);
+
+  useEffect(() => {
+    refreshDownloaded();
+  }, []);
 
   const navTheme =
     colorScheme === "dark"

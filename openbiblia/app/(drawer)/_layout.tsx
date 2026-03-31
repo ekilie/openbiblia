@@ -51,6 +51,15 @@ export default function DrawerLayout() {
           ),
         }}
       />
+      <Drawer.Screen
+        name="settings"
+        options={{
+          title: "Settings",
+          drawerIcon: ({ color, size }) => (
+            <MaterialIcons name="settings" size={size} color={color} />
+          ),
+        }}
+      />
     </Drawer>
   );
 }

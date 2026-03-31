@@ -136,7 +136,7 @@ func buildOneDB(lang, id, xmlPath, dbPath string) error {
 	err = tdb.Transaction(func(tx *gorm.DB) error {
 		const batchSize = 1000
 		for start := 0; start < len(verses); start += batchSize {
-			end := min(start + batchSize, len(verses))
+			end := min(start+batchSize, len(verses))
 			if err := tx.Create(verses[start:end]).Error; err != nil {
 				return err
 			}

@@ -22,6 +22,7 @@ import {
 import { getLanguageName } from "@/constants/languages";
 import { Colors, type ColorScheme } from "@/constants/theme";
 import { useColorScheme } from "@/hooks/use-color-scheme";
+import { useAppStore } from "@/services/store";
 import type { Translation } from "@/services/types";
 
 export default function TranslationsScreen() {
@@ -32,6 +33,9 @@ export default function TranslationsScreen() {
   const colorScheme = useColorScheme();
   const s = getStyles(colorScheme);
   const colors = Colors[colorScheme];
+
+  const addDownloaded = useAppStore((st) => st.addDownloaded);
+  const removeDownloadedFromStore = useAppStore((st) => st.removeDownloaded);
 
   const [downloadedMap, setDownloadedMap] = useState<Record<string, boolean>>(
     {},
@@ -59,6 +63,7 @@ export default function TranslationsScreen() {
     try {
       await downloadTranslation(t);
       setDownloadedMap((prev) => ({ ...prev, [t.id]: true }));
+      addDownloaded(t.id);
       router.push(`/reader/${t.id}`);
     } catch (e: any) {
       Alert.alert("Download Failed", e.message);
@@ -77,6 +82,7 @@ export default function TranslationsScreen() {
         onPress: () => {
           deleteTranslation(t.id);
           setDownloadedMap((prev) => ({ ...prev, [t.id]: false }));
+          removeDownloadedFromStore(t.id);
         },
       },
     ]);

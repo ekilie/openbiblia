@@ -6,7 +6,7 @@
         {
           "id": "afr3353",
           "name": "afr3353",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/af-afr3353.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/af-afr3353.db",
           "size": 6328320,
           "version": 1,
           "checksum": "sha256-02c9ffdb940fa366be5f52e18b28cb0c119cc13eb702fbd64867541835939510"
@@ -19,10 +19,10 @@
         {
           "id": "arasvd",
           "name": "arasvd",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/ar-arasvd.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/ar-arasvd.db",
           "size": 6537216,
           "version": 1,
-          "checksum": "sha256-169f1b8ca29d4afbf3b5393491e266acff06b1549d8405ed52a375a63908d02b"
+          "checksum": "sha256-cf761c3c339f87e990c203bfd0e51fb89484b45388405283cb94d19539154746"
         }
       ]
     },
@@ -32,15 +32,15 @@
         {
           "id": "bulcarigradnt",
           "name": "bulcarigradnt",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/bg-bulcarigradnt.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/bg-bulcarigradnt.db",
           "size": 2134016,
           "version": 1,
-          "checksum": "sha256-be072555884206327407d35c51d530ccbf37facddb316207949ab3779df5f215"
+          "checksum": "sha256-fb3b6c783187d4411982a4d1a8e6a3637a5b69ef507302741409ec1ef2ba7d6f"
         },
         {
           "id": "bulveren",
           "name": "bulveren",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/bg-bulveren.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/bg-bulveren.db",
           "size": 8785920,
           "version": 1,
           "checksum": "sha256-1f964a7db462f510982bab851b5ae037629b8781bca6320c121bc8b536e5c543"
@@ -53,10 +53,10 @@
         {
           "id": "chamorro",
           "name": "chamorro",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/ch-chamorro.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/ch-chamorro.db",
           "size": 1392640,
           "version": 1,
-          "checksum": "sha256-01081bb64230db86322042ddd93bd8c74038a413e497f01e3a6c2d66e8c41106"
+          "checksum": "sha256-8b419389ad8316924d843d9a9fb138e51180eae1739d61f34d73f706924e7531"
         }
       ]
     },
@@ -66,7 +66,7 @@
         {
           "id": "czbkr",
           "name": "czbkr",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/cs-czbkr.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/cs-czbkr.db",
           "size": 6152192,
           "version": 1,
           "checksum": "sha256-6bb3ca394dbbef0fe441e8445202e023341a2af5453130e5fcf9ebb3015aabd2"
@@ -74,7 +74,7 @@
         {
           "id": "czecep",
           "name": "czecep",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/cs-czecep.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/cs-czecep.db",
           "size": 5951488,
           "version": 1,
           "checksum": "sha256-3475e2e180cd0bfeba92d507d076460a3033206cd9e677078e3a7c532cdf3098"
@@ -87,10 +87,10 @@
         {
           "id": "dan",
           "name": "dan",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/da-dan.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/da-dan.db",
           "size": 5758976,
           "version": 1,
-          "checksum": "sha256-3f9de8c3faccf648e2af52137f8ebaae5fae659503cddf81fddd041421b71c2f"
+          "checksum": "sha256-b07b6e02b00ea30be23a7f8dc5892dce6c88c009a0f88fa479de6dcb82e033b7"
         }
       ]
     },
@@ -100,15 +100,15 @@
         {
           "id": "albrecht1926",
           "name": "albrecht1926",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-albrecht1926.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-albrecht1926.db",
           "size": 3059712,
           "version": 1,
-          "checksum": "sha256-b181ca902e8cad8ef7890a8b44f432109ca787ad2ca2a0d8fed887ebc0d2a628"
+          "checksum": "sha256-1e3e3283264225e958acffc7151eba6be1cf6c72857c3138690197940388b69f"
         },
         {
           "id": "almnt",
           "name": "almnt",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-almnt.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-almnt.db",
           "size": 1593344,
           "version": 1,
           "checksum": "sha256-01088ce2b04a1edb9b278eff01725c7b261198aa3015a4201fce85c7cbd93680"
@@ -116,7 +116,7 @@
         {
           "id": "amnt",
           "name": "amnt",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-amnt.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-amnt.db",
           "size": 1675264,
           "version": 1,
           "checksum": "sha256-ea7ce61fc4d9611924de4bec7d08324902c3c9e48cf8878a73d1578d126ddab9"
@@ -124,15 +124,15 @@
         {
           "id": "elb1871",
           "name": "elb1871",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-elb1871.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-elb1871.db",
           "size": 6918144,
           "version": 1,
-          "checksum": "sha256-0849b5476992244c3ecb4bb481ccfd495fad19ec1d8a6ed607556dc73758d455"
+          "checksum": "sha256-96ecd13e73d05f8b35d28cabe4a85302af9db6bc1dc451ec830361c2e4f269b0"
         },
         {
           "id": "elb1871nt",
           "name": "elb1871nt",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-elb1871nt.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-elb1871nt.db",
           "size": 1732608,
           "version": 1,
           "checksum": "sha256-52f084cb63285d7c1ac64a7e2f94c1a26c02bf49b43036cd6d179aaedb56fe55"
@@ -140,7 +140,7 @@
         {
           "id": "elb1905",
           "name": "elb1905",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-elb1905.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-elb1905.db",
           "size": 6840320,
           "version": 1,
           "checksum": "sha256-c8d4c9f8cc9e899b8cee706732563b25688a0141b175ed1668205a0c60d8c205"
@@ -148,15 +148,15 @@
         {
           "id": "fb2004",
           "name": "fb2004",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-fb2004.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-fb2004.db",
           "size": 6844416,
           "version": 1,
-          "checksum": "sha256-a753ec6f725852dc0ce93854084ef432704f24ab1175688921e8dd2804212a1c"
+          "checksum": "sha256-550be6891f883dfda94c19e68b45241f75376e5f4d42e969fb4c43525b75c559"
         },
         {
           "id": "gerben",
           "name": "gerben",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-gerben.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-gerben.db",
           "size": 1671168,
           "version": 1,
           "checksum": "sha256-6944d0607597adf7134d56d489ec8ad61c9de6aa2b73f8a10f6be7ad7a88bb64"
@@ -164,7 +164,7 @@
         {
           "id": "gerneue",
           "name": "gerneue",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-gerneue.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-gerneue.db",
           "size": 6455296,
           "version": 1,
           "checksum": "sha256-5150cd890bd55a429f083f0271f757ca4900543353073b24c4d1b353f0e767c5"
@@ -172,15 +172,15 @@
         {
           "id": "greb",
           "name": "greb",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-greb.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-greb.db",
           "size": 1916928,
           "version": 1,
-          "checksum": "sha256-ed16cf53a5d2f8758b5778c56751bd8595086aae36dc52408489563582911feb"
+          "checksum": "sha256-76a874e8f22417ffb4b2780d1b0b9993278be99e391405f9803c1ef783e6ab37"
         },
         {
           "id": "ilgrde",
           "name": "ilgrde",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-ilgrde.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-ilgrde.db",
           "size": 1642496,
           "version": 1,
           "checksum": "sha256-26a60365176410f5bc2cf08acc88a1f68ab2adcbf548d724045c1002d326b3b4"
@@ -188,7 +188,7 @@
         {
           "id": "knt",
           "name": "knt",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-knt.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-knt.db",
           "size": 1765376,
           "version": 1,
           "checksum": "sha256-8c9f970661aefdc4f096196eb66d780efad2085bd7ab4a51f35fa3642da57057"
@@ -196,7 +196,7 @@
         {
           "id": "lut.1545.lh",
           "name": "lut.1545.lh",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-lut.1545.lh.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-lut.1545.lh.db",
           "size": 7634944,
           "version": 1,
           "checksum": "sha256-be5cb53a6c9d48a0166be8cb6db809b1a9b6bbb39e2cb4ee2def60fe4feeaa06"
@@ -204,15 +204,15 @@
         {
           "id": "luth1545",
           "name": "luth1545",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-luth1545.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-luth1545.db",
           "size": 6373376,
           "version": 1,
-          "checksum": "sha256-691455718f4c9a81ba2665d9141c755ca4d90c3c8ed4eb60b49dc1dc92d94ef7"
+          "checksum": "sha256-7693f681684b3f826c9fd24a20211489ecf581595a43b2a71df7d732c9cc34b8"
         },
         {
           "id": "luth1912",
           "name": "luth1912",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-luth1912.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-luth1912.db",
           "size": 6365184,
           "version": 1,
           "checksum": "sha256-d5bf533798d6ae5fc4dfda3843ab65edfc27257f0a69e88e01f7e46cc50faa2e"
@@ -220,7 +220,7 @@
         {
           "id": "luth1912ap",
           "name": "luth1912ap",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-luth1912ap.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-luth1912ap.db",
           "size": 7258112,
           "version": 1,
           "checksum": "sha256-48beb93d56f6f9b8bde0714ba34607b6222fbfd373f7cbaa8987abb94960f94f"
@@ -228,39 +228,39 @@
         {
           "id": "meng39",
           "name": "meng39",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-meng39.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-meng39.db",
           "size": 8228864,
           "version": 1,
-          "checksum": "sha256-23e5ebc10d92a8f98224afc1ff6ee2e02bdfb82461667e851f665f8c862b974c"
+          "checksum": "sha256-33f1577964811ac232dc8b5d2d58e34d6fdb007b9a6d5e1eb48ea688937fc293"
         },
         {
           "id": "pat80",
           "name": "pat80",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-pat80.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-pat80.db",
           "size": 7548928,
           "version": 1,
-          "checksum": "sha256-a3599957b50d4e665625657b387001b64893c4abece29d538347448448b40190"
+          "checksum": "sha256-c42ff510ee5d828a3c64287c0a8cb6c7382a0a211f10a5576440d9c82c8ff42a"
         },
         {
           "id": "rei10ev",
           "name": "rei10ev",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-rei10ev.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-rei10ev.db",
           "size": 843776,
           "version": 1,
-          "checksum": "sha256-4dff4ef8506c20933cc77ba320db8a10eabc870dc5cf061219d43de73c20b0a4"
+          "checksum": "sha256-4647eca39e1865e9c0004301c5b94de804c4b5cb71f04835e6313cebb7b24e90"
         },
         {
           "id": "sch1951",
           "name": "sch1951",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-sch1951.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-sch1951.db",
           "size": 6516736,
           "version": 1,
-          "checksum": "sha256-d207eae410eec15e88e79efe4d33396805bf5e55f1d87a5380e054d57cb760a9"
+          "checksum": "sha256-320ef1859d4fd98dd5214cc33d205710f6a5953168c134ff3646b82582e9695f"
         },
         {
           "id": "taf",
           "name": "taf",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-taf.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-taf.db",
           "size": 5611520,
           "version": 1,
           "checksum": "sha256-54dc08310e6111f6667b3240aac26bbfa7c633129132fb0fb08c9b071617fa7a"
@@ -268,23 +268,23 @@
         {
           "id": "tb",
           "name": "tb",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-tb.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-tb.db",
           "size": 6615040,
           "version": 1,
-          "checksum": "sha256-54a47ca59acbd03626d38183a249017fae682cca3fb8575c7aabad596080a1d1"
+          "checksum": "sha256-8f51a48248c78aaaac20b38eb0f787590760845b90bc5eb8220422d5570ed7d2"
         },
         {
           "id": "textbibelat",
           "name": "textbibelat",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-textbibelat.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-textbibelat.db",
           "size": 5074944,
           "version": 1,
-          "checksum": "sha256-15723801a9b846101435fb673dc0b403e2ed57edce21533f1e0a4f3375b1c7fd"
+          "checksum": "sha256-0cecdb803d305c03eee4236fb03d7f198b68bc0f696a5fc779036dcfda3c4527"
         },
         {
           "id": "vaness",
           "name": "vaness",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-vaness.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-vaness.db",
           "size": 6549504,
           "version": 1,
           "checksum": "sha256-7006fcd636da875d64d1d442ba6af8b07f3472101d9d9bcda9d1b4951f357ec8"
@@ -292,18 +292,18 @@
         {
           "id": "vlx3",
           "name": "vlx3",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-vlx3.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-vlx3.db",
           "size": 2060288,
           "version": 1,
-          "checksum": "sha256-740378c388180fb3d9a34a7bfb501c82ff344b8c994ce490c91f6dd00668e0f2"
+          "checksum": "sha256-f37552da422446702a8ed98f51fc6312f9336004477a6df999cc246681d0a806"
         },
         {
           "id": "zürcher",
           "name": "zürcher",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/de-zürcher.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/de-zürcher.db",
           "size": 6754304,
           "version": 1,
-          "checksum": "sha256-c5e7727d7d7dd5bdb8b565601913960a135b77acd65bca82cb40cbc380b4026b"
+          "checksum": "sha256-f5698be724933763acad45e9cfedc1cefc10b5e763632b36825b6a26c522820f"
         }
       ]
     },
@@ -313,7 +313,7 @@
         {
           "id": "acv",
           "name": "acv",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-acv.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-acv.db",
           "size": 6287360,
           "version": 1,
           "checksum": "sha256-47842aa287e57f1c32e61a85c0ae1fa6f869c5961df86b6371debc7c91e401d1"
@@ -321,23 +321,23 @@
         {
           "id": "asv",
           "name": "asv",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-asv.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-asv.db",
           "size": 6438912,
           "version": 1,
-          "checksum": "sha256-d4d40fa8e0a25e0a9325dd2e54fd4d084c02fdcdff36b36be6abf9ef520b5624"
+          "checksum": "sha256-1c684e02b347d630356b3d30952292272c72e02e1aa262df0937b590365d6172"
         },
         {
           "id": "bbe",
           "name": "bbe",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-bbe.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-bbe.db",
           "size": 6459392,
           "version": 1,
-          "checksum": "sha256-a4b7f0ffda7b7943f760715470ff96a2365b741f16c55598ed9376d573e3ead7"
+          "checksum": "sha256-af02855b5b07b0f2c404a988b874d22e4be2b163d09c689af49d6b26cd82c835"
         },
         {
           "id": "bible.akjv",
           "name": "bible.akjv",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-bible.akjv.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-bible.akjv.db",
           "size": 6365184,
           "version": 1,
           "checksum": "sha256-5dc0dc0c019ba143b1fb83bef3bcc769cee170b7c07c380390dfb5dba0a5a137"
@@ -345,7 +345,7 @@
         {
           "id": "bible.en.leb.2010",
           "name": "bible.en.leb.2010",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-bible.en.leb.2010.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-bible.en.leb.2010.db",
           "size": 28672,
           "version": 1,
           "checksum": "sha256-d24241db5b8cd9e8b493a3e8022fa96b10ad92866e96f28a71f015162f90ca79"
@@ -353,7 +353,7 @@
         {
           "id": "bom",
           "name": "bom",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-bom.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-bom.db",
           "size": 3088384,
           "version": 1,
           "checksum": "sha256-b4bf371825de68e2939b18b7c69c0f63f3477dff56d772fbc563f7147151a736"
@@ -361,7 +361,7 @@
         {
           "id": "darby",
           "name": "darby",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-darby.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-darby.db",
           "size": 6385664,
           "version": 1,
           "checksum": "sha256-1063765c64ad416defa30e3e7128f019f4ee492dbea6fa2fc706c6dfabef755e"
@@ -369,7 +369,7 @@
         {
           "id": "diaglot",
           "name": "diaglot",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-diaglot.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-diaglot.db",
           "size": 1634304,
           "version": 1,
           "checksum": "sha256-99f0a080b31604d25314399f1158631256a37b54389ea7382e636fd466f6a4b3"
@@ -377,7 +377,7 @@
         {
           "id": "dour",
           "name": "dour",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-dour.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-dour.db",
           "size": 7282688,
           "version": 1,
           "checksum": "sha256-04276b681e5484d070a778342cc6ce3bb454b611d4c3a213b91de571c9a82021"
@@ -385,7 +385,7 @@
         {
           "id": "emtv",
           "name": "emtv",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-emtv.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-emtv.db",
           "size": 1609728,
           "version": 1,
           "checksum": "sha256-47c4accdaa0c6453072c7f1ce02a3b94619cd73603718932ec43d073a795c813"
@@ -393,7 +393,7 @@
         {
           "id": "etheridge",
           "name": "etheridge",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-etheridge.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-etheridge.db",
           "size": 1613824,
           "version": 1,
           "checksum": "sha256-1850c5b7656083e6a41258d41582f11c276f30623323d83f20703bccf8b72cbf"
@@ -401,15 +401,15 @@
         {
           "id": "gb",
           "name": "gb",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-gb.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-gb.db",
           "size": 9781248,
           "version": 1,
-          "checksum": "sha256-ad69daf40a57646597411ba03d80082edd710cba960d24b951c3bf0701774036"
+          "checksum": "sha256-1ba497ecfcb16a06b6183f01e131158bbe169de2aa83d4f54aff1921b4283ba8"
         },
         {
           "id": "isv",
           "name": "isv",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-isv.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-isv.db",
           "size": 1601536,
           "version": 1,
           "checksum": "sha256-ae918d8a319f976ec8a31c22bc7879c3d876d32e7ec816b0c9801dc6b9829025"
@@ -417,7 +417,7 @@
         {
           "id": "jps",
           "name": "jps",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-jps.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-jps.db",
           "size": 4915200,
           "version": 1,
           "checksum": "sha256-fffe5cd9004652a358094c5e515e72196c2253d903bf37bcc64cbdd3e6daba4f"
@@ -425,15 +425,15 @@
         {
           "id": "jubl2000",
           "name": "jubl2000",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-jubl2000.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-jubl2000.db",
           "size": 6455296,
           "version": 1,
-          "checksum": "sha256-a5f7d525a79fac3878bee734b93e0c8b0d1b07bcf6102e4e65ef1d03de356457"
+          "checksum": "sha256-a48d1e4185e35809170d08079c6a9cb0af5536cab8cd6d31c06ed52db9698df4"
         },
         {
           "id": "kj2000",
           "name": "kj2000",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-kj2000.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-kj2000.db",
           "size": 6402048,
           "version": 1,
           "checksum": "sha256-ff46a24fce57c4c0c3386c6ddee69b31f432f58b0382803015227d6c22dedac6"
@@ -441,7 +441,7 @@
         {
           "id": "kjv",
           "name": "kjv",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-kjv.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-kjv.db",
           "size": 6414336,
           "version": 1,
           "checksum": "sha256-67c71bd8de2fc7457a6f7bcacb3e474b6bd91bdb051654872eabbff2b91f2490"
@@ -449,7 +449,7 @@
         {
           "id": "leb",
           "name": "leb",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-leb.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-leb.db",
           "size": 1638400,
           "version": 1,
           "checksum": "sha256-1ea34351eb601dd4b3f1e538604c18fed713a873221f35190050c50a50e50a64"
@@ -457,7 +457,7 @@
         {
           "id": "leeser",
           "name": "leeser",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-leeser.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-leeser.db",
           "size": 5074944,
           "version": 1,
           "checksum": "sha256-7f1bc53cac96d3672fc4e0bfea30cf120b66c9f6f0d48a3f19fc655675184edb"
@@ -465,7 +465,7 @@
         {
           "id": "lont",
           "name": "lont",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-lont.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-lont.db",
           "size": 1581056,
           "version": 1,
           "checksum": "sha256-497c8cead8ca62b5bbdd1d3736e46224f45ce85721dc2715bb14205aaefb8834"
@@ -473,7 +473,7 @@
         {
           "id": "mkjv1962",
           "name": "mkjv1962",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-mkjv1962.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-mkjv1962.db",
           "size": 6316032,
           "version": 1,
           "checksum": "sha256-1b1dcdcb31bd1d5759b72fb97b951ef6c90a0bc07db1b7cf48230db89f9d605a"
@@ -481,7 +481,7 @@
         {
           "id": "mont",
           "name": "mont",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-mont.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-mont.db",
           "size": 1597440,
           "version": 1,
           "checksum": "sha256-9637c8304d1517d3033e7cb1239cc893e7d4a6e94a4ad5727a85c1128ec88062"
@@ -489,7 +489,7 @@
         {
           "id": "nheb",
           "name": "nheb",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-nheb.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-nheb.db",
           "size": 6291456,
           "version": 1,
           "checksum": "sha256-814aeb4181428f4b5135b051f8fd8e4859ea1e8b8e267bb4b41d0f3086194b52"
@@ -497,7 +497,7 @@
         {
           "id": "nsb",
           "name": "nsb",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-nsb.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-nsb.db",
           "size": 6115328,
           "version": 1,
           "checksum": "sha256-7c2d825ef8ec9c6c2473348fac9fbe0c381ea0f020d824f36bc42c353360a77f"
@@ -505,7 +505,7 @@
         {
           "id": "rnt",
           "name": "rnt",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-rnt.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-rnt.db",
           "size": 1552384,
           "version": 1,
           "checksum": "sha256-ca76a39857248ee19278c64f953845304c675ff134335f1e9da398100f4c87ad"
@@ -513,7 +513,7 @@
         {
           "id": "roth",
           "name": "roth",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-roth.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-roth.db",
           "size": 6578176,
           "version": 1,
           "checksum": "sha256-3dd649463ab8e94526df5cba71b49c8294f2700a6927b19871162b187951684b"
@@ -521,7 +521,7 @@
         {
           "id": "rsv",
           "name": "rsv",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-rsv.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-rsv.db",
           "size": 6201344,
           "version": 1,
           "checksum": "sha256-aadb8433a1336d491754f606374d1e8ac980ce12b18bd2a0c2a8f27acdea570a"
@@ -529,31 +529,31 @@
         {
           "id": "rwebster",
           "name": "rwebster",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-rwebster.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-rwebster.db",
           "size": 6660096,
           "version": 1,
-          "checksum": "sha256-72bb40ec39f13e4994c4f41aa3cb6146b5acf78e03bf59d2bb2dc441a106b031"
+          "checksum": "sha256-187d8612687e9f4a3096bafdcb8770ec742b0d51899212450a05999af2238a5a"
         },
         {
           "id": "rylt",
           "name": "rylt",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-rylt.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-rylt.db",
           "size": 1626112,
           "version": 1,
-          "checksum": "sha256-c0a8462e358700cbd42778040070641d238c3e902f8ae3e9081da2b89170d8e9"
+          "checksum": "sha256-87b02197d04d70137573c0ce80b18c02e145744e9cd5a8604a663f1165e9ac41"
         },
         {
           "id": "tce",
           "name": "tce",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-tce.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-tce.db",
           "size": 1564672,
           "version": 1,
-          "checksum": "sha256-0d8b74fcd34f51171aeaf4d35607fe267d497bd78d09ca6db12ab6604db89760"
+          "checksum": "sha256-33159d8505bbb70324a59448f115f6ab1902b99b4d44834d61838cdc9e6e0f82"
         },
         {
           "id": "tyndale",
           "name": "tyndale",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-tyndale.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-tyndale.db",
           "size": 2785280,
           "version": 1,
           "checksum": "sha256-c2c47b6cb3b5732b8e6c94f342cbb8cd471bacc2053635c252ba529c686839b5"
@@ -561,31 +561,31 @@
         {
           "id": "ukjv",
           "name": "ukjv",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-ukjv.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-ukjv.db",
           "size": 6438912,
           "version": 1,
-          "checksum": "sha256-a972973739266cf7028fd78f99759566011993eba2f6e7f9dc9090cef058423b"
+          "checksum": "sha256-4ef9f7d3879bd90b9bc1de04a3f8b505d1721692ff76cc18bdeb112e07eff5ca"
         },
         {
           "id": "updv",
           "name": "updv",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-updv.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-updv.db",
           "size": 6336512,
           "version": 1,
-          "checksum": "sha256-5b200bb3378524ba7d6c73e280151deafc5933dd33f65e5caad5ec6c2b7d581f"
+          "checksum": "sha256-8e8d431240295f5d70198ddaf109ac2aee6b6073b0ab9de8406ecb15f319f58a"
         },
         {
           "id": "wbs",
           "name": "wbs",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-wbs.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-wbs.db",
           "size": 6393856,
           "version": 1,
-          "checksum": "sha256-d8d092e663a5b0bdae34040f2517681775d76d18093a42957851317a191fddf1"
+          "checksum": "sha256-74fa871387b03796dc4da7ad83134c0e5c7bfec9faba97be619e00fcdc1867cd"
         },
         {
           "id": "web",
           "name": "web",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-web.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-web.db",
           "size": 6299648,
           "version": 1,
           "checksum": "sha256-b9f3b0981f634819da8553afaae41c319f50b659949293762c554abf86f73559"
@@ -593,23 +593,23 @@
         {
           "id": "wesley",
           "name": "wesley",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-wesley.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-wesley.db",
           "size": 1564672,
           "version": 1,
-          "checksum": "sha256-a0667a2aed9b03548b39479bc3035eeed25bcdb262e6bae79bf4dddd0a29b27d"
+          "checksum": "sha256-3a55338383193dc3b5bc53be2ea7f554ef85cedb1801ce1a54dea2329602d540"
         },
         {
           "id": "wmth",
           "name": "wmth",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-wmth.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-wmth.db",
           "size": 1695744,
           "version": 1,
-          "checksum": "sha256-39b9413059cf0dcc920239a1c2fe1248ee33f26df3de90fed5991b37e581bfa5"
+          "checksum": "sha256-b43918994ff2cbe4ebed1b29314cc6b2d12a27cdbfc59d4f8c9f57845f3477af"
         },
         {
           "id": "wycliffe",
           "name": "wycliffe",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-wycliffe.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-wycliffe.db",
           "size": 7471104,
           "version": 1,
           "checksum": "sha256-a788cbaac7d55afdaf3e2181b4b9ce89a56cb40176bf9a86cd2aa5be1f39d0fb"
@@ -617,18 +617,18 @@
         {
           "id": "xxx",
           "name": "xxx",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-xxx.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-xxx.db",
           "size": 6303744,
           "version": 1,
-          "checksum": "sha256-c52ca8441abf05cb150704c34be2e142df542778be56d74d0c3d25d60d63ab99"
+          "checksum": "sha256-0f1aee517b0521405697b15c5f28412eca20313e3a1b3f35fd6306eb34c7f056"
         },
         {
           "id": "ylt",
           "name": "ylt",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/en-ylt.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/en-ylt.db",
           "size": 6443008,
           "version": 1,
-          "checksum": "sha256-a2fdb992eebb6d0a6f313d2a568d12cd9ac964150fc1e70ef10a02a968b5c043"
+          "checksum": "sha256-6c9a2c426e7b70a5696440e5b686a61e0f61e2e887b8708ae009c5bb5f9cf761"
         }
       ]
     },
@@ -638,7 +638,7 @@
         {
           "id": "rva",
           "name": "rva",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/es-rva.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/es-rva.db",
           "size": 6287360,
           "version": 1,
           "checksum": "sha256-11d4964292e3a699da8be28b982af675a18cdcf887b44b668eae3f3542212f69"
@@ -646,15 +646,15 @@
         {
           "id": "sev",
           "name": "sev",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/es-sev.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/es-sev.db",
           "size": 6209536,
           "version": 1,
-          "checksum": "sha256-cb5729800453cd8d88c71856d02631db04a9d6bf173e559103d506cf2811bf86"
+          "checksum": "sha256-699a6ae3ec76c93b8db16a260553add3ce26ccc321390ed5100264fbb2849702"
         },
         {
           "id": "sparv",
           "name": "sparv",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/es-sparv.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/es-sparv.db",
           "size": 6197248,
           "version": 1,
           "checksum": "sha256-682e09885fd52a2917b782c4d6a911f5083b4bb912c61e6c91440d815f7da6da"
@@ -667,10 +667,10 @@
         {
           "id": "basq1571",
           "name": "basq1571",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/eu-basq1571.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/eu-basq1571.db",
           "size": 1675264,
           "version": 1,
-          "checksum": "sha256-2f33ca5a0d15aff2e682e8ba78877d909adb710c98fdbaf6edff4a570b3b2b62"
+          "checksum": "sha256-cb3d8589934374dd699a1c6ec178e0325d949ec2e9fdf836d251674812e15d4e"
         }
       ]
     },
@@ -680,10 +680,10 @@
         {
           "id": "fin",
           "name": "fin",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fi-fin.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fi-fin.db",
           "size": 6479872,
           "version": 1,
-          "checksum": "sha256-655d979b4dacd4300add7cb8e482dc68aff7b37b088490a130144f33dc7b9283"
+          "checksum": "sha256-3abd3334bf491246b1ac407d81753abbfa35946e46e75a395319c6572a198451"
         }
       ]
     },
@@ -693,15 +693,15 @@
         {
           "id": "bdc",
           "name": "bdc",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-bdc.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-bdc.db",
           "size": 6524928,
           "version": 1,
-          "checksum": "sha256-aca95d7af36e3ab7abf80befdbf3bbd9ecc4cf57069898404f91f5e93dc24323"
+          "checksum": "sha256-07e6f9977f3415aba1ce648012ff31dc558aa27b1e878615ea078ae481daa30d"
         },
         {
           "id": "bdp",
           "name": "bdp",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-bdp.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-bdp.db",
           "size": 7421952,
           "version": 1,
           "checksum": "sha256-1aca9569a4a0976b9383c38af8d6d5904dce6c4fd7ab80020ed17c970871c09a"
@@ -709,7 +709,7 @@
         {
           "id": "bgnt1669",
           "name": "bgnt1669",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-bgnt1669.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-bgnt1669.db",
           "size": 1675264,
           "version": 1,
           "checksum": "sha256-aa4dfbb2d27b6993edd4063da905cbccec09398fdc21da2cfd193d711956ca9c"
@@ -717,7 +717,7 @@
         {
           "id": "bm1844",
           "name": "bm1844",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-bm1844.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-bm1844.db",
           "size": 6807552,
           "version": 1,
           "checksum": "sha256-62ec0bdd9e0780c56547b2776a9bd4dc091d7acadf68084c141c559e23fe5369"
@@ -725,7 +725,7 @@
         {
           "id": "bo1877",
           "name": "bo1877",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-bo1877.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-bo1877.db",
           "size": 6918144,
           "version": 1,
           "checksum": "sha256-7c55a91af88d476add9db7d088952e1da32ca021da0c26e55f514548e767cbda"
@@ -733,15 +733,15 @@
         {
           "id": "bzkh",
           "name": "bzkh",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-bzkh.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-bzkh.db",
           "size": 4980736,
           "version": 1,
-          "checksum": "sha256-98109bc08ebc3bec6172f4f0d53c72a560b7af4a700acac2c8aa9fa4ed30031b"
+          "checksum": "sha256-c930bd502c496712756d1326b0070dbecfa92e11cdeeb647d0cf4a21579ab360"
         },
         {
           "id": "cramp23",
           "name": "cramp23",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-cramp23.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-cramp23.db",
           "size": 6537216,
           "version": 1,
           "checksum": "sha256-91d560375d6dab3af90f585667b6168be32e4d3f7fb6f600dd36f3f2de4111d4"
@@ -749,7 +749,7 @@
         {
           "id": "dejer",
           "name": "dejer",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-dejer.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-dejer.db",
           "size": 7155712,
           "version": 1,
           "checksum": "sha256-0fb9ec82e89401145f76e67538d6227f8633e82c0ef19b9ade3851071da35a7b"
@@ -757,15 +757,15 @@
         {
           "id": "fill",
           "name": "fill",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-fill.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-fill.db",
           "size": 7630848,
           "version": 1,
-          "checksum": "sha256-2542d95deb28d9a398e804ba8abe7b084960b6385d3f4f6e7febd1a486dec62a"
+          "checksum": "sha256-e10cd783b77aeddce615205369209205d8751c0bfeafae256b51b3389d6c40a2"
         },
         {
           "id": "frdarb",
           "name": "frdarb",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-frdarb.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-frdarb.db",
           "size": 6598656,
           "version": 1,
           "checksum": "sha256-bac60ae3635c94fcfb08efe3b188406a7fec4661472b9a4a498d3632236ac9b9"
@@ -773,15 +773,15 @@
         {
           "id": "frebbb",
           "name": "frebbb",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-frebbb.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-frebbb.db",
           "size": 6549504,
           "version": 1,
-          "checksum": "sha256-42f89ddbfb020feb40f3d631e56c7d23ceb8ce8bc9e4d51eab75215d0afbd381"
+          "checksum": "sha256-7bad14f08145ad56bebe4fd8522beed5ddffe33fc4d128b703f331ac914fa1c4"
         },
         {
           "id": "fren",
           "name": "fren",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-fren.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-fren.db",
           "size": 6508544,
           "version": 1,
           "checksum": "sha256-d1de083ce4e38a28b3766c12bc4cf3f0986f435477212e0d04c24465080d2596"
@@ -789,15 +789,15 @@
         {
           "id": "frepgr",
           "name": "frepgr",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-frepgr.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-frepgr.db",
           "size": 6610944,
           "version": 1,
-          "checksum": "sha256-ff225d66bffb894f85f05aaa2bca2cee2d49a5cd413445d12effa82570bf5d97"
+          "checksum": "sha256-d4d3f497dec114b9a74fc1b9c64ff824ccd2681861afaefcdce10825553b1c83"
         },
         {
           "id": "jnd",
           "name": "jnd",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-jnd.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-jnd.db",
           "size": 6754304,
           "version": 1,
           "checksum": "sha256-1c7869f20ca9b087d449f930d57672bb86604091bc5bf342727e2a678858ac86"
@@ -805,7 +805,7 @@
         {
           "id": "kjf",
           "name": "kjf",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-kjf.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-kjf.db",
           "size": 6770688,
           "version": 1,
           "checksum": "sha256-f89c0066b1573c3d072f267196d2858adc3f114b18a5718d032b9c6a2514155d"
@@ -813,15 +813,15 @@
         {
           "id": "mach2012",
           "name": "mach2012",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-mach2012.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-mach2012.db",
           "size": 6696960,
           "version": 1,
-          "checksum": "sha256-fcbc89bc2319d9f310e9ec1153a131e8aeedd93176e914dce2a04828f6e2f416"
+          "checksum": "sha256-3c3904239e342f9d785c1c38d54e3a13b034759c42570eade71fceadbf77ee1c"
         },
         {
           "id": "ostv1996",
           "name": "ostv1996",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-ostv1996.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-ostv1996.db",
           "size": 6578176,
           "version": 1,
           "checksum": "sha256-b6ea85f59e73a5938ff69e4ceed40f2b2b8dd1a315eb84feda4788ce7d50c034"
@@ -829,18 +829,18 @@
         {
           "id": "sacc",
           "name": "sacc",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-sacc.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-sacc.db",
           "size": 7118848,
           "version": 1,
-          "checksum": "sha256-c160fddda20968d280291c229832ea9c814a9e01c026a110159f391cb979afb9"
+          "checksum": "sha256-0c11898aa5427201c31f2cefee26ac748b52ee1e21d5235fc22ab9c631c6d27b"
         },
         {
           "id": "vigouroux",
           "name": "vigouroux",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/fr-vigouroux.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/fr-vigouroux.db",
           "size": 7884800,
           "version": 1,
-          "checksum": "sha256-4cafb467aa4f9526bfb8c2ac9da3b22f29c9ce38c0fadb5ab7f5898b9f13c06b"
+          "checksum": "sha256-9e06e92a8f99f2170f98c0107abb869f86f2d67df1ffbd7a44d6e88eccdb95b8"
         }
       ]
     },
@@ -850,10 +850,10 @@
         {
           "id": "gla2",
           "name": "gla2",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/gd-gla2.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/gd-gla2.db",
           "size": 688128,
           "version": 1,
-          "checksum": "sha256-1c90f09b39a9f1e4f89d4051210714c133b9fc1aa36839027938cdfc684bfe11"
+          "checksum": "sha256-3b67057e086a97fc5b3157d764020a526310215cf5b3a7c32eec24341f688f82"
         }
       ]
     },
@@ -863,15 +863,15 @@
         {
           "id": "alep",
           "name": "alep",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/he-alep.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/he-alep.db",
           "size": 4595712,
           "version": 1,
-          "checksum": "sha256-08c5bcd4959ddb40b8b901f6b235ecb565e7f26d58cc5f4bee6ba99cf3a3adc8"
+          "checksum": "sha256-5aca7c7aca7a9721a39fd711ed4cb23a50b032ce2c70b1994799a5a82cc25629"
         },
         {
           "id": "bhs",
           "name": "bhs",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/he-bhs.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/he-bhs.db",
           "size": 6672384,
           "version": 1,
           "checksum": "sha256-65e89f12edca73ca617ac70110fe69ce4d5fcd15b1c6e4438c3c3dd5f62abd7a"
@@ -879,23 +879,23 @@
         {
           "id": "hebm",
           "name": "hebm",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/he-hebm.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/he-hebm.db",
           "size": 5984256,
           "version": 1,
-          "checksum": "sha256-8c9d8c063832873758d6d6cb69ed89623e889d2a5a3156fcde34db38d3ca7f50"
+          "checksum": "sha256-e7be7f7d63c3b648eb669440f42e0c930ee66960d056dc0487530e864c75d2a2"
         },
         {
           "id": "osmhb",
           "name": "osmhb",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/he-osmhb.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/he-osmhb.db",
           "size": 6656000,
           "version": 1,
-          "checksum": "sha256-e4f9002779683208944e3db43f02cee1be4758f760fd2b9e77f8db0dcd6d56b4"
+          "checksum": "sha256-110ed8c55040d2685d5d90a2ca446075f1ca231b4808c379276cae39e25d9799"
         },
         {
           "id": "wcl",
           "name": "wcl",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/he-wcl.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/he-wcl.db",
           "size": 6664192,
           "version": 1,
           "checksum": "sha256-09bea5ae3d1089705c1fead7223e36cf8aae3af020496649c7d5eecf3c1e5afb"
@@ -908,7 +908,7 @@
         {
           "id": "croat",
           "name": "croat",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/hr-croat.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/hr-croat.db",
           "size": 6176768,
           "version": 1,
           "checksum": "sha256-d5b95578c1bf523d503f43007f3989c6de44e389c5b845595b0b01df39f9fff7"
@@ -921,7 +921,7 @@
         {
           "id": "hat",
           "name": "hat",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/ht-hat.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/ht-hat.db",
           "size": 6635520,
           "version": 1,
           "checksum": "sha256-a4b74c2818e4612e1cbc4b60d75718ff4f88972f6002b0c354f3c42c21e09868"
@@ -934,7 +934,7 @@
         {
           "id": "hun",
           "name": "hun",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/hu-hun.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/hu-hun.db",
           "size": 6467584,
           "version": 1,
           "checksum": "sha256-f2094725fc3cdac047547becdebe7c212ded7c6c218a782f9b9a532cb871b9ee"
@@ -942,10 +942,10 @@
         {
           "id": "hunuj",
           "name": "hunuj",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/hu-hunuj.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/hu-hunuj.db",
           "size": 6262784,
           "version": 1,
-          "checksum": "sha256-9b121066016f31a0dbbc848c8c61c9ae9e8f8097f2cb8f6af67f030f3dff57fc"
+          "checksum": "sha256-c2b8b73d9e6d723ee2e8a0f8e7b548a4f0baa357476fad6836a0a523387f44bf"
         }
       ]
     },
@@ -955,15 +955,15 @@
         {
           "id": "cei74",
           "name": "cei74",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/it-cei74.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/it-cei74.db",
           "size": 7426048,
           "version": 1,
-          "checksum": "sha256-bbe053c19b8b13ed07667108c458a91e7d6819be36ebc61e5e890d9fd1e0fdc0"
+          "checksum": "sha256-a7d4e5c5ff9f6921b373d2f9ae131c542ddebe4334c22e8e710dc5b772f2d8cd"
         },
         {
           "id": "irv_1990",
           "name": "irv_1990",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/it-irv_1990.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/it-irv_1990.db",
           "size": 6410240,
           "version": 1,
           "checksum": "sha256-29d26b5ddda138bd54854a9abf29a6847458f3830378d3683fdccc8654d97845"
@@ -971,26 +971,26 @@
         {
           "id": "itadio",
           "name": "itadio",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/it-itadio.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/it-itadio.db",
           "size": 6606848,
           "version": 1,
-          "checksum": "sha256-b74926f3592468ebcbed382ab0ca41975f64cf95fedf062c57a44206a4486ffb"
+          "checksum": "sha256-75055a6480a257e57fd826cef36747bd51adf3ee996e50f8bad94d9ccd13181b"
         },
         {
           "id": "italian1",
           "name": "italian1",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/it-italian1.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/it-italian1.db",
           "size": 7012352,
           "version": 1,
-          "checksum": "sha256-ae69e76ba602b53523e7ca527a25d035e7fb00705eccdf85f0d738430fd8ef53"
+          "checksum": "sha256-16d155e553adcb1feb8c59aca9d14154b543d9811d9a718285c32cbd23224fbb"
         },
         {
           "id": "lnd_1991",
           "name": "lnd_1991",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/it-lnd_1991.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/it-lnd_1991.db",
           "size": 6402048,
           "version": 1,
-          "checksum": "sha256-94acd77dab64a40b32b42e7d21975c0e7ad90296ae8397ffe5700bfcab206410"
+          "checksum": "sha256-ef5fe676a33fff0b6514aba0283610710492c12b5b34822b646d6af1b2b7f2e3"
         }
       ]
     },
@@ -1000,10 +1000,10 @@
         {
           "id": "kor",
           "name": "kor",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/ko-kor.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/ko-kor.db",
           "size": 6623232,
           "version": 1,
-          "checksum": "sha256-074ed2b3f0db0793c595eca49cdc78a1192f7ec6764c3d5bcfacaa5391df7748"
+          "checksum": "sha256-9952963ef1b2e5896a0ae41b731d32e70dbec723ab8410b435db199985e170cb"
         }
       ]
     },
@@ -1013,7 +1013,7 @@
         {
           "id": "clvul",
           "name": "clvul",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/la-clvul.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/la-clvul.db",
           "size": 6459392,
           "version": 1,
           "checksum": "sha256-0d008f4007cc2c89df5867a7b32b39ea999218f34d25348a90d0a887a29d69ae"
@@ -1021,15 +1021,15 @@
         {
           "id": "nvla",
           "name": "nvla",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/la-nvla.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/la-nvla.db",
           "size": 5775360,
           "version": 1,
-          "checksum": "sha256-4b02953309c8290f1cc05460bea5ca5f26bba16917dcbe2814dd7660c60c3e1b"
+          "checksum": "sha256-727dee63f843dde7080373a070ad678e870ea8726960ad7b9f7efcc739c28a31"
         },
         {
           "id": "vulgata",
           "name": "vulgata",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/la-vulgata.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/la-vulgata.db",
           "size": 6230016,
           "version": 1,
           "checksum": "sha256-28d265b229970d454ce92533f55e752f4faadf5ab91d7bd8b4809ddd1cff2ef1"
@@ -1042,7 +1042,7 @@
         {
           "id": "latv",
           "name": "latv",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/lv-latv.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/lv-latv.db",
           "size": 1511424,
           "version": 1,
           "checksum": "sha256-bb8da55f1621363f748eeaa1d3512bfbc354cd54eb72a20ec83c8dca6ca9cd61"
@@ -1055,7 +1055,7 @@
         {
           "id": "mao",
           "name": "mao",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/mi-mao.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/mi-mao.db",
           "size": 6746112,
           "version": 1,
           "checksum": "sha256-2777f0f07b4e342ce49cd7766d3a9181dc592431681679b9c344d65c112b0762"
@@ -1068,7 +1068,7 @@
         {
           "id": "nor",
           "name": "nor",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/no-nor.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/no-nor.db",
           "size": 5951488,
           "version": 1,
           "checksum": "sha256-a33ac27dc3da33d50a7761a95d35681b1ffe32c0ff4871875d4e75d48184aecd"
@@ -1076,7 +1076,7 @@
         {
           "id": "norsmb",
           "name": "norsmb",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/no-norsmb.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/no-norsmb.db",
           "size": 6025216,
           "version": 1,
           "checksum": "sha256-b39680e037450556f583bf4c3eabef6056dfe0f9a59af7cee4ebd47bc54ab897"
@@ -1089,7 +1089,7 @@
         {
           "id": "poland",
           "name": "poland",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/pl-poland.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/pl-poland.db",
           "size": 6418432,
           "version": 1,
           "checksum": "sha256-208259bccfcf775a2494def442b72832015eb85fd1e190d23bf311173daf79b3"
@@ -1102,18 +1102,18 @@
         {
           "id": "acf",
           "name": "acf",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/pt-acf.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/pt-acf.db",
           "size": 6197248,
           "version": 1,
-          "checksum": "sha256-27252e5697823fe39aafeb0786563926b36faef8c40ac45b2272730e18738f97"
+          "checksum": "sha256-cbb232d9f20eccff41b3c5dbe5792fa258d54f02ce0c6bd60c1cf09530659f88"
         },
         {
           "id": "port",
           "name": "port",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/pt-port.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/pt-port.db",
           "size": 6189056,
           "version": 1,
-          "checksum": "sha256-374625cd9c94eaa44a98b7891b45af97fe5591b0bee97f04ad82d490fae595a8"
+          "checksum": "sha256-e975c63587b3f3a5d1cb64e1c0593c47d57818a0f72c83f589efce5423174abd"
         }
       ]
     },
@@ -1123,7 +1123,7 @@
         {
           "id": "ru",
           "name": "ru",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/ro-ru.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/ro-ru.db",
           "size": 6516736,
           "version": 1,
           "checksum": "sha256-f35dafc4c0c9ddf8772fa4c720f90158a7cd49c57abee33b43f57ed8e1866591"
@@ -1136,15 +1136,15 @@
         {
           "id": "rst",
           "name": "rst",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/ru-rst.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/ru-rst.db",
           "size": 8515584,
           "version": 1,
-          "checksum": "sha256-37126948ba53a8f7157e35eed49aeb5739e2555e0a81ee9600d50fe9c2ff20bb"
+          "checksum": "sha256-8254a9ccbb112f696bad5d42062d455f6447746e69b7146893a6334ef8bece5c"
         },
         {
           "id": "russub",
           "name": "russub",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/ru-russub.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/ru-russub.db",
           "size": 8441856,
           "version": 1,
           "checksum": "sha256-e0d5b6928a5e1f2ca770ca128f5537e871c0ba11b38c1f55473c47e26ea8d72a"
@@ -1152,7 +1152,7 @@
         {
           "id": "rusvzh",
           "name": "rusvzh",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/ru-rusvzh.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/ru-rusvzh.db",
           "size": 2097152,
           "version": 1,
           "checksum": "sha256-12543d05cc6e009dc6b0657b485ea0d4f1a3231e2727e5765eb75ab66b154252"
@@ -1160,7 +1160,7 @@
         {
           "id": "ukrub",
           "name": "ukrub",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/ru-ukrub.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/ru-ukrub.db",
           "size": 8531968,
           "version": 1,
           "checksum": "sha256-cc47a5b9750f562339b415d2cc716d3e54a9c4a3beee542574deac7ff0a11cab"
@@ -1173,10 +1173,10 @@
         {
           "id": "alb1",
           "name": "alb1",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/sq-alb1.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/sq-alb1.db",
           "size": 6692864,
           "version": 1,
-          "checksum": "sha256-fd442ebbd3bd323c5f81fb1f56a72777e6ccaa6e9eb598ef47a9bb15a4fdae2d"
+          "checksum": "sha256-627263db5c037626c57360c874a519f9cd4d4e6290b318dd7c65d8dee82cb433"
         }
       ]
     },
@@ -1186,15 +1186,15 @@
         {
           "id": "svd",
           "name": "svd",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/sv-svd.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/sv-svd.db",
           "size": 6561792,
           "version": 1,
-          "checksum": "sha256-0e266c37124f1334b2709cddb71ebfbce6130ce1a9f21c78b7958b1e98131b69"
+          "checksum": "sha256-f6edf58768392e820385928737632a854e6e035788457386724b770328f38ff2"
         },
         {
           "id": "swefolk1998",
           "name": "swefolk1998",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/sv-swefolk1998.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/sv-swefolk1998.db",
           "size": 6172672,
           "version": 1,
           "checksum": "sha256-30ca8e9b321a6a2a110789895d4546dc95862cd43a2d4184956733a58b661f2e"
@@ -1207,7 +1207,7 @@
         {
           "id": "swa",
           "name": "swa",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/sw-swa.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/sw-swa.db",
           "size": 1572864,
           "version": 1,
           "checksum": "sha256-5cfec9aad3bccc3b9b4aa957adfd2626eff61ad0a95bd1334d82785f96710334"
@@ -1220,10 +1220,10 @@
         {
           "id": "kjvthai",
           "name": "kjvthai",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/th-kjvthai.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/th-kjvthai.db",
           "size": 13860864,
           "version": 1,
-          "checksum": "sha256-2e30ccb7d5a19019f99569bf8fc00892a73bb0cfbf90fd3f82fee906c55e6fd1"
+          "checksum": "sha256-899bca5b40cb4ee90c492f56ccc1259b0f7b2e88ca3c5f8d730d14e40427ac77"
         }
       ]
     },
@@ -1233,7 +1233,7 @@
         {
           "id": "tlgangbiblia",
           "name": "tlgangbiblia",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/tl-tlgangbiblia.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/tl-tlgangbiblia.db",
           "size": 7184384,
           "version": 1,
           "checksum": "sha256-e201944d81be01348bdf7cf62405dc5a27ab0bd6759629808996f7156dab461e"
@@ -1246,7 +1246,7 @@
         {
           "id": "bb31",
           "name": "bb31",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/tr-bb31.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/tr-bb31.db",
           "size": 6078464,
           "version": 1,
           "checksum": "sha256-600dd7b004945e8900de0fa13299c597248db3384474df8c809f6f719cab3173"
@@ -1259,18 +1259,18 @@
         {
           "id": "vie",
           "name": "vie",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/vi-vie.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/vi-vie.db",
           "size": 7442432,
           "version": 1,
-          "checksum": "sha256-e580ad819c7a70965c7ed98f9578989780e641fc30c992138a809ca5e88b098a"
+          "checksum": "sha256-f4f549b2b5ea025e8b7de3e44f5a1e0225985113003e1dbabc2e667988843cea"
         },
         {
           "id": "vietnvb",
           "name": "vietnvb",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/vi-vietnvb.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/vi-vietnvb.db",
           "size": 7307264,
           "version": 1,
-          "checksum": "sha256-10f156c5e202d5a1b62435770c4a44bc1112cc4054744f8dd0bfd484fd30fc04"
+          "checksum": "sha256-c50ca34086425d63c583d6f5068ae5cd295996866afa57f62041b510568f61fd"
         }
       ]
     },
@@ -1280,7 +1280,7 @@
         {
           "id": "chi",
           "name": "chi",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/zh-chi.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/zh-chi.db",
           "size": 6508544,
           "version": 1,
           "checksum": "sha256-f93c604574a2fcda1cb3da74b2f48d965176998d7ddcb7ea364e583bab3b8a70"
@@ -1288,15 +1288,15 @@
         {
           "id": "chius",
           "name": "chius",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/zh-chius.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/zh-chius.db",
           "size": 6488064,
           "version": 1,
-          "checksum": "sha256-baf844b60869a7ca1574640ec6135c1942ed289f835c87d414e06fd5e1ba4966"
+          "checksum": "sha256-c1a09b647883c5903fbf06e064a73fd16ed5954c1cb16f141caa2b5a02255ac4"
         },
         {
           "id": "cvs",
           "name": "cvs",
-          "download_url": "https://github.com/ekilie/openbiblia/releases/download/v1/zh-cvs.db",
+          "download_url": "https://github.com/ekilie/openbiblia/releases/latest/download/zh-cvs.db",
           "size": 5849088,
           "version": 1,
           "checksum": "sha256-6ee674179fdcea40f7dab9a82b3b067069fa414b9368c50830155ebe31237fe0"
