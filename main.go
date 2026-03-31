@@ -17,28 +17,12 @@ import (
 	"gorm.io/gorm"
 )
 
-var (
-	DB *gorm.DB
-)
-
-func init() {
-	var err error
-	DB, err = db.Open()
-	if err != nil {
-		log.Fatal(err)
-	}
-	err = db.Migrate(DB)
-	if err != nil {
-		log.Fatal(err)
-	}
-}
-
 func main() {
 	pathToBibleOSISData := "./bibles/"
 	var bibles models.Bibles
 	WriteBiblesJSON(&bibles, pathToBibleOSISData, config.BiblesJSONPath)
-	WriteBiblesToDB(&bibles, DB)
-	ParseAndSaveBibleData(DB)
+	ParseAndSaveAllBibles(&bibles)
+	fmt.Println("Done")
 }
 
 // {
@@ -54,14 +38,9 @@ func main() {
 // 	]
 // }
 
-// WriteBiblesJSON reads the directory structure of the provided path to Bible OSIS data and encodes it into a JSON file with the structure defined by the Bibles, BibleTranslation, and Translation structs. Each language directory is expected to contain translation files, and the resulting JSON will list all available translations for each language.
+// WriteBiblesJSON reads the directory structure of the provided path to Bible OSIS data
+// and encodes it into a JSON file. Each translation entry includes its db_path.
 func WriteBiblesJSON(bibles *models.Bibles, pathToBibleOSISData string, outputFilePath string) {
-	biblesJsonFile, err := os.Create(outputFilePath)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer biblesJsonFile.Close()
-
 	entries, err := os.ReadDir(pathToBibleOSISData)
 	if err != nil {
 		log.Fatal(err)
@@ -81,8 +60,9 @@ func WriteBiblesJSON(bibles *models.Bibles, pathToBibleOSISData string, outputFi
 				continue
 			}
 			translations = append(translations, models.Translation{
-				Name: f.Name(),
-				Path: filepath.Join(pathToBibleOSISData, lang, f.Name()),
+				Name:   f.Name(),
+				Path:   filepath.Join(pathToBibleOSISData, lang, f.Name()),
+				DBPath: db.TranslationDBPath(lang, f.Name()),
 			})
 		}
 		bibles.Bibles = append(bibles.Bibles, models.BibleTranslation{
@@ -98,61 +78,60 @@ func WriteBiblesJSON(bibles *models.Bibles, pathToBibleOSISData string, outputFi
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Done")
+	fmt.Println("wrote", outputFilePath)
 }
 
-func WriteBiblesToDB(bibles *models.Bibles, db *gorm.DB) {
+// ParseAndSaveAllBibles iterates every translation, creates a per-translation
+// SQLite database, parses the XML, and stores the verses.
+func ParseAndSaveAllBibles(bibles *models.Bibles) {
 	for _, bible := range bibles.Bibles {
-		err := db.Create(&bible).Error
-		if err != nil {
-			log.Printf("failed to insert bible for lang %s: %v", bible.Lang, err)
-		}
-	}
-}
+		for _, translation := range bible.Translations {
+			log.Printf("processing %s / %s", bible.Lang, translation.Name)
 
-// ParseAndSaveBibleData parses all translation XML files and stores verse rows in SQLite.
-func ParseAndSaveBibleData(db *gorm.DB) {
-	var translations []models.Translation
-	if err := db.Find(&translations).Error; err != nil {
-		log.Printf("failed to load translations: %v", err)
-		return
-	}
-
-	for _, translation := range translations {
-		verses, err := ParseOSISVerses(translation.Path)
-		if err != nil {
-			log.Printf("failed to parse %s: %v", translation.Path, err)
-			continue
-		}
-
-		for i := range verses {
-			verses[i].TranslationID = translation.ID
-		}
-
-		err = db.Transaction(func(tx *gorm.DB) error {
-			if err := tx.Where("translation_id = ?", translation.ID).Delete(&models.Verse{}).Error; err != nil {
-				return err
+			tdb, err := db.OpenTranslation(bible.Lang, translation.Name)
+			if err != nil {
+				log.Printf("failed to open db for %s/%s: %v", bible.Lang, translation.Name, err)
+				continue
+			}
+			if err := db.MigrateTranslation(tdb); err != nil {
+				log.Printf("failed to migrate db for %s/%s: %v", bible.Lang, translation.Name, err)
+				continue
 			}
 
-			const batchSize = 1000
-			for start := 0; start < len(verses); start += batchSize {
-				end := start + batchSize
-				if end > len(verses) {
-					end = len(verses)
-				}
-				batch := verses[start:end]
-				if err := tx.Create(&batch).Error; err != nil {
+			verses, err := ParseOSISVerses(translation.Path)
+			if err != nil {
+				log.Printf("failed to parse %s: %v", translation.Path, err)
+				continue
+			}
+
+			err = tdb.Transaction(func(tx *gorm.DB) error {
+				if err := tx.Where("1=1").Delete(&models.Verse{}).Error; err != nil {
 					return err
 				}
+				const batchSize = 1000
+				for start := 0; start < len(verses); start += batchSize {
+					end := start + batchSize
+					if end > len(verses) {
+						end = len(verses)
+					}
+					if err := tx.Create(verses[start:end]).Error; err != nil {
+						return err
+					}
+				}
+				return nil
+			})
+			if err != nil {
+				log.Printf("failed to save verses for %s/%s: %v", bible.Lang, translation.Name, err)
+				continue
 			}
-			return nil
-		})
-		if err != nil {
-			log.Printf("failed to save verses for %s: %v", translation.Path, err)
-			continue
-		}
 
-		log.Printf("saved %d verses from %s", len(verses), translation.Path)
+			sqlDB, _ := tdb.DB()
+			if sqlDB != nil {
+				sqlDB.Close()
+			}
+
+			log.Printf("saved %d verses → %s", len(verses), translation.DBPath)
+		}
 	}
 }
 
