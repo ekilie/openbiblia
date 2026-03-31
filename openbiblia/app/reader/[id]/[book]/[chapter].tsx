@@ -6,7 +6,8 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { getVerses } from "@/services/bible-db";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { Colors, type ColorScheme } from "@/constants/theme";
+import { useColorScheme } from "@/hooks/use-color-scheme";
 import type { Verse } from "@/services/types";
 
 export default function ReaderScreen() {
@@ -16,13 +17,11 @@ export default function ReaderScreen() {
     chapter: string;
   }>();
   const insets = useSafeAreaInsets();
+  const colorScheme = useColorScheme();
+  const s = getStyles(colorScheme);
+  const colors = Colors[colorScheme];
   const [verses, setVerses] = useState<Verse[]>([]);
   const [loading, setLoading] = useState(true);
-  const accent = useThemeColor({ light: "#0a7ea4", dark: "#5ac8fa" }, "tint");
-  const divider = useThemeColor(
-    { light: "#e0e0e0", dark: "#333" },
-    "background",
-  );
 
   const chapterNum = parseInt(chapter, 10);
 
@@ -35,38 +34,34 @@ export default function ReaderScreen() {
 
   if (loading) {
     return (
-      <ThemedView style={styles.center}>
+      <ThemedView style={s.center}>
         <Stack.Screen options={{ title: `${book} ${chapter}` }} />
-        <ActivityIndicator size="large" />
+        <ActivityIndicator size="large" color={colors.tint} />
       </ThemedView>
     );
   }
 
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView style={s.container}>
       <Stack.Screen options={{ title: `${book} ${chapter}` }} />
       <ScrollView
         contentContainerStyle={[
-          styles.content,
+          s.content,
           { paddingBottom: insets.bottom + 40 },
         ]}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.headerRow}>
-          <View style={[styles.headerLine, { backgroundColor: divider }]} />
-          <ThemedText style={[styles.heading, { color: accent }]}>
-            {chapter}
-          </ThemedText>
-          <View style={[styles.headerLine, { backgroundColor: divider }]} />
+        <View style={s.headerRow}>
+          <View style={[s.headerLine, { backgroundColor: colors.border }]} />
+          <ThemedText style={s.heading}>{chapter}</ThemedText>
+          <View style={[s.headerLine, { backgroundColor: colors.border }]} />
         </View>
 
-        <ThemedText style={styles.body}>
+        <ThemedText style={s.body}>
           {verses.map((v) => (
             <ThemedText key={v.id}>
-              <ThemedText style={[styles.verseNum, { color: accent }]}>
-                {v.verse}{" "}
-              </ThemedText>
-              <ThemedText style={styles.verseText}>{v.text} </ThemedText>
+              <ThemedText style={s.verseNum}>{v.verse} </ThemedText>
+              <ThemedText style={s.verseText}>{v.text} </ThemedText>
             </ThemedText>
           ))}
         </ThemedText>
@@ -75,35 +70,48 @@ export default function ReaderScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1 },
-  center: { flex: 1, justifyContent: "center", alignItems: "center" },
-  content: {
-    paddingHorizontal: 24,
-    paddingTop: 28,
-  },
-  headerRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 28,
-    gap: 16,
-  },
-  headerLine: { flex: 1, height: 1 },
-  heading: {
-    fontSize: 32,
-    fontWeight: "800",
-  },
-  body: {
-    fontSize: 19,
-    lineHeight: 32,
-  },
-  verseText: {
-    fontSize: 19,
-    lineHeight: 32,
-  },
-  verseNum: {
-    fontSize: 13,
-    fontWeight: "800",
-    lineHeight: 32,
-  },
-});
+function getStyles(colorScheme: ColorScheme) {
+  const colors = Colors[colorScheme];
+
+  return StyleSheet.create({
+    container: { flex: 1, backgroundColor: colors.background },
+    center: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: colors.background,
+    },
+    content: {
+      paddingHorizontal: 24,
+      paddingTop: 28,
+    },
+    headerRow: {
+      flexDirection: "row",
+      alignItems: "center",
+      marginBottom: 28,
+      gap: 16,
+    },
+    headerLine: { flex: 1, height: 1 },
+    heading: {
+      fontSize: 36,
+      fontWeight: "800",
+      color: colors.tint,
+    },
+    body: {
+      fontSize: 19,
+      lineHeight: 34,
+      color: colors.text,
+    },
+    verseText: {
+      fontSize: 19,
+      lineHeight: 34,
+      color: colors.text,
+    },
+    verseNum: {
+      fontSize: 12,
+      fontWeight: "800",
+      lineHeight: 34,
+      color: colors.verseNum,
+    },
+  });
+}

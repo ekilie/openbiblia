@@ -77,7 +77,7 @@ func buildAllDatabases(root string) models.Bibles {
 			translations = append(translations, models.Translation{
 				ID:          id,
 				Name:        id,
-				DownloadURL: fmt.Sprintf("https://github.com/%s/releases/download/%s/%s-%s.db", config.GitHubRepo, config.ReleaseTag, lang, id),
+				DownloadURL: fmt.Sprintf("https://github.com/%s/releases/latest/download/%s-%s.db", config.GitHubRepo, lang, id),
 				Size:        size,
 				Version:     config.SchemaVersion,
 				Checksum:    checksum,

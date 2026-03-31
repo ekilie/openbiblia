@@ -13,11 +13,13 @@
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
     "@react-navigation/bottom-tabs": "^7.4.0",
+    "@react-navigation/drawer": "^7.9.8",
     "@react-navigation/elements": "^2.6.3",
     "@react-navigation/native": "^7.1.8",
     "expo": "^55.0.9",
     "expo-constants": "~55.0.9",
     "expo-crypto": "~55.0.10",
+    "expo-drawer": "^1.0.0",
     "expo-file-system": "~55.0.12",
     "expo-font": "~55.0.4",
     "expo-haptics": "~55.0.9",

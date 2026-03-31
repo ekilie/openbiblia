@@ -23,12 +23,15 @@ release: build
 		--latest \
 	|| echo "Release $(RELEASE_TAG) already exists, uploading assets..."
 	@echo "Uploading .db files..."
+	@mkdir -p /tmp/openbiblia-upload
 	@find $(DB_DIR) -name '*.db' | while read db; do \
 		lang=$$(basename $$(dirname "$$db")); \
 		name=$$(basename "$$db"); \
 		asset="$$lang-$$name"; \
+		cp "$$db" "/tmp/openbiblia-upload/$$asset"; \
 		echo "  $$asset"; \
-		gh release upload $(RELEASE_TAG) "$$db#$$asset" \
+		gh release upload $(RELEASE_TAG) "/tmp/openbiblia-upload/$$asset" \
 			--repo $(REPO) --clobber; \
 	done
+	@rm -rf /tmp/openbiblia-upload
 	@echo "Done. Assets uploaded to https://github.com/$(REPO)/releases/tag/$(RELEASE_TAG)"

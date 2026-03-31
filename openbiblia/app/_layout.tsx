@@ -8,14 +8,48 @@ import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/use-color-scheme";
+import { Colors } from "@/constants/theme";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
+  const colors = Colors[colorScheme];
+
+  const navTheme =
+    colorScheme === "dark"
+      ? {
+          ...DarkTheme,
+          colors: {
+            ...DarkTheme.colors,
+            primary: colors.tint,
+            background: colors.background,
+            card: colors.background,
+            text: colors.text,
+            border: colors.border,
+          },
+        }
+      : {
+          ...DefaultTheme,
+          colors: {
+            ...DefaultTheme.colors,
+            primary: colors.tint,
+            background: colors.background,
+            card: colors.background,
+            text: colors.text,
+            border: colors.border,
+          },
+        };
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+    <ThemeProvider value={navTheme}>
+      <Stack
+        screenOptions={{
+          headerTintColor: colors.tint,
+          headerStyle: { backgroundColor: colors.background },
+          headerTitleStyle: { color: colors.text, fontWeight: "700" },
+          contentStyle: { backgroundColor: colors.background },
+        }}
+      >
+        <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
         <Stack.Screen
           name="translations/[lang]"
           options={{ title: "Translations" }}

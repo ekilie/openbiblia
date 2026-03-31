@@ -20,7 +20,8 @@ import {
   formatSize,
 } from "@/services/bible-db";
 import { getLanguageName } from "@/constants/languages";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { Colors, type ColorScheme } from "@/constants/theme";
+import { useColorScheme } from "@/hooks/use-color-scheme";
 import type { Translation } from "@/services/types";
 
 export default function TranslationsScreen() {
@@ -28,12 +29,9 @@ export default function TranslationsScreen() {
   const router = useRouter();
   const translations = getTranslations(lang);
   const insets = useSafeAreaInsets();
-  const cardBg = useThemeColor(
-    { light: "#f5f5f5", dark: "#1c1c1e" },
-    "background",
-  );
-  const green = "#34C759";
-  const accent = useThemeColor({ light: "#0a7ea4", dark: "#5ac8fa" }, "tint");
+  const colorScheme = useColorScheme();
+  const s = getStyles(colorScheme);
+  const colors = Colors[colorScheme];
 
   const [downloadedMap, setDownloadedMap] = useState<Record<string, boolean>>(
     {},
@@ -85,15 +83,12 @@ export default function TranslationsScreen() {
   };
 
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView style={s.container}>
       <Stack.Screen options={{ title: getLanguageName(lang) }} />
       <FlatList
         data={translations}
         keyExtractor={(item) => item.id}
-        contentContainerStyle={[
-          styles.list,
-          { paddingBottom: insets.bottom + 16 },
-        ]}
+        contentContainerStyle={[s.list, { paddingBottom: insets.bottom + 16 }]}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => {
           const isLocal = downloadedMap[item.id];
@@ -104,36 +99,35 @@ export default function TranslationsScreen() {
               onPress={() => handlePress(item)}
               onLongPress={() => handleLongPress(item)}
               disabled={isCurrentlyDownloading}
-              style={({ pressed }) => [
-                styles.card,
-                { backgroundColor: cardBg, opacity: pressed ? 0.7 : 1 },
-              ]}
+              style={({ pressed }) => [s.card, { opacity: pressed ? 0.7 : 1 }]}
             >
               <View
                 style={[
-                  styles.iconCircle,
-                  { backgroundColor: isLocal ? green : accent },
+                  s.iconCircle,
+                  {
+                    backgroundColor: isLocal ? colors.success : colors.tint,
+                  },
                 ]}
               >
                 {isCurrentlyDownloading ? (
                   <ActivityIndicator size="small" color="#fff" />
                 ) : (
-                  <ThemedText style={styles.iconText}>
+                  <ThemedText style={s.iconText}>
                     {isLocal ? "✓" : "↓"}
                   </ThemedText>
                 )}
               </View>
-              <View style={styles.cardContent}>
-                <ThemedText style={styles.name}>
+              <View style={s.cardContent}>
+                <ThemedText style={s.name}>
                   {item.name.toUpperCase()}
                 </ThemedText>
-                <ThemedText style={styles.meta}>
+                <ThemedText style={s.meta}>
                   {formatSize(item.size)}
                   {isLocal ? " · Downloaded" : " · Tap to download"}
                 </ThemedText>
               </View>
               {isLocal && (
-                <ThemedText style={[styles.chevron, { color: accent }]}>
+                <ThemedText style={[s.chevron, { color: colors.tint }]}>
                   ›
                 </ThemedText>
               )}
@@ -145,30 +139,35 @@ export default function TranslationsScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1 },
-  list: { padding: 16, gap: 10 },
-  card: {
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 16,
-    borderRadius: 14,
-    gap: 14,
-  },
-  iconCircle: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  iconText: {
-    color: "#fff",
-    fontSize: 18,
-    fontWeight: "700",
-  },
-  cardContent: { flex: 1 },
-  name: { fontSize: 17, fontWeight: "600" },
-  meta: { fontSize: 13, opacity: 0.5, marginTop: 3 },
-  chevron: { fontSize: 24, fontWeight: "300" },
-});
+function getStyles(colorScheme: ColorScheme) {
+  const colors = Colors[colorScheme];
+
+  return StyleSheet.create({
+    container: { flex: 1, backgroundColor: colors.background },
+    list: { padding: 16, gap: 10 },
+    card: {
+      flexDirection: "row",
+      alignItems: "center",
+      padding: 16,
+      borderRadius: 14,
+      gap: 14,
+      backgroundColor: colors.card,
+    },
+    iconCircle: {
+      width: 44,
+      height: 44,
+      borderRadius: 22,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    iconText: {
+      color: "#fff",
+      fontSize: 18,
+      fontWeight: "700",
+    },
+    cardContent: { flex: 1 },
+    name: { fontSize: 17, fontWeight: "600", color: colors.text },
+    meta: { fontSize: 13, color: colors.secondaryText, marginTop: 3 },
+    chevron: { fontSize: 24, fontWeight: "300" },
+  });
+}
