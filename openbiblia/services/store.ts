@@ -1,8 +1,42 @@
 import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { persist, createJSONStorage, type StateStorage } from "zustand/middleware";
+import { File, Paths } from "expo-file-system";
 import { isDownloaded } from "./bible-db";
 import { getLanguages } from "./manifest";
+
+const settingsFile = new File(Paths.document, "openbiblia-settings.json");
+
+const fileStorage: StateStorage = {
+  getItem: async (name) => {
+    try {
+      if (settingsFile.exists) {
+        const raw = await settingsFile.text();
+        const parsed = JSON.parse(raw);
+        return JSON.stringify(parsed[name] ?? null);
+      }
+    } catch {}
+    return null;
+  },
+  setItem: async (name, value) => {
+    try {
+      let store: Record<string, unknown> = {};
+      if (settingsFile.exists) {
+        store = JSON.parse(await settingsFile.text());
+      }
+      store[name] = JSON.parse(value);
+      settingsFile.write(JSON.stringify(store));
+    } catch {}
+  },
+  removeItem: async (name) => {
+    try {
+      if (settingsFile.exists) {
+        const store = JSON.parse(await settingsFile.text());
+        delete store[name];
+        settingsFile.write(JSON.stringify(store));
+      }
+    } catch {}
+  },
+};
 
 export type ThemePreference = "system" | "light" | "dark";
 
@@ -59,7 +93,7 @@ export const useAppStore = create<AppState>()(
     }),
     {
       name: "openbiblia-settings",
-      storage: createJSONStorage(() => AsyncStorage),
+      storage: createJSONStorage(() => fileStorage),
       partialize: (state) => ({
         theme: state.theme,
         defaultBible: state.defaultBible,
