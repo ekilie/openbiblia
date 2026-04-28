@@ -1,5 +1,12 @@
 import { useEffect } from "react";
-import { ScrollView, StyleSheet, Pressable, View, Alert, Platform } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Pressable,
+  View,
+  Alert,
+  Platform,
+} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
 

@@ -1,4 +1,11 @@
-import { ScrollView, StyleSheet, View, Image, Linking, Pressable } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  Image,
+  Linking,
+  Pressable,
+} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { ThemedText } from "@/components/themed-text";

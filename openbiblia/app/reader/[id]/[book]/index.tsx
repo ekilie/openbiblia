@@ -5,9 +5,11 @@ import {
   Pressable,
   ActivityIndicator,
   useWindowDimensions,
+  Platform,
 } from "react-native";
 import { useLocalSearchParams, useRouter, Stack } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import * as Haptics from "expo-haptics";
 
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
@@ -55,7 +57,10 @@ export default function ChaptersScreen() {
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
           <Pressable
-            onPress={() => router.push(`/reader/${id}/${book}/${item}`)}
+            onPress={() => {
+              if (Platform.OS !== "web") Haptics.selectionAsync();
+              router.push(`/reader/${id}/${book}/${item}`);
+            }}
             style={({ pressed }) => [
               s.cell,
               pressed && { backgroundColor: colors.tint },

@@ -227,10 +227,7 @@ export default function ReaderScreen() {
               {v.verse}{" "}
             </ThemedText>
             <ThemedText
-              style={[
-                s.verseText,
-                { fontSize: textSize, lineHeight: lineH },
-              ]}
+              style={[s.verseText, { fontSize: textSize, lineHeight: lineH }]}
             >
               {v.text}{" "}
             </ThemedText>
@@ -264,11 +261,10 @@ export default function ReaderScreen() {
           </ThemedText>
         </Pressable>
 
-        <Pressable
-          onPress={() => router.back()}
-          style={s.navCenter}
-        >
-          <ThemedText style={[s.navCenterText, { color: colors.secondaryText }]}>
+        <Pressable onPress={() => router.back()} style={s.navCenter}>
+          <ThemedText
+            style={[s.navCenterText, { color: colors.secondaryText }]}
+          >
             {book} {chapter}
           </ThemedText>
         </Pressable>

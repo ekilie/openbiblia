@@ -5,9 +5,11 @@ import {
   Pressable,
   ActivityIndicator,
   View,
+  Platform,
 } from "react-native";
 import { useLocalSearchParams, useRouter, Stack } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import * as Haptics from "expo-haptics";
 
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
@@ -184,7 +186,10 @@ export default function BooksScreen() {
         )}
         renderItem={({ item, index }) => (
           <Pressable
-            onPress={() => router.push(`/reader/${id}/${item}`)}
+            onPress={() => {
+              if (Platform.OS !== "web") Haptics.selectionAsync();
+              router.push(`/reader/${id}/${item}`);
+            }}
             style={({ pressed }) => [s.card, { opacity: pressed ? 0.7 : 1 }]}
           >
             <View style={s.numBadge}>

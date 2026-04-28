@@ -1,7 +1,8 @@
 import { useState, useMemo } from "react";
-import { FlatList, StyleSheet, Pressable, View, TextInput } from "react-native";
+import { FlatList, StyleSheet, Pressable, View, TextInput, Platform } from "react-native";
 import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import * as Haptics from "expo-haptics";
 
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
@@ -64,7 +65,10 @@ export default function LanguagesScreen() {
         }
         renderItem={({ item }) => (
           <Pressable
-            onPress={() => router.push(`/translations/${item.lang}`)}
+            onPress={() => {
+              if (Platform.OS !== "web") Haptics.selectionAsync();
+              router.push(`/translations/${item.lang}`);
+            }}
             style={({ pressed }) => [s.card, { opacity: pressed ? 0.7 : 1 }]}
           >
             <View style={s.badge}>
