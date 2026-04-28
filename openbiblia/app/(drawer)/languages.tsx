@@ -1,5 +1,12 @@
 import { useState, useMemo } from "react";
-import { FlatList, StyleSheet, Pressable, View, TextInput, Platform } from "react-native";
+import {
+  FlatList,
+  StyleSheet,
+  Pressable,
+  View,
+  TextInput,
+  Platform,
+} from "react-native";
 import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
