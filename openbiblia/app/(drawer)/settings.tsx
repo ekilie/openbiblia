@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-import { ScrollView, StyleSheet, Pressable, View, Alert } from "react-native";
+import { ScrollView, StyleSheet, Pressable, View, Alert, Platform } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import * as Haptics from "expo-haptics";
 
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
@@ -9,6 +10,12 @@ import { useColorScheme } from "@/hooks/use-color-scheme";
 import { useAppStore, type ThemePreference } from "@/services/store";
 import { getTranslation } from "@/services/manifest";
 import { deleteTranslation, formatSize } from "@/services/bible-db";
+
+function haptic() {
+  if (Platform.OS !== "web") {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+  }
+}
 
 const THEME_OPTIONS: { value: ThemePreference; label: string; icon: string }[] =
   [
@@ -30,6 +37,8 @@ export default function SettingsScreen() {
   const downloadedIds = useAppStore((st) => st.downloadedIds);
   const removeDownloaded = useAppStore((st) => st.removeDownloaded);
   const refreshDownloaded = useAppStore((st) => st.refreshDownloaded);
+  const fontSize = useAppStore((st) => st.fontSize);
+  const setFontSize = useAppStore((st) => st.setFontSize);
 
   useEffect(() => {
     refreshDownloaded();
@@ -76,7 +85,10 @@ export default function SettingsScreen() {
             return (
               <Pressable
                 key={opt.value}
-                onPress={() => setTheme(opt.value)}
+                onPress={() => {
+                  setTheme(opt.value);
+                  haptic();
+                }}
                 style={[
                   s.themeOption,
                   {
@@ -106,6 +118,50 @@ export default function SettingsScreen() {
           })}
         </View>
 
+        {/* Font Size */}
+        <ThemedText style={s.sectionTitle}>TEXT SIZE</ThemedText>
+        <View style={s.fontSizeRow}>
+          {[
+            { size: 1, label: "S" },
+            { size: 2, label: "M" },
+            { size: 3, label: "L" },
+            { size: 4, label: "XL" },
+          ].map((opt) => {
+            const active = fontSize === opt.size;
+            return (
+              <Pressable
+                key={opt.size}
+                onPress={() => {
+                  setFontSize(opt.size);
+                  haptic();
+                }}
+                style={[
+                  s.fontSizeOption,
+                  {
+                    backgroundColor: active ? colors.tint : colors.card,
+                    borderColor: active ? colors.tint : colors.border,
+                  },
+                ]}
+              >
+                <ThemedText
+                  style={[
+                    s.fontSizeLabel,
+                    {
+                      fontSize: 12 + opt.size * 3,
+                      color: active ? "#fff" : colors.text,
+                    },
+                  ]}
+                >
+                  {opt.label}
+                </ThemedText>
+              </Pressable>
+            );
+          })}
+        </View>
+        <ThemedText style={[s.fontSizeHint, { color: colors.secondaryText }]}>
+          Preview: The quick brown fox jumps over the lazy dog
+        </ThemedText>
+
         {/* Default Bible */}
         <ThemedText style={s.sectionTitle}>DEFAULT BIBLE</ThemedText>
         {downloadedBibles.length === 0 ? (
@@ -121,7 +177,10 @@ export default function SettingsScreen() {
               return (
                 <Pressable
                   key={bible.id}
-                  onPress={() => setDefaultBible(isDefault ? null : bible.id)}
+                  onPress={() => {
+                    setDefaultBible(isDefault ? null : bible.id);
+                    haptic();
+                  }}
                   style={({ pressed }) => [
                     s.bibleRow,
                     {
@@ -250,6 +309,24 @@ function getStyles(colorScheme: ColorScheme) {
     },
     themeIcon: { fontSize: 24 },
     themeLabel: { fontSize: 13, fontWeight: "600" },
+    fontSizeRow: {
+      flexDirection: "row",
+      gap: 10,
+    },
+    fontSizeOption: {
+      flex: 1,
+      alignItems: "center",
+      paddingVertical: 16,
+      borderRadius: 14,
+      borderWidth: 1,
+    },
+    fontSizeLabel: { fontWeight: "700" },
+    fontSizeHint: {
+      fontSize: 13,
+      marginTop: 8,
+      marginLeft: 4,
+      fontStyle: "italic",
+    },
     emptyCard: {
       padding: 20,
       borderRadius: 14,

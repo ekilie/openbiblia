@@ -3,6 +3,7 @@ import {
   StyleSheet,
   View,
   Image,
+  Pressable,
   type ViewStyle,
   type TextStyle,
 } from "react-native";
@@ -11,11 +12,33 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { getLanguages } from "@/services/manifest";
+import { getLanguages, getTranslation } from "@/services/manifest";
 import { Colors, type ColorScheme } from "@/constants/theme";
 import { useColorScheme } from "@/hooks/use-color-scheme";
+import { useAppStore, type ReadingPosition } from "@/services/store";
 
 const logo = require("@/assets/images/icons/android/play_store_512.png");
+
+const BOOK_NAMES: Record<string, string> = {
+  Gen: "Genesis", Exod: "Exodus", Lev: "Leviticus", Num: "Numbers",
+  Deut: "Deuteronomy", Josh: "Joshua", Judg: "Judges", Ruth: "Ruth",
+  "1Sam": "1 Samuel", "2Sam": "2 Samuel", "1Kgs": "1 Kings", "2Kgs": "2 Kings",
+  "1Chr": "1 Chronicles", "2Chr": "2 Chronicles", Ezra: "Ezra", Neh: "Nehemiah",
+  Esth: "Esther", Job: "Job", Ps: "Psalms", Prov: "Proverbs",
+  Eccl: "Ecclesiastes", Song: "Song of Solomon", Isa: "Isaiah", Jer: "Jeremiah",
+  Lam: "Lamentations", Ezek: "Ezekiel", Dan: "Daniel", Hos: "Hosea",
+  Joel: "Joel", Amos: "Amos", Obad: "Obadiah", Jonah: "Jonah",
+  Mic: "Micah", Nah: "Nahum", Hab: "Habakkuk", Zeph: "Zephaniah",
+  Hag: "Haggai", Zech: "Zechariah", Mal: "Malachi",
+  Matt: "Matthew", Mark: "Mark", Luke: "Luke", John: "John",
+  Acts: "Acts", Rom: "Romans", "1Cor": "1 Corinthians", "2Cor": "2 Corinthians",
+  Gal: "Galatians", Eph: "Ephesians", Phil: "Philippians", Col: "Colossians",
+  "1Thess": "1 Thessalonians", "2Thess": "2 Thessalonians",
+  "1Tim": "1 Timothy", "2Tim": "2 Timothy", Titus: "Titus", Phlm: "Philemon",
+  Heb: "Hebrews", Jas: "James", "1Pet": "1 Peter", "2Pet": "2 Peter",
+  "1John": "1 John", "2John": "2 John", "3John": "3 John",
+  Jude: "Jude", Rev: "Revelation",
+};
 
 export default function DashboardScreen() {
   const router = useRouter();
@@ -25,11 +48,27 @@ export default function DashboardScreen() {
   const s = getStyles(colorScheme);
   const colors = Colors[colorScheme];
 
+  const readingHistory = useAppStore((st) => st.readingHistory);
+  const downloadedIds = useAppStore((st) => st.downloadedIds);
+
   const totalTranslations = languages.reduce(
     (sum, l) => sum + l.translations.length,
     0,
   );
   const totalLanguages = languages.length;
+
+  const recentReads = readingHistory.slice(0, 3);
+
+  function timeAgo(ts: number): string {
+    const diff = Date.now() - ts;
+    const mins = Math.floor(diff / 60000);
+    if (mins < 1) return "Just now";
+    if (mins < 60) return `${mins}m ago`;
+    const hours = Math.floor(mins / 60);
+    if (hours < 24) return `${hours}h ago`;
+    const days = Math.floor(hours / 24);
+    return `${days}d ago`;
+  }
 
   return (
     <ThemedView style={s.container}>
@@ -49,6 +88,75 @@ export default function DashboardScreen() {
           </ThemedText>
         </View>
 
+        {/* Continue Reading */}
+        {recentReads.length > 0 && (
+          <>
+            <ThemedText
+              style={[s.sectionTitle, { color: colors.secondaryText }]}
+            >
+              CONTINUE READING
+            </ThemedText>
+            <View style={s.recentList}>
+              {recentReads.map((pos) => {
+                const info = getTranslation(pos.translationId);
+                const bookName =
+                  BOOK_NAMES[pos.book] ?? pos.book;
+                return (
+                  <Pressable
+                    key={pos.translationId}
+                    onPress={() =>
+                      router.push(
+                        `/reader/${pos.translationId}/${pos.book}/${pos.chapter}`,
+                      )
+                    }
+                    style={({ pressed }) => [
+                      s.recentCard,
+                      {
+                        backgroundColor: colors.card,
+                        borderColor: colors.border,
+                        opacity: pressed ? 0.7 : 1,
+                      },
+                    ]}
+                  >
+                    <View
+                      style={[
+                        s.recentIcon,
+                        { backgroundColor: colors.tint + "18" },
+                      ]}
+                    >
+                      <ThemedText
+                        style={[s.recentIconText, { color: colors.tint }]}
+                      >
+                        📖
+                      </ThemedText>
+                    </View>
+                    <View style={s.recentInfo}>
+                      <ThemedText
+                        style={[s.recentTitle, { color: colors.text }]}
+                        numberOfLines={1}
+                      >
+                        {bookName} {pos.chapter}
+                      </ThemedText>
+                      <ThemedText
+                        style={[
+                          s.recentMeta,
+                          { color: colors.secondaryText },
+                        ]}
+                      >
+                        {info?.translation.name ?? pos.translationId} ·{" "}
+                        {timeAgo(pos.timestamp)}
+                      </ThemedText>
+                    </View>
+                    <ThemedText style={[s.chevron, { color: colors.tint }]}>
+                      ›
+                    </ThemedText>
+                  </Pressable>
+                );
+              })}
+            </View>
+          </>
+        )}
+
         {/* Stats */}
         <View style={s.statsRow}>
           <View style={[s.statCard, { backgroundColor: colors.card }]}>
@@ -67,6 +175,14 @@ export default function DashboardScreen() {
               Translations
             </ThemedText>
           </View>
+          <View style={[s.statCard, { backgroundColor: colors.card }]}>
+            <ThemedText style={[s.statNumber, { color: colors.tint }]}>
+              {downloadedIds.length}
+            </ThemedText>
+            <ThemedText style={[s.statLabel, { color: colors.secondaryText }]}>
+              Downloaded
+            </ThemedText>
+          </View>
         </View>
 
         {/* Quick Actions */}
@@ -76,11 +192,16 @@ export default function DashboardScreen() {
 
         <View style={s.actionsGrid}>
           {languages.slice(0, 6).map((lang) => (
-            <View
+            <Pressable
               key={lang.lang}
-              style={[
+              onPress={() => router.push(`/translations/${lang.lang}`)}
+              style={({ pressed }) => [
                 s.actionCard,
-                { backgroundColor: colors.card, borderColor: colors.border },
+                {
+                  backgroundColor: colors.card,
+                  borderColor: colors.border,
+                  opacity: pressed ? 0.7 : 1,
+                },
               ]}
             >
               <View style={s.actionCardInner}>
@@ -96,15 +217,20 @@ export default function DashboardScreen() {
                   {lang.translations.length}
                 </ThemedText>
               </View>
-            </View>
+            </Pressable>
           ))}
         </View>
 
         {/* Browse All */}
-        <View
-          style={[
+        <Pressable
+          onPress={() => router.push("/(drawer)/languages")}
+          style={({ pressed }) => [
             s.browseCard,
-            { backgroundColor: colors.card, borderColor: colors.border },
+            {
+              backgroundColor: colors.card,
+              borderColor: colors.border,
+              opacity: pressed ? 0.7 : 1,
+            },
           ]}
         >
           <View style={{ flex: 1 }}>
@@ -117,13 +243,10 @@ export default function DashboardScreen() {
               {totalLanguages} languages · {totalTranslations} translations
             </ThemedText>
           </View>
-          <ThemedText
-            style={[s.browseArrow, { color: colors.tint }]}
-            onPress={() => router.push("/(drawer)/languages")}
-          >
+          <ThemedText style={[s.browseArrow, { color: colors.tint }]}>
             →
           </ThemedText>
-        </View>
+        </Pressable>
 
         {/* Verse of the day placeholder */}
         <View
@@ -258,6 +381,27 @@ function getStyles(colorScheme: ColorScheme) {
       marginTop: 6,
       fontStyle: "italic",
     },
+    recentList: { gap: 8, marginBottom: 24 },
+    recentCard: {
+      flexDirection: "row",
+      alignItems: "center",
+      padding: 14,
+      borderRadius: 14,
+      borderWidth: 1,
+      gap: 12,
+    },
+    recentIcon: {
+      width: 44,
+      height: 44,
+      borderRadius: 12,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    recentIconText: { fontSize: 20 },
+    recentInfo: { flex: 1 },
+    recentTitle: { fontSize: 16, fontWeight: "600" },
+    recentMeta: { fontSize: 12, marginTop: 2 },
+    chevron: { fontSize: 24, fontWeight: "300" },
     statsRow: {
       flexDirection: "row",
       gap: 12,

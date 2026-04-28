@@ -3,9 +3,9 @@ import {
   FlatList,
   StyleSheet,
   Pressable,
-  ActivityIndicator,
   Alert,
   View,
+  Animated,
 } from "react-native";
 import { useLocalSearchParams, useRouter, Stack } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -24,6 +24,28 @@ import { Colors, type ColorScheme } from "@/constants/theme";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { useAppStore } from "@/services/store";
 import type { Translation } from "@/services/types";
+
+function DownloadingIndicator({ color }: { color: string }) {
+  const [anim] = useState(() => new Animated.Value(0));
+  useEffect(() => {
+    Animated.loop(
+      Animated.timing(anim, {
+        toValue: 1,
+        duration: 1200,
+        useNativeDriver: true,
+      }),
+    ).start();
+  }, [anim]);
+  const rotate = anim.interpolate({
+    inputRange: [0, 1],
+    outputRange: ["0deg", "360deg"],
+  });
+  return (
+    <Animated.View style={{ transform: [{ rotate }] }}>
+      <ThemedText style={{ fontSize: 18, color }}>⟳</ThemedText>
+    </Animated.View>
+  );
+}
 
 export default function TranslationsScreen() {
   const { lang } = useLocalSearchParams<{ lang: string }>();
@@ -111,12 +133,16 @@ export default function TranslationsScreen() {
                 style={[
                   s.iconCircle,
                   {
-                    backgroundColor: isLocal ? colors.success : colors.tint,
+                    backgroundColor: isLocal
+                      ? colors.success
+                      : isCurrentlyDownloading
+                        ? colors.tint + "30"
+                        : colors.tint,
                   },
                 ]}
               >
                 {isCurrentlyDownloading ? (
-                  <ActivityIndicator size="small" color="#fff" />
+                  <DownloadingIndicator color={colors.tint} />
                 ) : (
                   <ThemedText style={s.iconText}>
                     {isLocal ? "✓" : "↓"}

@@ -40,6 +40,13 @@ const fileStorage: StateStorage = {
 
 export type ThemePreference = "system" | "light" | "dark";
 
+export interface ReadingPosition {
+  translationId: string;
+  book: string;
+  chapter: number;
+  timestamp: number;
+}
+
 interface AppState {
   /** User's theme preference */
   theme: ThemePreference;
@@ -47,13 +54,21 @@ interface AppState {
   defaultBible: string | null;
   /** Set of downloaded translation IDs (cached for fast reads) */
   downloadedIds: string[];
+  /** Reader font size (1-based scale: 1=small, 2=default, 3=large, 4=xlarge) */
+  fontSize: number;
+  /** Last reading position per translation */
+  readingHistory: ReadingPosition[];
 
   setTheme: (theme: ThemePreference) => void;
   setDefaultBible: (id: string | null) => void;
   addDownloaded: (id: string) => void;
   removeDownloaded: (id: string) => void;
   refreshDownloaded: () => void;
+  setFontSize: (size: number) => void;
+  saveReadingPosition: (pos: Omit<ReadingPosition, "timestamp">) => void;
 }
+
+const MAX_HISTORY = 20;
 
 export const useAppStore = create<AppState>()(
   persist(
@@ -61,6 +76,8 @@ export const useAppStore = create<AppState>()(
       theme: "system",
       defaultBible: null,
       downloadedIds: [],
+      fontSize: 2,
+      readingHistory: [],
 
       setTheme: (theme) => set({ theme }),
 
@@ -77,6 +94,9 @@ export const useAppStore = create<AppState>()(
         set((state) => ({
           downloadedIds: state.downloadedIds.filter((d) => d !== id),
           defaultBible: state.defaultBible === id ? null : state.defaultBible,
+          readingHistory: state.readingHistory.filter(
+            (r) => r.translationId !== id,
+          ),
         })),
 
       refreshDownloaded: () => {
@@ -90,6 +110,19 @@ export const useAppStore = create<AppState>()(
         }
         set({ downloadedIds: ids });
       },
+
+      setFontSize: (fontSize) => set({ fontSize }),
+
+      saveReadingPosition: (pos) =>
+        set((state) => {
+          const entry: ReadingPosition = { ...pos, timestamp: Date.now() };
+          const filtered = state.readingHistory.filter(
+            (r) => r.translationId !== pos.translationId,
+          );
+          return {
+            readingHistory: [entry, ...filtered].slice(0, MAX_HISTORY),
+          };
+        }),
     }),
     {
       name: "openbiblia-settings",
@@ -98,6 +131,8 @@ export const useAppStore = create<AppState>()(
         theme: state.theme,
         defaultBible: state.defaultBible,
         downloadedIds: state.downloadedIds,
+        fontSize: state.fontSize,
+        readingHistory: state.readingHistory,
       }),
     },
   ),

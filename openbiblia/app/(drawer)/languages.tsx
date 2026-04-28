@@ -1,4 +1,5 @@
-import { FlatList, StyleSheet, Pressable, View } from "react-native";
+import { useState, useMemo } from "react";
+import { FlatList, StyleSheet, Pressable, View, TextInput } from "react-native";
 import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -16,14 +17,51 @@ export default function LanguagesScreen() {
   const colorScheme = useColorScheme();
   const s = getStyles(colorScheme);
   const colors = Colors[colorScheme];
+  const [search, setSearch] = useState("");
+
+  const filtered = useMemo(() => {
+    if (!search.trim()) return languages;
+    const q = search.toLowerCase();
+    return languages.filter((l) => {
+      const name = getLanguageName(l.lang).toLowerCase();
+      return name.includes(q) || l.lang.toLowerCase().includes(q);
+    });
+  }, [languages, search]);
 
   return (
     <ThemedView style={s.container}>
+      <View
+        style={[
+          s.searchBar,
+          { backgroundColor: colors.card, borderColor: colors.border },
+        ]}
+      >
+        <ThemedText style={[s.searchIcon, { color: colors.secondaryText }]}>
+          ⌕
+        </ThemedText>
+        <TextInput
+          style={[s.searchInput, { color: colors.text }]}
+          placeholder="Search languages..."
+          placeholderTextColor={colors.secondaryText}
+          value={search}
+          onChangeText={setSearch}
+          autoCapitalize="none"
+          autoCorrect={false}
+          clearButtonMode="while-editing"
+        />
+      </View>
       <FlatList
-        data={languages}
+        data={filtered}
         keyExtractor={(item) => item.lang}
         contentContainerStyle={[s.list, { paddingBottom: insets.bottom + 16 }]}
         showsVerticalScrollIndicator={false}
+        ListEmptyComponent={
+          <View style={s.emptyContainer}>
+            <ThemedText style={[s.emptyText, { color: colors.secondaryText }]}>
+              No languages match "{search}"
+            </ThemedText>
+          </View>
+        }
         renderItem={({ item }) => (
           <Pressable
             onPress={() => router.push(`/translations/${item.lang}`)}
@@ -58,6 +96,24 @@ function getStyles(colorScheme: ColorScheme) {
 
   return StyleSheet.create({
     container: { flex: 1, backgroundColor: colors.background },
+    searchBar: {
+      flexDirection: "row",
+      alignItems: "center",
+      marginHorizontal: 16,
+      marginTop: 12,
+      paddingHorizontal: 14,
+      borderRadius: 12,
+      borderWidth: 1,
+      height: 46,
+    },
+    searchIcon: { fontSize: 20, marginRight: 8 },
+    searchInput: {
+      flex: 1,
+      fontSize: 16,
+      height: "100%",
+    },
+    emptyContainer: { padding: 40, alignItems: "center" },
+    emptyText: { fontSize: 15, textAlign: "center" },
     list: { padding: 16, gap: 10 },
     card: {
       flexDirection: "row",
