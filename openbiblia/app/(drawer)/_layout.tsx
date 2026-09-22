@@ -1,11 +1,11 @@
-import { Drawer } from "expo-router/drawer";
-import { View, StyleSheet, Image } from "react-native";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import {
+  Drawer,
   DrawerContentScrollView,
   DrawerItemList,
   type DrawerContentComponentProps,
-} from "@react-navigation/drawer";
+} from "expo-router/drawer";
+import { View, StyleSheet, Image } from "react-native";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 import { Colors, type ColorScheme } from "@/constants/theme";
 import { useColorScheme } from "@/hooks/use-color-scheme";
