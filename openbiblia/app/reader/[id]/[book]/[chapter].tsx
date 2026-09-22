@@ -127,7 +127,10 @@ export default function ReaderScreen() {
         setAdjacent({ prev: adjPrev, next: adjNext });
         setPageIndex(initial);
         setSelectedVerse(null);
-        stopSpeech();
+        speechToken.current += 1;
+        Speech.stop();
+        setSpeaking(false);
+        setActiveVerse(null);
         setLoadedKey(dataKey);
       })
       .catch(() => {
@@ -136,7 +139,7 @@ export default function ReaderScreen() {
     return () => {
       alive = false;
     };
-  }, [id, book, chapterNum, dataKey, stopSpeech]);
+  }, [id, book, chapterNum, dataKey]);
 
   // Pages laid out left-to-right: [prev book's last chapter] ... [next book's first chapter]
   const pages = useMemo<ReaderPage[]>(() => {

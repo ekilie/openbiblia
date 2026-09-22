@@ -56,6 +56,8 @@ interface AppState {
   downloadedIds: string[];
   /** Reader font size (1-based scale: 1=small, 2=default, 3=large, 4=xlarge) */
   fontSize: number;
+  /** Reader body font family preference */
+  readerFontFamily: "serif" | "sans";
   /** Last reading position per translation */
   readingHistory: ReadingPosition[];
 
@@ -65,6 +67,7 @@ interface AppState {
   removeDownloaded: (id: string) => void;
   refreshDownloaded: () => void;
   setFontSize: (size: number) => void;
+  setReaderFontFamily: (family: "serif" | "sans") => void;
   saveReadingPosition: (pos: Omit<ReadingPosition, "timestamp">) => void;
 }
 
@@ -77,6 +80,7 @@ export const useAppStore = create<AppState>()(
       defaultBible: null,
       downloadedIds: [],
       fontSize: 2,
+      readerFontFamily: "serif",
       readingHistory: [],
 
       setTheme: (theme) => set({ theme }),
@@ -113,6 +117,8 @@ export const useAppStore = create<AppState>()(
 
       setFontSize: (fontSize) => set({ fontSize }),
 
+      setReaderFontFamily: (readerFontFamily) => set({ readerFontFamily }),
+
       saveReadingPosition: (pos) =>
         set((state) => {
           const entry: ReadingPosition = { ...pos, timestamp: Date.now() };
@@ -132,6 +138,7 @@ export const useAppStore = create<AppState>()(
         defaultBible: state.defaultBible,
         downloadedIds: state.downloadedIds,
         fontSize: state.fontSize,
+        readerFontFamily: state.readerFontFamily,
         readingHistory: state.readingHistory,
       }),
     },
