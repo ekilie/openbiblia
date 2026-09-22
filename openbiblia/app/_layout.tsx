@@ -1,4 +1,12 @@
 import {
+  Lora_400Regular,
+  Lora_400Regular_Italic,
+  Lora_500Medium,
+  Lora_600SemiBold,
+  Lora_700Bold,
+  useFonts,
+} from "@expo-google-fonts/lora";
+import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
@@ -13,6 +21,14 @@ import { Colors } from "@/constants/theme";
 import { useAppStore } from "@/services/store";
 
 export default function RootLayout() {
+  const [fontsLoaded] = useFonts({
+    Lora_400Regular,
+    Lora_400Regular_Italic,
+    Lora_500Medium,
+    Lora_600SemiBold,
+    Lora_700Bold,
+  });
+
   const colorScheme = useColorScheme();
   const colors = Colors[colorScheme];
   const refreshDownloaded = useAppStore((s) => s.refreshDownloaded);
@@ -45,6 +61,10 @@ export default function RootLayout() {
             border: colors.border,
           },
         };
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <ThemeProvider value={navTheme}>
