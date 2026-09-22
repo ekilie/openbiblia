@@ -4,7 +4,7 @@ start:
 dev:
 	eas build --platform android --profile dev
 
-build-apk
+build-apk:
 	eas build --platform android --profile preview
 
 prebuild:
