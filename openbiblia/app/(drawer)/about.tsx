@@ -63,8 +63,9 @@ export default function AboutScreen() {
             Features
           </ThemedText>
           {[
-            "Offline reading — no internet needed after download",
+            "Offline reading no internet needed after download",
             "Multiple translations in dozens of languages",
+            "Frozen translations, they will never change or be altered",
             "Adjustable text size for comfortable reading",
             "Light and dark theme support",
             "Reading progress tracked automatically",
