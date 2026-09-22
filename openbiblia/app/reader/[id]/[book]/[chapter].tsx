@@ -18,6 +18,7 @@ import * as Clipboard from "expo-clipboard";
 import * as Haptics from "expo-haptics";
 import * as Speech from "expo-speech";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { Gesture, GestureDetector } from "react-native-gesture-handler";
 
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
@@ -31,7 +32,6 @@ import type { Verse } from "@/services/types";
 const FONT_SIZES = [16, 18, 20, 23, 26];
 const LINE_HEIGHTS = [27, 30, 34, 39, 45];
 const FONT_SIZE_LABELS = ["Small", "Default", "Large", "X-Large", "Huge"];
-const NAV_BAR_HEIGHT = 56;
 
 /** react-native-pager-view requires a native module — fall back to single-page
  *  scrolling on web and in Expo Go, where the module is unavailable. */
@@ -273,25 +273,72 @@ export default function ReaderScreen() {
     pageIndex < pages.length - 1 ||
     (adjacent.next !== null && currentBookIdx < allBooks.length - 1);
 
-  const goPrev = useCallback(() => {
-    if (pageIndex > 0) {
-      goToPage(pageIndex - 1);
-    } else if (currentBookIdx > 0) {
+  // Pure router navigation (no pager ref) shared by the swipe gestures and
+  // used by the fallback (web / Expo Go) path.
+  const replaceTo = useCallback(
+    (idx: number) => {
+      const page = pages[idx];
+      if (page) router.replace(`/reader/${id}/${page.book}/${page.chapter}`);
+    },
+    [pages, id, router],
+  );
+
+  const beyondPrev = useCallback(() => {
+    if (currentBookIdx > 0) {
       const prevBook = allBooks[currentBookIdx - 1];
       getChapters(id, prevBook).then((chs) => {
         router.replace(`/reader/${id}/${prevBook}/${chs[chs.length - 1]}`);
       });
     }
-  }, [pageIndex, goToPage, currentBookIdx, allBooks, id, router]);
+  }, [currentBookIdx, allBooks, id, router]);
 
-  const goNext = useCallback(() => {
-    if (pageIndex < pages.length - 1) {
-      goToPage(pageIndex + 1);
-    } else if (currentBookIdx < allBooks.length - 1) {
+  const beyondNext = useCallback(() => {
+    if (currentBookIdx < allBooks.length - 1) {
       const nextBook = allBooks[currentBookIdx + 1];
       router.replace(`/reader/${id}/${nextBook}/1`);
     }
-  }, [pageIndex, pages.length, goToPage, currentBookIdx, allBooks, id, router]);
+  }, [currentBookIdx, allBooks, id, router]);
+
+  const goPrev = useCallback(() => {
+    if (pageIndex > 0) goToPage(pageIndex - 1);
+    else beyondPrev();
+  }, [pageIndex, goToPage, beyondPrev]);
+
+  const goNext = useCallback(() => {
+    if (pageIndex < pages.length - 1) goToPage(pageIndex + 1);
+    else beyondNext();
+  }, [pageIndex, pages.length, goToPage, beyondNext]);
+
+  const swipePrev = useCallback(() => {
+    if (pageIndex > 0) replaceTo(pageIndex - 1);
+    else beyondPrev();
+  }, [pageIndex, replaceTo, beyondPrev]);
+
+  const swipeNext = useCallback(() => {
+    if (pageIndex < pages.length - 1) replaceTo(pageIndex + 1);
+    else beyondNext();
+  }, [pageIndex, pages.length, replaceTo, beyondNext]);
+
+  // Horizontal swipe navigation for web / Expo Go, where the pager module is
+  // unavailable (native builds swipe natively through PagerView).
+  const swipeGesture = useMemo(
+    () =>
+      Gesture.Race(
+        Gesture.Pan()
+          .activeOffsetX(24)
+          .failOffsetY([-18, 18])
+          .onEnd((e) => {
+            if (e.translationX > 72) swipePrev();
+          }),
+        Gesture.Pan()
+          .activeOffsetX(-24)
+          .failOffsetY([-18, 18])
+          .onEnd((e) => {
+            if (e.translationX < -72) swipeNext();
+          }),
+      ),
+    [swipePrev, swipeNext],
+  );
 
   // ---- Verse actions ----
   const selectVerse = useCallback((verseNum: number | null) => {
@@ -467,25 +514,31 @@ export default function ReaderScreen() {
       )}
 
       {/* Chapter content */}
-      {canPager ? (
-        <PagerView
-          ref={pagerRef}
-          key={routeKey}
-          style={s.pager}
-          initialPage={initialIndex}
-          onPageSelected={handlePageSelected}
-        >
-          {pages.map((page) => (
-            <ChapterContent
-              key={pageKey(page)}
-              page={page}
-              {...contentProps}
-            />
-          ))}
-        </PagerView>
-      ) : (
-        <ChapterContent page={currentPage} {...contentProps} />
-      )}
+      <View style={s.contentArea}>
+        {canPager ? (
+          <PagerView
+            ref={pagerRef}
+            key={routeKey}
+            style={s.pager}
+            initialPage={initialIndex}
+            onPageSelected={handlePageSelected}
+          >
+            {pages.map((page) => (
+              <ChapterContent
+                key={pageKey(page)}
+                page={page}
+                {...contentProps}
+              />
+            ))}
+          </PagerView>
+        ) : (
+          <GestureDetector gesture={swipeGesture}>
+            <View style={{ flex: 1 }}>
+              <ChapterContent page={currentPage} {...contentProps} />
+            </View>
+          </GestureDetector>
+        )}
+      </View>
 
       {/* Selected verse actions */}
       {selectedVerseObj && (
@@ -495,7 +548,7 @@ export default function ReaderScreen() {
             {
               backgroundColor: colors.card,
               borderColor: colors.border,
-              bottom: NAV_BAR_HEIGHT + insets.bottom + 10,
+              marginBottom: 8,
             },
           ]}
         >
@@ -620,7 +673,7 @@ function ChapterContent({
       <ScrollView
         contentContainerStyle={[
           s.content,
-          { paddingBottom: insets.bottom + NAV_BAR_HEIGHT + 120 },
+          { paddingBottom: insets.bottom + 48 },
         ]}
         showsVerticalScrollIndicator={false}
       >
@@ -712,6 +765,7 @@ function getStyles(colorScheme: ColorScheme) {
     },
     pager: { flex: 1, backgroundColor: colors.background },
     page: { flex: 1, backgroundColor: colors.background },
+    contentArea: { flex: 1, backgroundColor: colors.background },
     headerActions: {
       flexDirection: "row",
       alignItems: "center",
@@ -796,9 +850,7 @@ function getStyles(colorScheme: ColorScheme) {
       color: colors.verseNum,
     },
     actionBar: {
-      position: "absolute",
-      left: 16,
-      right: 16,
+      marginHorizontal: 16,
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-around",
@@ -815,11 +867,6 @@ function getStyles(colorScheme: ColorScheme) {
     actionBtn: { alignItems: "center", gap: 2, paddingHorizontal: 12, paddingVertical: 4 },
     actionLabel: { fontSize: 12, fontWeight: "600" },
     navBar: {
-      position: "absolute",
-      bottom: 0,
-      left: 0,
-      right: 0,
-      height: NAV_BAR_HEIGHT,
       flexDirection: "row",
       alignItems: "center",
       paddingTop: 12,
