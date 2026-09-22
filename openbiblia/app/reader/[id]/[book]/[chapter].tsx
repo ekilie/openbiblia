@@ -254,13 +254,13 @@ export default function ReaderScreen() {
   );
 
   const goToPage = useCallback(
-    (idx: number) => {
+    (idx: number, dir: "prev" | "next" = "next") => {
       if (idx < 0 || idx >= pages.length) return;
       if (canPager && pagerRef.current) {
         pagerRef.current.setPage(idx);
       } else {
         const page = pages[idx];
-        router.replace(`/reader/${id}/${page.book}/${page.chapter}`);
+        router.replace(`/reader/${id}/${page.book}/${page.chapter}?dir=${dir}`);
       }
     },
     [pages, id, router],
@@ -273,12 +273,16 @@ export default function ReaderScreen() {
     pageIndex < pages.length - 1 ||
     (adjacent.next !== null && currentBookIdx < allBooks.length - 1);
 
-  // Pure router navigation (no pager ref) shared by the swipe gestures and
-  // used by the fallback (web / Expo Go) path.
+  // Pure router navigation (no pager ref) — shared by the swipe gestures and
+  // used by the fallback (web / Expo Go) path. `dir` drives the page-turn
+  // transition direction.
   const replaceTo = useCallback(
-    (idx: number) => {
+    (idx: number, dir: "prev" | "next") => {
       const page = pages[idx];
-      if (page) router.replace(`/reader/${id}/${page.book}/${page.chapter}`);
+      if (page)
+        router.replace(
+          `/reader/${id}/${page.book}/${page.chapter}?dir=${dir}`,
+        );
     },
     [pages, id, router],
   );
@@ -287,7 +291,7 @@ export default function ReaderScreen() {
     if (currentBookIdx > 0) {
       const prevBook = allBooks[currentBookIdx - 1];
       getChapters(id, prevBook).then((chs) => {
-        router.replace(`/reader/${id}/${prevBook}/${chs[chs.length - 1]}`);
+        router.replace(`/reader/${id}/${prevBook}/${chs[chs.length - 1]}?dir=prev`);
       });
     }
   }, [currentBookIdx, allBooks, id, router]);
@@ -295,27 +299,31 @@ export default function ReaderScreen() {
   const beyondNext = useCallback(() => {
     if (currentBookIdx < allBooks.length - 1) {
       const nextBook = allBooks[currentBookIdx + 1];
-      router.replace(`/reader/${id}/${nextBook}/1`);
+      router.replace(`/reader/${id}/${nextBook}/1?dir=next`);
     }
   }, [currentBookIdx, allBooks, id, router]);
 
   const goPrev = useCallback(() => {
-    if (pageIndex > 0) goToPage(pageIndex - 1);
-    else beyondPrev();
-  }, [pageIndex, goToPage, beyondPrev]);
+    if (pageIndex > 0) {
+      if (canPager) goToPage(pageIndex - 1);
+      else replaceTo(pageIndex - 1, "prev");
+    } else beyondPrev();
+  }, [pageIndex, goToPage, replaceTo, beyondPrev]);
 
   const goNext = useCallback(() => {
-    if (pageIndex < pages.length - 1) goToPage(pageIndex + 1);
-    else beyondNext();
-  }, [pageIndex, pages.length, goToPage, beyondNext]);
+    if (pageIndex < pages.length - 1) {
+      if (canPager) goToPage(pageIndex + 1);
+      else replaceTo(pageIndex + 1, "next");
+    } else beyondNext();
+  }, [pageIndex, pages.length, goToPage, replaceTo, beyondNext]);
 
   const swipePrev = useCallback(() => {
-    if (pageIndex > 0) replaceTo(pageIndex - 1);
+    if (pageIndex > 0) replaceTo(pageIndex - 1, "prev");
     else beyondPrev();
   }, [pageIndex, replaceTo, beyondPrev]);
 
   const swipeNext = useCallback(() => {
-    if (pageIndex < pages.length - 1) replaceTo(pageIndex + 1);
+    if (pageIndex < pages.length - 1) replaceTo(pageIndex + 1, "next");
     else beyondNext();
   }, [pageIndex, pages.length, replaceTo, beyondNext]);
 
@@ -401,33 +409,44 @@ export default function ReaderScreen() {
   return (
     <ThemedView style={s.container}>
       <Stack.Screen
-        options={{
-          title: `${bookDisplayName(currentPage.book)} ${currentPage.chapter}`,
-          headerRight: () => (
-            <View style={s.headerActions}>
-              <Pressable
-                onPress={() => (speaking ? stopSpeech() : speakFrom(0))}
-                hitSlop={8}
-                style={s.headerBtn}
-                disabled={!currentVersesLoaded && !speaking}
-              >
-                <MaterialIcons
-                  name={speaking ? "stop-circle" : "play-circle-outline"}
-                  size={26}
-                  color={speaking || currentVersesLoaded ? colors.tint : colors.border}
-                />
-              </Pressable>
-              <Pressable
-                onPress={() => setShowPanel((v) => !v)}
-                hitSlop={8}
-                style={s.headerBtn}
-              >
-                <ThemedText style={[s.headerBtnText, { color: colors.tint }]}>
-                  Aa
-                </ThemedText>
-              </Pressable>
-            </View>
-          ),
+        options={({ route }) => {
+          const dir = (route.params as Record<string, string | undefined> | undefined)
+            ?.dir;
+          return {
+            title: `${bookDisplayName(currentPage.book)} ${currentPage.chapter}`,
+            // Page-turn transition for the fallback reader (web / Expo Go);
+            // the pager already animates natively in dev builds.
+            animation: canPager
+              ? "none"
+              : dir === "prev"
+                ? "slide_from_left"
+                : "slide_from_right",
+            headerRight: () => (
+              <View style={s.headerActions}>
+                <Pressable
+                  onPress={() => (speaking ? stopSpeech() : speakFrom(0))}
+                  hitSlop={8}
+                  style={s.headerBtn}
+                  disabled={!currentVersesLoaded && !speaking}
+                >
+                  <MaterialIcons
+                    name={speaking ? "stop-circle" : "play-circle-outline"}
+                    size={26}
+                    color={speaking || currentVersesLoaded ? colors.tint : colors.border}
+                  />
+                </Pressable>
+                <Pressable
+                  onPress={() => setShowPanel((v) => !v)}
+                  hitSlop={8}
+                  style={s.headerBtn}
+                >
+                  <ThemedText style={[s.headerBtnText, { color: colors.tint }]}>
+                    Aa
+                  </ThemedText>
+                </Pressable>
+              </View>
+            ),
+          };
         }}
       />
 
