@@ -10,6 +10,7 @@ import {
 import { useLocalSearchParams, useRouter, Stack } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
@@ -59,7 +60,18 @@ export default function BooksScreen() {
   return (
     <ThemedView style={s.container}>
       <Stack.Screen
-        options={{ title: info?.translation.name.toUpperCase() ?? id }}
+        options={{
+          title: info?.translation.name.toUpperCase() ?? id,
+          headerRight: () => (
+            <Pressable
+              onPress={() => router.push(`/search/${id}` as never)}
+              hitSlop={8}
+              style={{ paddingHorizontal: 12 }}
+            >
+              <MaterialIcons name="search" size={24} color={colors.tint} />
+            </Pressable>
+          ),
+        }}
       />
       <SectionList
         sections={sections}
