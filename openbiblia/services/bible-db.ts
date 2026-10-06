@@ -100,3 +100,23 @@ export async function getVerses(
     await db.closeAsync();
   }
 }
+
+/** Full-text search across a downloaded translation (simple LIKE match). */
+export async function searchVerses(
+  translationId: string,
+  query: string,
+  limit = 50
+): Promise<Verse[]> {
+  const q = query.trim();
+  if (q.length < 2) return [];
+  const db = await openTranslationDB(translationId);
+  try {
+    const rows = await db.getAllAsync<Verse>(
+      'SELECT id, book, chapter, verse, osis_id, text FROM verses WHERE text LIKE ? ORDER BY id LIMIT ?',
+      [`%${q}%`, limit]
+    );
+    return rows;
+  } finally {
+    await db.closeAsync();
+  }
+}

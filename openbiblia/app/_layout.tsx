@@ -93,6 +93,7 @@ export default function RootLayout() {
           name="reader/[id]/[book]/[chapter]"
           options={{ title: "Reading" }}
         />
+        <Stack.Screen name="search/[id]" options={{ title: "Search" }} />
       </Stack>
       <StatusBar style="auto" />
       </ThemeProvider>

@@ -103,7 +103,7 @@ export default function AboutScreen() {
         </Pressable>
 
         <ThemedText style={[s.footer, { color: colors.secondaryText }]}>
-          Made with ♡ for the global community
+          Created and maintained by Tachera Sasi
         </ThemedText>
       </ScrollView>
     </ThemedView>
