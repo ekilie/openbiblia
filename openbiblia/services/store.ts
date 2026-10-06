@@ -47,6 +47,15 @@ export interface ReadingPosition {
   timestamp: number;
 }
 
+export interface Bookmark {
+  translationId: string;
+  book: string;
+  chapter: number;
+  verse: number;
+  text: string;
+  timestamp: number;
+}
+
 interface AppState {
   /** User's theme preference */
   theme: ThemePreference;
@@ -60,6 +69,8 @@ interface AppState {
   readerFontFamily: "serif" | "sans";
   /** Last reading position per translation */
   readingHistory: ReadingPosition[];
+  /** Saved verses */
+  bookmarks: Bookmark[];
 
   setTheme: (theme: ThemePreference) => void;
   setDefaultBible: (id: string | null) => void;
@@ -69,6 +80,14 @@ interface AppState {
   setFontSize: (size: number) => void;
   setReaderFontFamily: (family: "serif" | "sans") => void;
   saveReadingPosition: (pos: Omit<ReadingPosition, "timestamp">) => void;
+  toggleBookmark: (b: Omit<Bookmark, "timestamp">) => void;
+  removeBookmark: (
+    translationId: string,
+    book: string,
+    chapter: number,
+    verse: number,
+  ) => void;
+  clearBookmarks: () => void;
 }
 
 const MAX_HISTORY = 20;
@@ -82,6 +101,7 @@ export const useAppStore = create<AppState>()(
       fontSize: 2,
       readerFontFamily: "serif",
       readingHistory: [],
+      bookmarks: [],
 
       setTheme: (theme) => set({ theme }),
 
@@ -129,6 +149,47 @@ export const useAppStore = create<AppState>()(
             readingHistory: [entry, ...filtered].slice(0, MAX_HISTORY),
           };
         }),
+
+      toggleBookmark: (b) =>
+        set((state) => {
+          const exists = state.bookmarks.some(
+            (x) =>
+              x.translationId === b.translationId &&
+              x.book === b.book &&
+              x.chapter === b.chapter &&
+              x.verse === b.verse,
+          );
+          if (exists) {
+            return {
+              bookmarks: state.bookmarks.filter(
+                (x) =>
+                  !(
+                    x.translationId === b.translationId &&
+                    x.book === b.book &&
+                    x.chapter === b.chapter &&
+                    x.verse === b.verse
+                  ),
+              ),
+            };
+          }
+          const entry: Bookmark = { ...b, timestamp: Date.now() };
+          return { bookmarks: [entry, ...state.bookmarks].slice(0, 500) };
+        }),
+
+      removeBookmark: (translationId, book, chapter, verse) =>
+        set((state) => ({
+          bookmarks: state.bookmarks.filter(
+            (x) =>
+              !(
+                x.translationId === translationId &&
+                x.book === book &&
+                x.chapter === chapter &&
+                x.verse === verse
+              ),
+          ),
+        })),
+
+      clearBookmarks: () => set({ bookmarks: [] }),
     }),
     {
       name: "openbiblia-settings",
@@ -140,6 +201,7 @@ export const useAppStore = create<AppState>()(
         fontSize: state.fontSize,
         readerFontFamily: state.readerFontFamily,
         readingHistory: state.readingHistory,
+        bookmarks: state.bookmarks,
       }),
     },
   ),
