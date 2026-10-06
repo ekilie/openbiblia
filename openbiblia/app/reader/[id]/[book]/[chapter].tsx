@@ -48,10 +48,11 @@ function pageKey(page: ReaderPage): string {
 }
 
 export default function ReaderScreen() {
-  const { id, book, chapter } = useLocalSearchParams<{
+  const { id, book, chapter, verse } = useLocalSearchParams<{
     id: string;
     book: string;
     chapter: string;
+    verse?: string;
   }>();
   const router = useRouter();
   const insets = useSafeAreaInsets();
@@ -87,6 +88,8 @@ export default function ReaderScreen() {
   const readerFontFamily = useAppStore((st) => st.readerFontFamily);
   const setReaderFontFamily = useAppStore((st) => st.setReaderFontFamily);
   const saveReadingPosition = useAppStore((st) => st.saveReadingPosition);
+  const bookmarks = useAppStore((st) => st.bookmarks);
+  const toggleBookmark = useAppStore((st) => st.toggleBookmark);
 
   const pagerRef = useRef<PagerView | null>(null);
   const speechToken = useRef(0);
@@ -359,6 +362,25 @@ export default function ReaderScreen() {
   const selectedVerseObj =
     currentVerses.find((v) => v.verse === selectedVerse) ?? null;
 
+  // Deep-link support: ?verse=N highlights that verse (from search/bookmarks).
+  useEffect(() => {
+    if (verse) {
+      const n = parseInt(verse, 10);
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- sync deep-link param into selection
+      if (!Number.isNaN(n)) setSelectedVerse(n);
+    }
+  }, [verse]);
+
+  const isBookmarked =
+    selectedVerseObj !== null &&
+    bookmarks.some(
+      (b) =>
+        b.translationId === id &&
+        b.book === currentPage.book &&
+        b.chapter === currentPage.chapter &&
+        b.verse === selectedVerseObj.verse,
+    );
+
   const copyVerse = useCallback(
     async (v: Verse) => {
       if (!v) return;
@@ -423,6 +445,17 @@ export default function ReaderScreen() {
                 : "slide_from_right",
             headerRight: () => (
               <View style={s.headerActions}>
+                <Pressable
+                  onPress={() => router.push(`/search/${id}` as never)}
+                  hitSlop={8}
+                  style={s.headerBtn}
+                >
+                  <MaterialIcons
+                    name="search"
+                    size={26}
+                    color={colors.tint}
+                  />
+                </Pressable>
                 <Pressable
                   onPress={() => (speaking ? stopSpeech() : speakFrom(0))}
                   hitSlop={8}
@@ -581,6 +614,32 @@ export default function ReaderScreen() {
             <MaterialIcons name="share" size={20} color={colors.tint} />
             <ThemedText style={[s.actionLabel, { color: colors.text }]}>
               Share
+            </ThemedText>
+          </Pressable>
+          <Pressable
+            style={s.actionBtn}
+            onPress={() => {
+              toggleBookmark({
+                translationId: id,
+                book: currentPage.book,
+                chapter: currentPage.chapter,
+                verse: selectedVerseObj.verse,
+                text: selectedVerseObj.text,
+              });
+              if (Platform.OS !== "web") {
+                Haptics.notificationAsync(
+                  Haptics.NotificationFeedbackType.Success,
+                );
+              }
+            }}
+          >
+            <MaterialIcons
+              name={isBookmarked ? "bookmark" : "bookmark-outline"}
+              size={20}
+              color={colors.tint}
+            />
+            <ThemedText style={[s.actionLabel, { color: colors.text }]}>
+              {isBookmarked ? "Saved" : "Save"}
             </ThemedText>
           </Pressable>
           <Pressable
