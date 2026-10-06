@@ -43,6 +43,24 @@ export default function DrawerLayout() {
         }}
       />
       <Drawer.Screen
+        name="my-bibles"
+        options={{
+          title: "My Bibles",
+          drawerIcon: ({ color, size }) => (
+            <MaterialIcons name="book" size={size} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="bookmarks"
+        options={{
+          title: "Bookmarks",
+          drawerIcon: ({ color, size }) => (
+            <MaterialIcons name="bookmark" size={size} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
         name="languages"
         options={{
           title: "Languages",
