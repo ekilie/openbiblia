@@ -49,7 +49,7 @@ export default function SettingsScreen() {
 
   useEffect(() => {
     refreshDownloaded();
-  }, []);
+  }, [refreshDownloaded]);
 
   const downloadedBibles = downloadedIds.map((id) => {
     const info = getTranslation(id);
