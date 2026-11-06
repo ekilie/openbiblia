@@ -7,7 +7,7 @@ import {
 import { View, StyleSheet, Image } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
-import { Colors, type ColorScheme } from "@/constants/theme";
+import { Colors } from "@/constants/theme";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { ThemedText } from "@/components/themed-text";
 
@@ -38,7 +38,7 @@ export default function DrawerLayout() {
           title: "OpenBiblia",
           drawerLabel: "Home",
           drawerIcon: ({ color, size }) => (
-            <MaterialIcons name="home" size={size} color={color} />
+            <MaterialIcons name="home" size={size} color={color as string} />
           ),
         }}
       />
@@ -47,7 +47,20 @@ export default function DrawerLayout() {
         options={{
           title: "My Bibles",
           drawerIcon: ({ color, size }) => (
-            <MaterialIcons name="book" size={size} color={color} />
+            <MaterialIcons name="book" size={size} color={color as string} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="commentaries"
+        options={{
+          title: "Commentaries",
+          drawerIcon: ({ color, size }) => (
+            <MaterialIcons
+              name="menu-book"
+              size={size}
+              color={color as string}
+            />
           ),
         }}
       />
@@ -56,7 +69,7 @@ export default function DrawerLayout() {
         options={{
           title: "Bookmarks",
           drawerIcon: ({ color, size }) => (
-            <MaterialIcons name="bookmark" size={size} color={color} />
+            <MaterialIcons name="bookmark" size={size} color={color as string} />
           ),
         }}
       />
@@ -65,7 +78,7 @@ export default function DrawerLayout() {
         options={{
           title: "Languages",
           drawerIcon: ({ color, size }) => (
-            <MaterialIcons name="language" size={size} color={color} />
+            <MaterialIcons name="language" size={size} color={color as string} />
           ),
         }}
       />
@@ -74,7 +87,7 @@ export default function DrawerLayout() {
         options={{
           title: "Settings",
           drawerIcon: ({ color, size }) => (
-            <MaterialIcons name="settings" size={size} color={color} />
+            <MaterialIcons name="settings" size={size} color={color as string} />
           ),
         }}
       />
@@ -83,7 +96,11 @@ export default function DrawerLayout() {
         options={{
           title: "About",
           drawerIcon: ({ color, size }) => (
-            <MaterialIcons name="info-outline" size={size} color={color} />
+            <MaterialIcons
+              name="info-outline"
+              size={size}
+              color={color as string}
+            />
           ),
         }}
       />
