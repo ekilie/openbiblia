@@ -97,7 +97,7 @@ export default function SearchScreen() {
                 No verses found for {query.trim()}
               </ThemedText>
             </View>
-          ) : null
+          ) : undefined
         }
         renderItem={({ item }) => (
           <Pressable
