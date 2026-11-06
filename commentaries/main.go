@@ -1,6 +1,8 @@
 package main
 
 import (
+	"encoding/json"
+	"flag"
 	"fmt"
 	"io"
 	"net/http"
@@ -10,83 +12,66 @@ import (
 	"time"
 )
 
-var baseURL = "https://www.bible-commentaries.com/source/johnschultz/"
-
-// List of all available PDFs (extracted from the site https://www.bible-commentaries.com)
-var commentaries = []string{
-	"BC_Genesis.pdf",
-	"BC_Exodus.pdf",
-	"BC_Leviticus.pdf",
-	"BC_Numbers.pdf",
-	"BC_Deuteronomy.pdf",
-	"BC_Joshua.pdf",
-	"BC_Judges.pdf",
-	"BC_Ruth.pdf",
-	"BC_FirstSamuel.pdf",
-	"BC_2Sam.pdf",
-	"BC_1Kings.pdf",
-	"BC_2KingsRevised.pdf",
-	"BC_1Chron.pdf",
-	"BC_2Chron.pdf",
-	"BC_Ezra.pdf",
-	"BC_Nehemiah.pdf",
-	"BC_Esther.pdf",
-	"BC_Job.pdf",
-	"BC_Psalms_001-041.pdf",
-	"BC_Psalms_042-072.pdf",
-	"BC_Psalms_073-089.pdf",
-	"BC_Psalms_090-106.pdf",
-	"BC_Psalms_107-150.pdf",
-	"BC_proverbs.pdf",
-	"BC_Ecclesiastes.pdf",
-	"BC_Song-of-songs.pdf",
-	"BC_Isaiah.pdf",
-	"BC_JEREMIAH.pdf",
-	"BC_Lamentations.pdf",
-	"BC_Ezekiel.pdf",
-	"BC_Daniel.pdf",
-	"BC_Hosea.pdf",
-	"BC_Joel.pdf",
-	"BC_Amos.pdf",
-	"BC_Obadiah.pdf",
-	"BC_Jonah.pdf",
-	"BC_Micah.pdf",
-	"BC_Nahum.pdf",
-	"BC_Habakkuk.pdf",
-	"BC_Zephaniah.pdf",
-	"BC_Haggai.pdf",
-	"BC_Zechariah.pdf",
-	"BC_Malachi.pdf",
-	"BC_Matthew.pdf",
-	"BC_Mark.pdf",
-	"BC_Luke.pdf",
-	"BC_John.pdf",
-	"BC_Acts.pdf",
-	"BC_Romans.pdf",
-	"BC_1Corinthians.pdf",
-	"BC_2Corinthians.pdf",
-	"BC_Galatians.pdf",
-	"BC_Phi-Col-Eph.pdf",
-	"BC_1-Thessalonians.pdf",
-	"BC_2-Thessalonians.pdf",
-	"BC_1_Timothy.pdf",
-	"BC_2_Timothy.pdf",
-	"BC_Titus.pdf",
-	"BC_PhilemonR.pdf",
-	"BC_Hebrews.pdf",
-	"BC_James.pdf",
-	"BC_1Peter.pdf",
-	"BC_2_Peter.pdf",
-	"BC_1John.pdf",
-	"BC_2_John.pdf",
-	"BC_3_John.pdf",
-	"BC_Jude.pdf",
-	"BC_Revelation.pdf",
-	"BC_on-David.pdf", // Additional work
+// Commentary is one entry in the commentaries manifest.
+type Commentary struct {
+	Name        string `json:"name"`
+	DownloadURL string `json:"download_url"`
 }
 
-func downloadFile(url, filepath string) error {
-	resp, err := http.Get(url)
+// Manifest is the top-level structure of commentaries.json.
+type Manifest struct {
+	Commentaries []Commentary `json:"commentaries"`
+}
+
+// findManifest returns the first manifest path that exists. This lets the
+// downloader run either from the repo root or from the commentaries directory.
+func findManifest() string {
+	candidates := []string{
+		filepath.Join("commentaries", "commentaries.json"),
+		"commentaries.json",
+	}
+
+	for _, path := range candidates {
+		if _, err := os.Stat(path); err == nil {
+			return path
+		}
+	}
+
+	return candidates[0]
+}
+
+// loadManifest reads and validates the commentaries JSON file.
+func loadManifest(path string) ([]Commentary, error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return nil, fmt.Errorf("read manifest: %w", err)
+	}
+
+	var manifest Manifest
+	if err := json.Unmarshal(data, &manifest); err != nil {
+		return nil, fmt.Errorf("parse manifest: %w", err)
+	}
+
+	if len(manifest.Commentaries) == 0 {
+		return nil, fmt.Errorf("manifest contains no commentaries")
+	}
+
+	for i, c := range manifest.Commentaries {
+		if c.Name == "" {
+			return nil, fmt.Errorf("commentary %d: name is empty", i)
+		}
+		if c.DownloadURL == "" {
+			return nil, fmt.Errorf("commentary %q: download_url is empty", c.Name)
+		}
+	}
+
+	return manifest.Commentaries, nil
+}
+
+func downloadFile(url, dest string) error {
+	client := &http.Client{Timeout: 10 * time.Minute}
+
+	resp, err := client.Get(url)
 	if err != nil {
 		return err
 	}
@@ -96,7 +81,7 @@ func downloadFile(url, filepath string) error {
 		return fmt.Errorf("bad status: %s", resp.Status)
 	}
 
-	out, err := os.Create(filepath)
+	out, err := os.Create(dest)
 	if err != nil {
 		return err
 	}
@@ -107,27 +92,40 @@ func downloadFile(url, filepath string) error {
 }
 
 func main() {
-	// Create downloads directory
-	downloadDir := "data"
-	if err := os.MkdirAll(downloadDir, 0755); err != nil {
-		fmt.Printf("Failed to create directory: %v\n", err)
-		return
+	manifestPath := flag.String("json", findManifest(), "path to the commentaries manifest")
+	downloadDir := flag.String("out", "", "directory to save downloaded PDFs (default: data next to the manifest)")
+	flag.Parse()
+
+	commentaries, err := loadManifest(*manifestPath)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to load %s: %v\n", *manifestPath, err)
+		os.Exit(1)
+	}
+
+	outDir := *downloadDir
+	if outDir == "" {
+		outDir = filepath.Join(filepath.Dir(*manifestPath), "data")
+	}
+
+	if err := os.MkdirAll(outDir, 0755); err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to create directory: %v\n", err)
+		os.Exit(1)
 	}
 
 	var wg sync.WaitGroup
 	sem := make(chan struct{}, 5) // Limit concurrency to 5
 
-	fmt.Println("Starting download of all Bible Commentaries by John Schultz...")
+	fmt.Printf("Starting download of %d Bible commentaries...\n", len(commentaries))
 
-	for _, filename := range commentaries {
+	for _, commentary := range commentaries {
 		wg.Add(1)
-		go func(name string) {
+		go func(c Commentary) {
 			defer wg.Done()
 			sem <- struct{}{}
 			defer func() { <-sem }()
 
-			url := baseURL + name
-			localPath := filepath.Join(downloadDir, name)
+			name := filepath.Base(c.Name)
+			localPath := filepath.Join(outDir, name)
 
 			// Skip if already downloaded
 			if _, err := os.Stat(localPath); err == nil {
@@ -136,17 +134,16 @@ func main() {
 			}
 
 			fmt.Printf("Downloading: %s\n", name)
-			err := downloadFile(url, localPath)
-			if err != nil {
+			if err := downloadFile(c.DownloadURL, localPath); err != nil {
 				fmt.Printf("✗ Failed %s: %v\n", name, err)
 			} else {
 				fmt.Printf("✓ Downloaded: %s\n", name)
 			}
 
 			time.Sleep(300 * time.Millisecond) // Be polite to the server
-		}(filename)
+		}(commentary)
 	}
 
 	wg.Wait()
-	fmt.Printf("%s", "\nDownload complete! All files saved to ./" + downloadDir + "/\n")
+	fmt.Printf("\nDownload complete! Files saved to %s/\n", outDir)
 }
