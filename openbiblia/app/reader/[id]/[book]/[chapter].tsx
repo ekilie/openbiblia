@@ -1,11 +1,16 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   ActivityIndicator,
+  FlatList,
+  Modal,
   Platform,
   Pressable,
   ScrollView,
+  SectionList,
   Share,
   StyleSheet,
+  TextInput,
+  useWindowDimensions,
   View,
 } from "react-native";
 import PagerView, {
@@ -23,7 +28,7 @@ import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { getBooks, getChapters, getVerses } from "@/services/bible-db";
-import { bookDisplayName } from "@/services/book-names";
+import { bookDisplayName, isOldTestament } from "@/services/book-names";
 import { Colors, type ColorScheme } from "@/constants/theme";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { useAppStore } from "@/services/store";
@@ -82,6 +87,15 @@ export default function ReaderScreen() {
   const [speaking, setSpeaking] = useState(false);
   const [activeVerse, setActiveVerse] = useState<number | null>(null);
 
+  // Book / chapter navigation picker
+  const [showNavigator, setShowNavigator] = useState(false);
+  const [pickerBook, setPickerBook] = useState<string | null>(null);
+  const [pickerChapters, setPickerChapters] = useState<number[]>([]);
+  const [pickerLoading, setPickerLoading] = useState(false);
+  const [bookSearch, setBookSearch] = useState("");
+  const { width: windowWidth } = useWindowDimensions();
+  const pickerColumns = Math.max(4, Math.floor((windowWidth - 24) / 56));
+
   // Settings
   const fontSize = useAppStore((st) => st.fontSize);
   const setFontSize = useAppStore((st) => st.setFontSize);
@@ -93,6 +107,7 @@ export default function ReaderScreen() {
 
   const pagerRef = useRef<PagerView | null>(null);
   const speechToken = useRef(0);
+  const pickerRequest = useRef(0);
 
   const textSize = FONT_SIZES[fontSize - 1] ?? FONT_SIZES[1];
   const lineH = LINE_HEIGHTS[fontSize - 1] ?? LINE_HEIGHTS[1];
@@ -319,6 +334,87 @@ export default function ReaderScreen() {
       else replaceTo(pageIndex + 1, "next");
     } else beyondNext();
   }, [pageIndex, pages.length, goToPage, replaceTo, beyondNext]);
+
+  // ---- Book / chapter picker ----
+  const bookSections = useMemo(() => {
+    const query = bookSearch.trim().toLowerCase();
+    const filtered = query
+      ? allBooks.filter(
+          (bookId) =>
+            bookDisplayName(bookId).toLowerCase().includes(query) ||
+            bookId.toLowerCase().includes(query),
+        )
+      : allBooks;
+
+    return [
+      {
+        title: "Old Testament",
+        data: filtered.filter((bookId) => isOldTestament(bookId)),
+      },
+      {
+        title: "New Testament",
+        data: filtered.filter((bookId) => !isOldTestament(bookId)),
+      },
+    ].filter((section) => section.data.length > 0);
+  }, [allBooks, bookSearch]);
+
+  const loadPickerBook = useCallback(
+    async (bookId: string) => {
+      const request = pickerRequest.current + 1;
+      pickerRequest.current = request;
+      setPickerBook(bookId);
+      setPickerLoading(true);
+      try {
+        const bookChapters = await getChapters(id, bookId);
+        if (request !== pickerRequest.current) return;
+        setPickerChapters(bookChapters);
+      } catch {
+        if (request === pickerRequest.current) {
+          setPickerChapters([]);
+        }
+      } finally {
+        if (request === pickerRequest.current) {
+          setPickerLoading(false);
+        }
+      }
+    },
+    [id],
+  );
+
+  const openNavigator = useCallback(() => {
+    setShowNavigator(true);
+    setBookSearch("");
+    loadPickerBook(currentPage.book);
+  }, [currentPage.book, loadPickerBook]);
+
+  const closeNavigator = useCallback(() => {
+    setShowNavigator(false);
+  }, []);
+
+  const goToChapter = useCallback(
+    (targetBook: string, targetChapter: number) => {
+      setShowNavigator(false);
+      setSelectedVerse(null);
+      if (speaking) stopSpeech();
+
+      if (
+        targetBook === currentPage.book &&
+        targetChapter === currentPage.chapter
+      ) {
+        return;
+      }
+
+      router.replace(`/reader/${id}/${targetBook}/${targetChapter}`);
+    },
+    [
+      id,
+      router,
+      currentPage.book,
+      currentPage.chapter,
+      speaking,
+      stopSpeech,
+    ],
+  );
 
   const swipePrev = useCallback(() => {
     if (pageIndex > 0) replaceTo(pageIndex - 1, "prev");
@@ -682,10 +778,24 @@ export default function ReaderScreen() {
           </ThemedText>
         </Pressable>
 
-        <Pressable onPress={() => router.back()} style={s.navCenter}>
-          <ThemedText style={[s.navCenterText, { color: colors.secondaryText }]}>
-            {bookDisplayName(currentPage.book)} {currentPage.chapter}
-          </ThemedText>
+        <Pressable
+          onPress={openNavigator}
+          style={s.navCenter}
+          accessibilityRole="button"
+          accessibilityLabel={`Navigate from ${bookDisplayName(currentPage.book)} ${currentPage.chapter}`}
+        >
+          <View style={s.navCenterRow}>
+            <ThemedText
+              style={[s.navCenterText, { color: colors.secondaryText }]}
+            >
+              {bookDisplayName(currentPage.book)} {currentPage.chapter}
+            </ThemedText>
+            <MaterialIcons
+              name="expand-more"
+              size={18}
+              color={colors.secondaryText}
+            />
+          </View>
         </Pressable>
 
         <Pressable
@@ -698,6 +808,226 @@ export default function ReaderScreen() {
           </ThemedText>
         </Pressable>
       </View>
+
+      {/* Book / chapter picker */}
+      <Modal
+        visible={showNavigator}
+        animationType="slide"
+        onRequestClose={closeNavigator}
+      >
+        <ThemedView style={s.pickerContainer}>
+          <View
+            style={[
+              s.pickerHeader,
+              {
+                borderBottomColor: colors.border,
+                paddingTop: insets.top + 8,
+              },
+            ]}
+          >
+            {pickerBook ? (
+              <Pressable
+                onPress={() => setPickerBook(null)}
+                style={s.pickerHeaderSide}
+                hitSlop={8}
+              >
+                <MaterialIcons
+                  name="chevron-left"
+                  size={22}
+                  color={colors.tint}
+                />
+                <ThemedText
+                  style={[s.pickerHeaderSideText, { color: colors.tint }]}
+                >
+                  Books
+                </ThemedText>
+              </Pressable>
+            ) : (
+              <View style={s.pickerHeaderSide} />
+            )}
+
+            <ThemedText
+              style={[s.pickerTitle, { color: colors.text }]}
+              numberOfLines={1}
+            >
+              {pickerBook ? bookDisplayName(pickerBook) : "Choose a book"}
+            </ThemedText>
+
+            <Pressable
+              onPress={closeNavigator}
+              style={[s.pickerHeaderSide, s.pickerHeaderClose]}
+              hitSlop={8}
+            >
+              <MaterialIcons
+                name="close"
+                size={22}
+                color={colors.secondaryText}
+              />
+            </Pressable>
+          </View>
+
+          {pickerBook ? (
+            pickerLoading ? (
+              <ActivityIndicator
+                size="large"
+                color={colors.tint}
+                style={s.pickerSpinner}
+              />
+            ) : (
+              <FlatList
+                data={pickerChapters}
+                keyExtractor={(item) => item.toString()}
+                numColumns={pickerColumns}
+                key={pickerColumns}
+                style={s.pickerListContainer}
+                contentContainerStyle={[
+                  s.pickerChapterList,
+                  { paddingBottom: insets.bottom + 24 },
+                ]}
+                columnWrapperStyle={s.pickerChapterRow}
+                showsVerticalScrollIndicator={false}
+                renderItem={({ item }) => {
+                  const isCurrent =
+                    pickerBook === currentPage.book &&
+                    item === currentPage.chapter;
+                  return (
+                    <Pressable
+                      onPress={() => goToChapter(pickerBook, item)}
+                      style={({ pressed }) => [
+                        s.pickerChapterCell,
+                        {
+                          backgroundColor: isCurrent
+                            ? colors.tint
+                            : colors.card,
+                          borderColor: isCurrent
+                            ? colors.tint
+                            : colors.border,
+                          opacity: pressed ? 0.7 : 1,
+                        },
+                      ]}
+                    >
+                      <ThemedText
+                        style={[
+                          s.pickerChapterText,
+                          { color: isCurrent ? "#fff" : colors.text },
+                        ]}
+                      >
+                        {item}
+                      </ThemedText>
+                    </Pressable>
+                  );
+                }}
+                ListEmptyComponent={
+                  <ThemedText
+                    style={[s.pickerEmpty, { color: colors.secondaryText }]}
+                  >
+                    No chapters available.
+                  </ThemedText>
+                }
+              />
+            )
+          ) : (
+            <>
+              <View
+                style={[
+                  s.pickerSearch,
+                  {
+                    backgroundColor: colors.card,
+                    borderColor: colors.border,
+                  },
+                ]}
+              >
+                <MaterialIcons
+                  name="search"
+                  size={18}
+                  color={colors.secondaryText}
+                />
+                <TextInput
+                  style={[s.pickerSearchInput, { color: colors.text }]}
+                  placeholder="Search books..."
+                  placeholderTextColor={colors.secondaryText}
+                  value={bookSearch}
+                  onChangeText={setBookSearch}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  clearButtonMode="while-editing"
+                />
+              </View>
+
+              <SectionList
+                sections={bookSections}
+                keyExtractor={(item) => item}
+                style={s.pickerListContainer}
+                contentContainerStyle={[
+                  s.pickerList,
+                  { paddingBottom: insets.bottom + 24 },
+                ]}
+                showsVerticalScrollIndicator={false}
+                stickySectionHeadersEnabled={false}
+                keyboardShouldPersistTaps="handled"
+                renderSectionHeader={({ section }) => (
+                  <ThemedText
+                    style={[
+                      s.pickerSectionTitle,
+                      { color: colors.secondaryText },
+                    ]}
+                  >
+                    {section.title.toUpperCase()}
+                  </ThemedText>
+                )}
+                renderItem={({ item }) => {
+                  const isCurrent = item === currentPage.book;
+                  return (
+                    <Pressable
+                      onPress={() => loadPickerBook(item)}
+                      style={({ pressed }) => [
+                        s.pickerBookRow,
+                        {
+                          backgroundColor: isCurrent
+                            ? colors.tint + "15"
+                            : colors.card,
+                          borderColor: isCurrent
+                            ? colors.tint + "40"
+                            : colors.border,
+                          opacity: pressed ? 0.7 : 1,
+                        },
+                      ]}
+                    >
+                      <ThemedText
+                        style={[
+                          s.pickerBookName,
+                          { color: isCurrent ? colors.tint : colors.text },
+                        ]}
+                      >
+                        {bookDisplayName(item)}
+                      </ThemedText>
+                      {isCurrent ? (
+                        <ThemedText
+                          style={[s.pickerCurrent, { color: colors.tint }]}
+                        >
+                          Current
+                        </ThemedText>
+                      ) : null}
+                      <MaterialIcons
+                        name="chevron-right"
+                        size={20}
+                        color={colors.secondaryText}
+                      />
+                    </Pressable>
+                  );
+                }}
+                ListEmptyComponent={
+                  <ThemedText
+                    style={[s.pickerEmpty, { color: colors.secondaryText }]}
+                  >
+                    No books match &quot;{bookSearch}&quot;
+                  </ThemedText>
+                }
+              />
+            </>
+          )}
+        </ThemedView>
+      </Modal>
     </ThemedView>
   );
 }
@@ -965,9 +1295,94 @@ function getStyles(colorScheme: ColorScheme) {
       flex: 1,
       alignItems: "center",
     },
+    navCenterRow: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 2,
+    },
     navCenterText: {
       fontSize: 13,
       fontWeight: "600",
+    },
+    pickerContainer: { flex: 1, backgroundColor: colors.background },
+    pickerHeader: {
+      flexDirection: "row",
+      alignItems: "center",
+      paddingHorizontal: 12,
+      paddingBottom: 12,
+      borderBottomWidth: StyleSheet.hairlineWidth,
+    },
+    pickerHeaderSide: {
+      flex: 1,
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 2,
+      paddingVertical: 6,
+    },
+    pickerHeaderSideText: { fontSize: 15, fontWeight: "600" },
+    pickerHeaderClose: { justifyContent: "flex-end" },
+    pickerTitle: {
+      flex: 1,
+      textAlign: "center",
+      fontSize: 17,
+      fontWeight: "700",
+    },
+    pickerSpinner: { marginTop: 48 },
+    pickerListContainer: { flex: 1 },
+    pickerSearch: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 8,
+      marginHorizontal: 16,
+      marginTop: 12,
+      paddingHorizontal: 14,
+      borderRadius: 12,
+      borderWidth: 1,
+      height: 44,
+    },
+    pickerSearchInput: { flex: 1, fontSize: 15, height: "100%" },
+    pickerList: { paddingHorizontal: 16, paddingTop: 6 },
+    pickerSectionTitle: {
+      fontSize: 11,
+      fontWeight: "700",
+      letterSpacing: 1.4,
+      marginTop: 16,
+      marginBottom: 6,
+      marginLeft: 4,
+    },
+    pickerBookRow: {
+      flexDirection: "row",
+      alignItems: "center",
+      paddingHorizontal: 14,
+      paddingVertical: 13,
+      borderRadius: 12,
+      borderWidth: 1,
+      marginBottom: 7,
+      gap: 8,
+    },
+    pickerBookName: { flex: 1, fontSize: 16, fontWeight: "600" },
+    pickerCurrent: {
+      fontSize: 11,
+      fontWeight: "700",
+      textTransform: "uppercase",
+      letterSpacing: 0.6,
+    },
+    pickerChapterList: { paddingHorizontal: 16, paddingTop: 16 },
+    pickerChapterRow: { gap: 8 },
+    pickerChapterCell: {
+      width: 48,
+      height: 48,
+      borderRadius: 12,
+      borderWidth: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      marginBottom: 8,
+    },
+    pickerChapterText: { fontSize: 15, fontWeight: "600" },
+    pickerEmpty: {
+      textAlign: "center",
+      padding: 32,
+      fontSize: 14,
     },
   });
 }
