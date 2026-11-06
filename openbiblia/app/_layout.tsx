@@ -69,7 +69,9 @@ export default function RootLayout() {
   }
 
   return (
-    <GestureHandlerRootView style={styles.root}>
+    <GestureHandlerRootView
+      style={[styles.root, { backgroundColor: colors.background }]}
+    >
       <ThemeProvider value={navTheme}>
       <Stack
         screenOptions={{
@@ -95,7 +97,10 @@ export default function RootLayout() {
         />
         <Stack.Screen name="search/[id]" options={{ title: "Search" }} />
       </Stack>
-      <StatusBar style="auto" />
+      <StatusBar
+        style={colorScheme === "dark" ? "light" : "dark"}
+        animated
+      />
       </ThemeProvider>
     </GestureHandlerRootView>
   );
