@@ -24,7 +24,7 @@ const fileStorage: StateStorage = {
         store = JSON.parse(await settingsFile.text());
       }
       store[name] = JSON.parse(value);
-      settingsFile.write(JSON.stringify(store));
+      settingsFile.writeSync(JSON.stringify(store));
     } catch {}
   },
   removeItem: async (name) => {
@@ -32,7 +32,7 @@ const fileStorage: StateStorage = {
       if (settingsFile.exists) {
         const store = JSON.parse(await settingsFile.text());
         delete store[name];
-        settingsFile.write(JSON.stringify(store));
+        settingsFile.writeSync(JSON.stringify(store));
       }
     } catch {}
   },
