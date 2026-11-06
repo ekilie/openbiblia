@@ -1,0 +1,487 @@
+{
+  "commentaries": [
+    {
+      "name": "BC_Genesis.pdf",
+      "title": "Genesis",
+      "testament": "old",
+      "size": 2638431,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Genesis.pdf"
+    },
+    {
+      "name": "BC_Exodus.pdf",
+      "title": "Exodus",
+      "testament": "old",
+      "size": 2701988,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Exodus.pdf"
+    },
+    {
+      "name": "BC_Leviticus.pdf",
+      "title": "Leviticus",
+      "testament": "old",
+      "size": 1247662,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Leviticus.pdf"
+    },
+    {
+      "name": "BC_Numbers.pdf",
+      "title": "Numbers",
+      "testament": "old",
+      "size": 2579478,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Numbers.pdf"
+    },
+    {
+      "name": "BC_Deuteronomy.pdf",
+      "title": "Deuteronomy",
+      "testament": "old",
+      "size": 3024773,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Deuteronomy.pdf"
+    },
+    {
+      "name": "BC_Joshua.pdf",
+      "title": "Joshua",
+      "testament": "old",
+      "size": 1130127,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Joshua.pdf"
+    },
+    {
+      "name": "BC_Judges.pdf",
+      "title": "Judges",
+      "testament": "old",
+      "size": 1558213,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Judges.pdf"
+    },
+    {
+      "name": "BC_Ruth.pdf",
+      "title": "Ruth",
+      "testament": "old",
+      "size": 232249,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Ruth.pdf"
+    },
+    {
+      "name": "BC_FirstSamuel.pdf",
+      "title": "1 Samuel",
+      "testament": "old",
+      "size": 1307298,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_FirstSamuel.pdf"
+    },
+    {
+      "name": "BC_2Sam.pdf",
+      "title": "2 Samuel",
+      "testament": "old",
+      "size": 1516059,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_2Sam.pdf"
+    },
+    {
+      "name": "BC_1Kings.pdf",
+      "title": "1 Kings",
+      "testament": "old",
+      "size": 1770987,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_1Kings.pdf"
+    },
+    {
+      "name": "BC_2KingsRevised.pdf",
+      "title": "2 Kings",
+      "testament": "old",
+      "size": 1488526,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_2KingsRevised.pdf"
+    },
+    {
+      "name": "BC_1Chron.pdf",
+      "title": "1 Chronicles",
+      "testament": "old",
+      "size": 2215232,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_1Chron.pdf"
+    },
+    {
+      "name": "BC_2Chron.pdf",
+      "title": "2 Chronicles",
+      "testament": "old",
+      "size": 1458593,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_2Chron.pdf"
+    },
+    {
+      "name": "BC_Ezra.pdf",
+      "title": "Ezra",
+      "testament": "old",
+      "size": 170980,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Ezra.pdf"
+    },
+    {
+      "name": "BC_Nehemiah.pdf",
+      "title": "Nehemiah",
+      "testament": "old",
+      "size": 177675,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Nehemiah.pdf"
+    },
+    {
+      "name": "BC_Esther.pdf",
+      "title": "Esther",
+      "testament": "old",
+      "size": 440625,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Esther.pdf"
+    },
+    {
+      "name": "BC_Job.pdf",
+      "title": "Job",
+      "testament": "old",
+      "size": 272539,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Job.pdf"
+    },
+    {
+      "name": "BC_Psalms_001-041.pdf",
+      "title": "Psalms 1–41",
+      "testament": "old",
+      "size": 2675858,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Psalms_001-041.pdf"
+    },
+    {
+      "name": "BC_Psalms_042-072.pdf",
+      "title": "Psalms 42–72",
+      "testament": "old",
+      "size": 1964958,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Psalms_042-072.pdf"
+    },
+    {
+      "name": "BC_Psalms_073-089.pdf",
+      "title": "Psalms 73–89",
+      "testament": "old",
+      "size": 1423857,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Psalms_073-089.pdf"
+    },
+    {
+      "name": "BC_Psalms_090-106.pdf",
+      "title": "Psalms 90–106",
+      "testament": "old",
+      "size": 1243170,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Psalms_090-106.pdf"
+    },
+    {
+      "name": "BC_Psalms_107-150.pdf",
+      "title": "Psalms 107–150",
+      "testament": "old",
+      "size": 2307374,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Psalms_107-150.pdf"
+    },
+    {
+      "name": "BC_proverbs.pdf",
+      "title": "Proverbs",
+      "testament": "old",
+      "size": 1788748,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_proverbs.pdf"
+    },
+    {
+      "name": "BC_Ecclesiastes.pdf",
+      "title": "Ecclesiastes",
+      "testament": "old",
+      "size": 635234,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Ecclesiastes.pdf"
+    },
+    {
+      "name": "BC_Song-of-songs.pdf",
+      "title": "Song of Songs",
+      "testament": "old",
+      "size": 1011268,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Song-of-songs.pdf"
+    },
+    {
+      "name": "BC_Isaiah.pdf",
+      "title": "Isaiah",
+      "testament": "old",
+      "size": 2420907,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Isaiah.pdf"
+    },
+    {
+      "name": "BC_JEREMIAH.pdf",
+      "title": "Jeremiah",
+      "testament": "old",
+      "size": 1803393,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_JEREMIAH.pdf"
+    },
+    {
+      "name": "BC_Lamentations.pdf",
+      "title": "Lamentations",
+      "testament": "old",
+      "size": 405203,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Lamentations.pdf"
+    },
+    {
+      "name": "BC_Ezekiel.pdf",
+      "title": "Ezekiel",
+      "testament": "old",
+      "size": 1348690,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Ezekiel.pdf"
+    },
+    {
+      "name": "BC_Daniel.pdf",
+      "title": "Daniel",
+      "testament": "old",
+      "size": 461855,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Daniel.pdf"
+    },
+    {
+      "name": "BC_Hosea.pdf",
+      "title": "Hosea",
+      "testament": "old",
+      "size": 395348,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Hosea.pdf"
+    },
+    {
+      "name": "BC_Joel.pdf",
+      "title": "Joel",
+      "testament": "old",
+      "size": 172843,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Joel.pdf"
+    },
+    {
+      "name": "BC_Amos.pdf",
+      "title": "Amos",
+      "testament": "old",
+      "size": 155024,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Amos.pdf"
+    },
+    {
+      "name": "BC_Obadiah.pdf",
+      "title": "Obadiah",
+      "testament": "old",
+      "size": 65673,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Obadiah.pdf"
+    },
+    {
+      "name": "BC_Jonah.pdf",
+      "title": "Jonah",
+      "testament": "old",
+      "size": 77835,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Jonah.pdf"
+    },
+    {
+      "name": "BC_Micah.pdf",
+      "title": "Micah",
+      "testament": "old",
+      "size": 342236,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Micah.pdf"
+    },
+    {
+      "name": "BC_Nahum.pdf",
+      "title": "Nahum",
+      "testament": "old",
+      "size": 136891,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Nahum.pdf"
+    },
+    {
+      "name": "BC_Habakkuk.pdf",
+      "title": "Habakkuk",
+      "testament": "old",
+      "size": 269797,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Habakkuk.pdf"
+    },
+    {
+      "name": "BC_Zephaniah.pdf",
+      "title": "Zephaniah",
+      "testament": "old",
+      "size": 159957,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Zephaniah.pdf"
+    },
+    {
+      "name": "BC_Haggai.pdf",
+      "title": "Haggai",
+      "testament": "old",
+      "size": 90210,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Haggai.pdf"
+    },
+    {
+      "name": "BC_Zechariah.pdf",
+      "title": "Zechariah",
+      "testament": "old",
+      "size": 230352,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Zechariah.pdf"
+    },
+    {
+      "name": "BC_Malachi.pdf",
+      "title": "Malachi",
+      "testament": "old",
+      "size": 157106,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Malachi.pdf"
+    },
+    {
+      "name": "BC_Matthew.pdf",
+      "title": "Matthew",
+      "testament": "new",
+      "size": 1900492,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Matthew.pdf"
+    },
+    {
+      "name": "BC_Mark.pdf",
+      "title": "Mark",
+      "testament": "new",
+      "size": 1576644,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Mark.pdf"
+    },
+    {
+      "name": "BC_Luke.pdf",
+      "title": "Luke",
+      "testament": "new",
+      "size": 2349508,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Luke.pdf"
+    },
+    {
+      "name": "BC_John.pdf",
+      "title": "John",
+      "testament": "new",
+      "size": 2972988,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_John.pdf"
+    },
+    {
+      "name": "BC_Acts.pdf",
+      "title": "Acts",
+      "testament": "new",
+      "size": 4215149,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Acts.pdf"
+    },
+    {
+      "name": "BC_Romans.pdf",
+      "title": "Romans",
+      "testament": "new",
+      "size": 945393,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Romans.pdf"
+    },
+    {
+      "name": "BC_1Corinthians.pdf",
+      "title": "1 Corinthians",
+      "testament": "new",
+      "size": 767060,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_1Corinthians.pdf"
+    },
+    {
+      "name": "BC_2Corinthians.pdf",
+      "title": "2 Corinthians",
+      "testament": "new",
+      "size": 278826,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_2Corinthians.pdf"
+    },
+    {
+      "name": "BC_Galatians.pdf",
+      "title": "Galatians",
+      "testament": "new",
+      "size": 269990,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Galatians.pdf"
+    },
+    {
+      "name": "BC_Phi-Col-Eph.pdf",
+      "title": "Philippians, Colossians & Ephesians",
+      "testament": "new",
+      "size": 1630890,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Phi-Col-Eph.pdf"
+    },
+    {
+      "name": "BC_1-Thessalonians.pdf",
+      "title": "1 Thessalonians",
+      "testament": "new",
+      "size": 184773,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_1-Thessalonians.pdf"
+    },
+    {
+      "name": "BC_2-Thessalonians.pdf",
+      "title": "2 Thessalonians",
+      "testament": "new",
+      "size": 116905,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_2-Thessalonians.pdf"
+    },
+    {
+      "name": "BC_1_Timothy.pdf",
+      "title": "1 Timothy",
+      "testament": "new",
+      "size": 506494,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_1_Timothy.pdf"
+    },
+    {
+      "name": "BC_2_Timothy.pdf",
+      "title": "2 Timothy",
+      "testament": "new",
+      "size": 318734,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_2_Timothy.pdf"
+    },
+    {
+      "name": "BC_Titus.pdf",
+      "title": "Titus",
+      "testament": "new",
+      "size": 231788,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Titus.pdf"
+    },
+    {
+      "name": "BC_PhilemonR.pdf",
+      "title": "Philemon",
+      "testament": "new",
+      "size": 637203,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_PhilemonR.pdf"
+    },
+    {
+      "name": "BC_Hebrews.pdf",
+      "title": "Hebrews",
+      "testament": "new",
+      "size": 1252286,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Hebrews.pdf"
+    },
+    {
+      "name": "BC_James.pdf",
+      "title": "James",
+      "testament": "new",
+      "size": 845203,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_James.pdf"
+    },
+    {
+      "name": "BC_1Peter.pdf",
+      "title": "1 Peter",
+      "testament": "new",
+      "size": 313413,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_1Peter.pdf"
+    },
+    {
+      "name": "BC_2_Peter.pdf",
+      "title": "2 Peter",
+      "testament": "new",
+      "size": 473512,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_2_Peter.pdf"
+    },
+    {
+      "name": "BC_1John.pdf",
+      "title": "1 John",
+      "testament": "new",
+      "size": 190384,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_1John.pdf"
+    },
+    {
+      "name": "BC_2_John.pdf",
+      "title": "2 John",
+      "testament": "new",
+      "size": 126464,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_2_John.pdf"
+    },
+    {
+      "name": "BC_3_John.pdf",
+      "title": "3 John",
+      "testament": "new",
+      "size": 150686,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_3_John.pdf"
+    },
+    {
+      "name": "BC_Jude.pdf",
+      "title": "Jude",
+      "testament": "new",
+      "size": 332309,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Jude.pdf"
+    },
+    {
+      "name": "BC_Revelation.pdf",
+      "title": "Revelation",
+      "testament": "new",
+      "size": 531720,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_Revelation.pdf"
+    },
+    {
+      "name": "BC_on-David.pdf",
+      "title": "On David",
+      "testament": "additional",
+      "size": 481286,
+      "download_url": "https://www.bible-commentaries.com/source/johnschultz/BC_on-David.pdf"
+    }
+  ]
+}
