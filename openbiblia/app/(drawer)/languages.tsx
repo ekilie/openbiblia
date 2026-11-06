@@ -66,7 +66,7 @@ export default function LanguagesScreen() {
         ListEmptyComponent={
           <View style={s.emptyContainer}>
             <ThemedText style={[s.emptyText, { color: colors.secondaryText }]}>
-              No languages match "{search}"
+              No languages match &quot;{search}&quot;
             </ThemedText>
           </View>
         }
