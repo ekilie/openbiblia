@@ -7,7 +7,7 @@ import {
   View,
   Animated,
 } from "react-native";
-import { useLocalSearchParams, useRouter, Stack } from "expo-router";
+import { useLocalSearchParams, useRouter, Stack, useFocusEffect } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { ThemedText } from "@/components/themed-text";
@@ -72,9 +72,7 @@ export default function TranslationsScreen() {
     setDownloadedMap(map);
   }, [translations]);
 
-  useEffect(() => {
-    checkDownloaded();
-  }, [checkDownloaded]);
+  useFocusEffect(checkDownloaded);
 
   const handlePress = async (t: Translation) => {
     if (downloadedMap[t.id]) {
