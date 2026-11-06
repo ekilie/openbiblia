@@ -37,7 +37,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     refreshDownloaded();
-  }, []);
+  }, [refreshDownloaded]);
 
   const navTheme =
     colorScheme === "dark"
